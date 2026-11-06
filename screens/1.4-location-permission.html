@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 1.4 Location permission</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 1.4 Location permission – layout only. Values: tokens.css. Components: components.css.
+   The app screen sits behind the iOS permission alert, dimmed by the scrim. */
+.intro { text-align: center; justify-content: flex-start; align-items: center; gap: var(--space-3); padding-top: var(--space-10); }
+.intro .page-title { margin-top: var(--space-3); }
+/* wireframe: the alert sits low, the screen's heading stays readable above it */
+.alert-layer { align-items: end; padding-bottom: var(--space-24); }
+.intro .page-lede { text-wrap: balance; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="1.4 Location permission">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <!-- app screen behind the alert -->
+  <section class="screen intro" aria-hidden="true">
+    <!-- placeholder: assets/illustrations/location.svg is not in the project yet -->
+    <figure class="illo illo-md" role="img" aria-label="Map pin inside its delivery radius">
+      <svg class="art" viewBox="0 0 160 160" aria-hidden="true">
+        <ellipse class="dashed drift" cx="80" cy="128" rx="58" ry="12"/>
+        <path class="fill-cream" d="M80 124c-5-7-36-38-36-64a36 36 0 0 1 72 0c0 26-31 57-36 64z"/>
+        <circle class="fill-orange" cx="80" cy="60" r="13"/>
+      </svg>
+    </figure>
+    <h2 class="page-title">Find cafés near you</h2>
+    <p class="page-lede">We use your location to show cafés that can reach you, so the café can find you at your spot.</p>
+  </section>
+
+  <div class="scrim"></div>
+
+  <!-- iOS system alert -->
+  <div class="alert-layer">
+    <div class="sys-alert" role="alertdialog" aria-modal="true" aria-labelledby="loc-title" aria-describedby="loc-text">
+      <div class="sys-alert-body">
+        <h1 id="loc-title">Allow “Shoot” to use your location?</h1>
+        <p id="loc-text">Used to show cafés within delivery range and to deliver your order to the exact spot.</p>
+        <div class="map" role="img" aria-label="Map preview: you are inside a café's delivery radius">
+          <svg viewBox="0 0 268 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path class="park" d="M0 78C30 70 60 86 84 120H0Z"/>
+            <path class="park" d="M196 0c8 22 40 30 72 26V0Z"/>
+            <path class="road" stroke-width="10" d="M-10 44c70 8 160-14 290 4"/>
+            <path class="road" stroke-width="6" d="M120-10c-2 50 12 90 6 140"/>
+            <path class="road" stroke-width="4" d="M190 130c6-40 30-60 90-46"/>
+            <path class="road" stroke-width="4" d="M-10 100c50-4 90 4 134-4"/>
+            <circle class="radius" cx="134" cy="62" r="40"/>
+            <circle class="cafe-dot" cx="158" cy="40" r="5"/>
+            <circle class="pin" cx="134" cy="62" r="7"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sys-actions">
+        <a class="sys-action preferred" href="1.6-cafe-list-home.html">Allow while using app</a>
+        <a class="sys-action" href="1.6-cafe-list-home.html">Allow once</a>
+        <a class="sys-action" href="1.5-location-denied.html">Don’t allow</a>
+      </div>
+    </div>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

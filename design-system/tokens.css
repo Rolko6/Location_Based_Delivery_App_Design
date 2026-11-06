@@ -254,3 +254,103 @@
   --doc-max:      1120px;
   --sheet-demo-h: 560px;
 }
+
+/* --------------------------------------------------------------------------
+   11. SCREEN FRAME (mockups in screens/)
+   Below --bp-phone the device frame goes full-bleed: copy exactly 430px.
+   -------------------------------------------------------------------------- */
+:root {
+  --phone-h:          844px;   /* iPhone 15 / 14 logical height */
+  --bp-phone:         430px;   /* reference only */
+  --size-statusbar:   54px;
+  --size-home-w:      134px;
+  --size-home-h:      5px;
+  --radius-device:    52px;
+  --screen-gutter:    24px;    /* side padding of app screens (wireframes) */
+  --backdrop:         color-mix(in srgb, var(--sand) 55%, var(--cream));  /* around the device on desktop */
+  --shadow-device:    0 2px 6px rgba(74, 44, 30, .08), 0 28px 64px -24px rgba(74, 44, 30, .38);
+  --fs-wordmark-sm:   32px;    /* wordmark at the top of a screen */
+  --dur-ambient:      14s;     /* slow ambient loop (illustration radius) */
+  --dash-illo-travel: -110;    /* 10 dash cycles of --dash-illo, seamless loop */
+}
+
+/* --------------------------------------------------------------------------
+   12. SPLASH + ILLUSTRATION COLOURS (unDraw art recoloured to the palette)
+   -------------------------------------------------------------------------- */
+:root {
+  --splash-bg:      var(--orange);
+  --on-splash:      var(--cream);
+  --illo-ink:       var(--brown);    /* hair, clothes, device body */
+  --illo-skin:      var(--sand);
+  --illo-screen:    var(--cream);
+  --illo-screen-2:  color-mix(in srgb, var(--cream) 55%, var(--sand));
+  --illo-mid:       var(--sand);
+  --illo-light:     var(--white);
+  --illo-accent:    var(--rust);
+  --dur-enter:      .9s;             /* one entrance moment per screen */
+}
+
+/* --------------------------------------------------------------------------
+   13. SPLASH TIMELINE (animated 1.0 Splash: order → tap → selfie → flash)
+   -------------------------------------------------------------------------- */
+:root {
+  --dur-press:         .3s;
+  --dur-swap:          .35s;
+  --dur-reveal:        .6s;
+  --dur-flash:         .45s;
+  --splash-tap-at:     1.4s;   /* thumb taps "order" */
+  --splash-swap-at:    1.75s;  /* order screen leaves */
+  --splash-in-at:      2s;     /* selfie camera appears */
+  --splash-shutter-at: 3s;     /* shutter pressed + flash */
+  --press-scale-btn:   .9;
+  --enter-scale:       1.06;
+  --leave-scale:       .96;
+  --flash-peak:        .85;
+  --ripple-peak:       .7;
+  --ripple-from:       .3;
+  --ripple-to:         1.4;
+}
+
+/* splash timeline, part 2: order confirmed */
+:root {
+  --splash-selfie-out-at: 4.1s;   /* selfie leaves after the photo */
+  --splash-confirm-at:    4.4s;   /* check badge pops in */
+  --splash-cheer-at:      4.65s;  /* customer cheers */
+  --pop-from:             .5;
+  --pop-overshoot:        1.08;
+  --illo-ink-soft:        var(--brown-soft);   /* second dark tone in illustrations */
+}
+
+/* illustrations, part 2 */
+:root {
+  --illo-skin-2: color-mix(in srgb, var(--sand) 35%, var(--brown-soft));  /* second skin tone */
+  --illo-bg:     var(--cream);    /* light background details (plants, ground) */
+}
+
+/* --------------------------------------------------------------------------
+   14. SIGN-UP FLOW (keyboard, system alert, map preview, headers)
+   -------------------------------------------------------------------------- */
+:root {
+  --surface-keyboard: color-mix(in srgb, var(--sand) 45%, var(--cream));
+  --surface-alert:    color-mix(in srgb, var(--white) 94%, var(--cream));
+  --size-key:         46px;    /* iOS number-pad key height */
+  --size-suggest:     44px;    /* QuickType bar above the keyboard */
+  --size-alert-w:     300px;   /* system alert width (wireframe) */
+  --radius-key:       8px;
+  --radius-alert:     14px;
+  --shadow-key:       0 1px 0 rgba(74, 44, 30, .28);
+  --fs-key:           25px;    /* system keypad digits */
+  --fs-key-letters:   10px;    /* system keypad letters (iOS glyph size) */
+  --ls-key-letters:   .14em;
+  --map-land:         color-mix(in srgb, var(--sand) 55%, var(--cream));
+  --map-road:         var(--white);
+  --map-park:         color-mix(in srgb, var(--olive) 30%, var(--sand));
+  --map-h:            120px;   /* map preview height in the alert */
+  --illo-lg:          200px;   /* round illustration (1.4, 1.5) */
+  --dur-otp-advance:  .45s;    /* pause before auto-continue after the 6th digit */
+}
+
+/* photos */
+:root {
+  --photo-sold-out: grayscale(.8);   /* sold-out product photos (with --opacity-muted) */
+}

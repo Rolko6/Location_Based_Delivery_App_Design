@@ -145,6 +145,7 @@ Build in the order below: main flow first, then edge cases.
 ### UC-01 Sign-up
 | ID | File | Screen |
 |---|---|---|
+| 1.0 | – (no wireframe – designed in `screens/`) | Splash (animated) |
 | 1.1 | `1.1-welcome.png` | Welcome |
 | 1.2 | `1.2-phone-number.png` | Phone number |
 | 1.3 | `1.3-sms-code.png` | SMS code |

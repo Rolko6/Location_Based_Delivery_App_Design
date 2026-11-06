@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 1.6 Café list (home)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 1.6 Café list (home) – layout only. Values: tokens.css. Components: components.css. */
+.home { padding-bottom: var(--space-4); overflow-y: auto; scrollbar-width: none; gap: var(--space-4); }
+.home::-webkit-scrollbar { display: none; }
+.home .loc-picker { padding-top: var(--space-3); }
+.home .group { display: grid; gap: var(--space-3); }
+.home .group + .group { margin-top: var(--space-2); }
+.home .t-group { color: var(--ink-2); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="1.6 Café list">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <div class="screen home">
+    <h1 class="sr-only">Cafés near you</h1>
+
+    <div class="loc-picker">
+      <small>Delivering to your location</small>
+      <button type="button">Current GPS position<svg class="i" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+    </div>
+
+    <label class="search"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input class="input" type="search" placeholder="Search cafés or products" aria-label="Search cafés or products"></label>
+
+    <div class="chips scroll" role="group" aria-label="Filter">
+      <button class="chip" type="button" aria-pressed="true">All</button>
+      <button class="chip" type="button" aria-pressed="false">Coffee</button>
+      <button class="chip" type="button" aria-pressed="false">Pastry</button>
+      <button class="chip" type="button" aria-pressed="false">Lunch</button>
+      <button class="chip" type="button" aria-pressed="false">Open now</button>
+    </div>
+
+    <section class="group" aria-labelledby="in-range">
+      <h2 class="t-group flush" id="in-range">In range · can deliver to you</h2>
+      <a class="cafe" href="#saaripaahtimo">
+        <span class="thumb"><img src="../assets/pictures/web/coffee-shop-3.jpg" alt="" loading="lazy"></span>
+        <span class="cafe-body">
+          <span class="cafe-name">Saaripaahtimo</span>
+          <span class="cafe-meta num"><span class="seg">45 m away</span> <span class="seg">· Open until 18:00</span></span>
+          <span class="cafe-meta num"><span class="seg">Ready in ~10 min</span> <span class="seg">· Delivery €0.50</span></span>
+        </span>
+      </a>
+      <a class="cafe" href="#kampuskuppi">
+        <span class="thumb"><img src="../assets/pictures/web/coffee-shop-1.jpg" alt="" loading="lazy"></span>
+        <span class="cafe-body">
+          <span class="cafe-name">Kampuskuppi</span>
+          <span class="cafe-meta num"><span class="seg">80 m away</span> <span class="seg">· Open until 20:00</span></span>
+          <span class="cafe-meta num"><span class="seg">Ready in ~15 min</span> <span class="seg">· Delivery €0.50</span></span>
+        </span>
+      </a>
+    </section>
+
+    <section class="group" aria-labelledby="out-range">
+      <h2 class="t-group flush" id="out-range">Out of range · browse only</h2>
+      <a class="cafe out" href="#torikahvila-ruska">
+        <span class="thumb"><img src="../assets/pictures/web/coffee-shop-2.jpg" alt="" loading="lazy"></span>
+        <span class="cafe-body">
+          <span class="cafe-name">Torikahvila Ruska</span>
+          <span class="cafe-meta num"><span class="seg">350 m away</span> <span class="seg">· Out of delivery range</span></span>
+          <span class="range"><svg class="ring out" viewBox="0 0 22 22" aria-hidden="true"><circle class="r" cx="11" cy="11" r="9"/><circle class="c" cx="11" cy="11" r="3.5"/></svg>Move closer to order</span>
+        </span>
+      </a>
+    </section>
+  </div>
+
+  <nav class="tabbar" role="tablist" aria-label="Main">
+    <button class="tab" role="tab" aria-selected="true"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span>Home</button>
+    <button class="tab" role="tab" aria-selected="false"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></span>Orders</button>
+    <button class="tab" role="tab" aria-selected="false"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg></span>Profile</button>
+  </nav>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

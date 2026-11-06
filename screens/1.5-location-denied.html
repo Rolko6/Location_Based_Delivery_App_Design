@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 1.5 Location denied</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 1.5 Location denied – layout only. Values: tokens.css. Components: components.css. */
+.denied-body { flex: 1; display: grid; align-content: center; justify-items: center; gap: var(--space-3); text-align: center; }
+.denied-body .page-title { margin-top: var(--space-3); }
+.denied-body .page-lede { text-wrap: balance; }
+.denied-body .banner { margin-top: var(--space-3); width: 100%; text-align: left; }
+.denied-body .still { margin: var(--space-1) 0 0; font-size: var(--fs-sub); color: var(--ink-2); text-wrap: balance; }
+.screen-footer { justify-items: center; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="1.5 Location denied">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <div class="screen">
+    <section class="denied-body" aria-labelledby="denied-title">
+      <!-- placeholder: assets/illustrations/location.svg is not in the project yet -->
+      <figure class="illo illo-md" role="img" aria-label="A map pin waiting for your location">
+        <svg class="art" viewBox="0 0 160 160" aria-hidden="true">
+          <ellipse class="dashed" cx="80" cy="128" rx="58" ry="12"/>
+          <path class="fill-cream" d="M80 124c-5-7-36-38-36-64a36 36 0 0 1 72 0c0 26-31 57-36 64z"/>
+          <circle cx="80" cy="60" r="13"/>
+        </svg>
+      </figure>
+      <h1 class="page-title" id="denied-title">We need your location</h1>
+      <p class="page-lede">Cafés deliver only within a short walk. Without your location we can’t tell which cafés can reach you.</p>
+
+      <div class="banner info">
+        <div class="banner-body">
+          <span class="banner-title">How to turn it on</span>
+          <span class="banner-text">Settings › Shoot › Location › While using the app</span>
+        </div>
+      </div>
+      <p class="still">You can still look through café menus. To order, the café needs to know where you are.</p>
+    </section>
+
+    <footer class="screen-footer">
+      <!-- prototype: assumes location was switched on in Settings -->
+      <a class="btn btn-primary" href="1.6-cafe-list-home.html">Open settings</a>
+      <a class="btn-text" href="1.4-location-permission.html">Try again</a>
+    </footer>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

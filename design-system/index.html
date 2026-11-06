@@ -260,7 +260,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
       <ul class="rule-list">
         <li><svg class="i tint-success"><use href="#i-check"/></svg><span>Wordmark, 1.1 hero headline, 2.9 “Order sent!”, 3.1 “No café can deliver here yet”.</span></li>
         <li><svg class="i tint-error"><use href="#i-x"/></svg><span>Never paragraphs, buttons, prices, labels, numbers or screen titles.</span></li>
-        <li><svg class="i tint-error"><use href="#i-x"/></svg><span>Never more than one line of six words or so.</span></li>
+        <li><svg class="i tint-error"><use href="#i-x"/></svg><span>Never more than one short sentence (about 8 words, 3 lines at most).</span></li>
       </ul>
     </div>
 
@@ -270,7 +270,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
       <div class="type-row"><div class="type-meta"><b>Title</b>28 · 700 · −1.5%<br>Flow screens, café name</div><div class="t-title">Confirm your spot</div></div>
       <div class="type-row"><div class="type-meta"><b>Title 2</b>22 · 600 · −1%<br>Sheet titles, sections</div><div class="t-title2">You’ve moved out of range</div></div>
       <div class="type-row"><div class="type-meta"><b>Body</b>17 · 400 · 1.45<br>Default text, inputs</div><div class="t-body">One quick photo shows the staff it’s you and where you’re sitting.</div></div>
-      <div class="type-row"><div class="type-meta"><b>Body strong</b>17 · 600<br>Buttons, names, prices</div><div class="t-bodyst">Flat white <span class="num">€4.20</span></div></div>
+      <div class="type-row"><div class="type-meta"><b>Body strong</b>17 · 600<br>Buttons, names, prices</div><div class="t-bodyst">Cappuccino <span class="num">€4.20</span></div></div>
       <div class="type-row"><div class="type-meta"><b>Subhead</b>15 · 400 · 1.4<br>Meta lines, help text</div><div class="t-sub muted">45 m away · Open until 18:00 · Ready in ~10 min</div></div>
       <div class="type-row"><div class="type-meta"><b>Caption</b>13 · 500<br>Labels, timestamps</div><div class="t-cap muted">Seen · 14:09</div></div>
       <div class="type-row"><div class="type-meta"><b>Group label</b>13 · 600 · +6% · caps<br>List group headers only</div><div class="t-group">In range · can deliver to you</div></div>
@@ -347,7 +347,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
         <div class="stage">
           <div class="row-wrap">
             <button class="icon-btn" aria-label="Back"><svg class="i"><use href="#i-back"/></svg></button>
-            <button class="add" aria-label="Add Flat white"><svg class="i"><use href="#i-plus"/></svg></button>
+            <button class="add" aria-label="Add Americano"><svg class="i"><use href="#i-plus"/></svg></button>
             <button class="add has-qty" aria-label="2 in cart">2</button>
             <button class="add" aria-label="Sold out" disabled><svg class="i"><use href="#i-plus"/></svg></button>
             <div class="qty"><button aria-label="Remove one"><svg class="i"><use href="#i-minus"/></svg></button><output>1</output><button aria-label="Add one"><svg class="i"><use href="#i-plus"/></svg></button></div>
@@ -366,7 +366,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
       <div class="spec">
         <span class="spec-label">Filter chips · 44 px</span>
         <div class="stage">
-          <div class="chips" role="group" aria-label="Filter">
+          <div class="chips scroll" role="group" aria-label="Filter">
             <button class="chip" aria-pressed="true">All</button>
             <button class="chip" aria-pressed="false">Coffee</button>
             <button class="chip" aria-pressed="false">Pastry</button>
@@ -449,6 +449,33 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
         </div>
       </div>
     </div>
+  
+    <h3 class="sub">Number keyboard</h3>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">System number pad · QuickType code suggestion (1.2, 1.3)</span>
+        <div class="stage tabbar-stage">
+          <div class="keyboard" aria-hidden="true">
+  <button class="suggest" type="button"><small>From Messages</small><strong>481 236</strong></button>
+  <div class="keys">
+    <button class="key" data-key="1">1<small>&nbsp;</small></button>
+    <button class="key" data-key="2">2<small>ABC</small></button>
+    <button class="key" data-key="3">3<small>DEF</small></button>
+    <button class="key" data-key="4">4<small>GHI</small></button>
+    <button class="key" data-key="5">5<small>JKL</small></button>
+    <button class="key" data-key="6">6<small>MNO</small></button>
+    <button class="key" data-key="7">7<small>PQRS</small></button>
+    <button class="key" data-key="8">8<small>TUV</small></button>
+    <button class="key" data-key="9">9<small>WXYZ</small></button>
+    <span class="key blank"></span>
+    <button class="key" data-key="0">0</button>
+    <button class="key fn" data-key="del" aria-label="Delete"><svg class="i"><use href="#i-delete"/></svg></button>
+  </div>
+</div>
+        </div>
+      </div>
+      <p class="note">A mock of the iOS keyboard so the prototype can be clicked through. Keys type into the focused field; on 1.3 the suggestion fills the whole code and the screen continues by itself.</p>
+    </div>
   </section>
 
   <!-- ========================================================== CARDS -->
@@ -461,19 +488,19 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
         <div class="stage">
           <span class="t-group muted group-label">In range · can deliver to you</span>
           <a class="cafe" href="#cards">
-            <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+            <span class="thumb"><img src="../assets/pictures/web/coffee-shop-3.jpg" alt="" loading="lazy"></span>
             <span class="cafe-body">
               <span class="cafe-name">Saaripaahtimo</span>
-              <span class="cafe-meta num">45 m away<span class="sep">·</span>Open until 18:00</span>
-              <span class="cafe-meta num">Ready in ~10 min<span class="sep">·</span>Delivery €0.50</span>
+              <span class="cafe-meta num"><span class="seg">45 m away</span> <span class="seg">· Open until 18:00</span></span>
+              <span class="cafe-meta num"><span class="seg">Ready in ~10 min</span> <span class="seg">· Delivery €0.50</span></span>
             </span>
           </a>
           <span class="t-group muted group-label">Out of range · browse only</span>
           <a class="cafe out" href="#cards">
-            <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+            <span class="thumb"><img src="../assets/pictures/web/coffee-shop-2.jpg" alt="" loading="lazy"></span>
             <span class="cafe-body">
               <span class="cafe-name">Torikahvila Ruska</span>
-              <span class="cafe-meta num">350 m away<span class="sep">·</span>Out of delivery range</span>
+              <span class="cafe-meta num"><span class="seg">350 m away</span> <span class="seg">· Out of delivery range</span></span>
               <span class="range"><svg class="ring out" viewBox="0 0 22 22" aria-hidden="true"><circle class="r" cx="11" cy="11" r="9"/><circle class="c" cx="11" cy="11" r="3.5"/></svg>Move closer to order</span>
             </span>
           </a>
@@ -484,19 +511,19 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
         <div class="stage on-white">
           <div>
             <div class="menu-row">
-              <div class="menu-text"><span class="menu-name">Flat white</span><span class="menu-desc">Double shot, steamed milk</span><span class="menu-price">€4.20</span></div>
-              <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
-              <button class="add has-qty" aria-label="1 Flat white in cart">1</button>
+              <div class="menu-text"><span class="menu-name">Cappuccino</span><span class="menu-desc">Double shot, milk foam</span><span class="menu-price">€4.20</span></div>
+              <span class="thumb"><img src="../assets/pictures/web/cappuccino.jpg" alt="" loading="lazy"></span>
+              <button class="add has-qty" aria-label="1 Cappuccino in cart">1</button>
             </div>
             <div class="menu-row">
-              <div class="menu-text"><span class="menu-name">Korvapuusti</span><span class="menu-desc">Cardamom cinnamon bun</span><span class="menu-price">€3.50</span></div>
-              <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
-              <button class="add" aria-label="Add Korvapuusti"><svg class="i"><use href="#i-plus"/></svg></button>
+              <div class="menu-text"><span class="menu-name">Americano</span><span class="menu-desc">Espresso topped up with hot water</span><span class="menu-price">€3.60</span></div>
+              <span class="thumb"><img src="../assets/pictures/web/americano.jpg" alt="" loading="lazy"></span>
+              <button class="add" aria-label="Add Americano"><svg class="i"><use href="#i-plus"/></svg></button>
             </div>
             <div class="menu-row sold">
-              <div class="menu-text"><span class="menu-name">Mustikkapiirakka</span><span class="menu-desc">Sold out today</span><span class="menu-price">€4.00</span></div>
-              <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
-              <button class="add" aria-label="Mustikkapiirakka is sold out" disabled><svg class="i"><use href="#i-plus"/></svg></button>
+              <div class="menu-text"><span class="menu-name">Croissant</span><span class="menu-desc">Sold out today</span><span class="menu-price">€3.50</span></div>
+              <span class="thumb"><img src="../assets/pictures/web/croissant.jpg" alt="" loading="lazy"></span>
+              <button class="add" aria-label="Croissant is sold out" disabled><svg class="i"><use href="#i-plus"/></svg></button>
             </div>
           </div>
         </div>
@@ -506,15 +533,15 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
         <div class="stage">
           <div>
             <div class="cart-row">
-              <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
-              <div class="menu-text"><span class="menu-name">Oat latte</span><span class="menu-desc">Oat milk · €4.80</span></div>
+              <span class="thumb"><img src="../assets/pictures/web/cappuccino.jpg" alt="" loading="lazy"></span>
+              <div class="menu-text"><span class="menu-name">Cappuccino</span><span class="menu-desc">Oat milk · €4.20</span></div>
               <div class="qty"><button aria-label="Remove one"><svg class="i"><use href="#i-minus"/></svg></button><output>1</output><button aria-label="Add one"><svg class="i"><use href="#i-plus"/></svg></button></div>
             </div>
           </div>
           <div class="summary">
-            <div class="line"><span>Subtotal</span><span>€8.30</span></div>
+            <div class="line"><span>Subtotal</span><span>€4.20</span></div>
             <div class="line"><span>Delivery</span><span>€0.50</span></div>
-            <div class="total"><span>Total</span><span>€8.80</span></div>
+            <div class="total"><span>Total</span><span>€4.70</span></div>
           </div>
         </div>
       </div>
@@ -524,7 +551,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
           <article class="order-card">
             <div class="order-top"><span class="badge badge-neutral badge-progress"><span class="dot"></span>On the way</span><span class="t-cap muted num">Order #2041</span></div>
             <div class="order-main">
-              <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+              <span class="thumb"><img src="../assets/pictures/web/coffee-shop-3.jpg" alt="" loading="lazy"></span>
               <div class="cafe-body"><span class="cafe-name">Saaripaahtimo</span><span class="cafe-meta">2 items · to your spot</span></div>
               <svg class="i chev"><use href="#i-chev-r"/></svg>
             </div>
@@ -535,7 +562,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
             <div class="eta-row"><span class="eta">~2 min</span><span class="t-sub muted">arriving</span></div>
           </article>
           <div class="history">
-            <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+            <span class="thumb"><img src="../assets/pictures/web/coffee-shop-1.jpg" alt="" loading="lazy"></span>
             <div class="cafe-body"><span class="cafe-name">Kampuskuppi</span><span class="cafe-meta num">3 Nov · 1 item · €5.30</span></div>
             <span class="badge badge-neutral badge-success"><span class="dot"></span>Delivered</span>
           </div>
@@ -587,6 +614,44 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
         </div>
       </div>
     </div>
+  
+    <h3 class="sub">System permission alert</h3>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">iOS alert over a dimmed screen · map preview (1.4)</span>
+        <div class="sheet-demo">
+          <div class="behind"><div></div><div></div><div></div></div>
+          <div class="scrim"></div>
+          <div class="alert-layer">
+            <div class="sys-alert" role="alertdialog" aria-labelledby="ds-alert-t">
+              <div class="sys-alert-body">
+                <h2 id="ds-alert-t">Allow “Shoot” to use your location?</h2>
+                <p>Used to show cafés within delivery range and to deliver your order to the exact spot.</p>
+                <div class="map" role="img" aria-label="Map preview: you are inside the café's delivery radius">
+  <svg viewBox="0 0 268 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="park" d="M0 78C30 70 60 86 84 120H0Z"/>
+    <path class="park" d="M196 0c8 22 40 30 72 26V0Z"/>
+    <path class="road" stroke-width="10" d="M-10 44c70 8 160-14 290 4"/>
+    <path class="road" stroke-width="6" d="M120-10c-2 50 12 90 6 140"/>
+    <path class="road" stroke-width="4" d="M190 130c6-40 30-60 90-46"/>
+    <path class="road" stroke-width="4" d="M-10 100c50-4 90 4 134-4"/>
+    <circle class="radius" cx="134" cy="62" r="40"/>
+    <circle class="cafe-dot" cx="158" cy="40" r="5"/>
+    <circle class="pin" cx="134" cy="62" r="7"/>
+  </svg>
+</div>
+              </div>
+              <div class="sys-actions">
+                <a class="sys-action preferred" href="#feedback">Allow while using app</a>
+                <a class="sys-action" href="#feedback">Allow once</a>
+                <a class="sys-action" href="#feedback">Don’t allow</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="note">Drawn by iOS, so it follows the system layout: centred card, stacked actions, the preferred one in semibold. Action text uses our primary colour instead of system blue, which is not in the palette.</p>
+    </div>
   </section>
 
   <!-- ========================================================== NAV -->
@@ -608,6 +673,13 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
         </div>
       </div>
       <div class="spec">
+        <span class="spec-label">Screen frame · status bar · home indicator</span>
+        <div class="stage tabbar-stage">
+          <div class="statusbar"><span>9:41</span><span class="sys"><svg class="i"><use href="#i-signal"/></svg><svg class="i"><use href="#i-wifi"/></svg><svg class="i battery"><use href="#i-battery"/></svg></span></div>
+          <div class="content"><span class="t-sub muted">Screens use <code>.device</code> (390 × 844) with <code>.statusbar</code>, a <code>.screen</code> column, a docked <code>.screen-footer</code> and <code>.home-indicator</code>. Side gutter 24 px.</span></div>
+        </div>
+      </div>
+      <div class="spec">
         <span class="spec-label">Tab bar · Home · Orders · Profile</span>
         <div class="stage tabbar-stage">
           <div class="content"><span class="t-sub muted">Screen content scrolls behind the bar.</span></div>
@@ -618,6 +690,26 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
           </nav>
         </div>
         <p class="note">The active tab gets an orange pill with a white icon (3.85:1, enough for an icon) and a brown label in semibold. Inactive tabs use secondary brown.</p>
+      </div>
+    </div>
+  
+    <h3 class="sub">Flow header and location picker</h3>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">Page head · back + title + lede (1.2, 1.3)</span>
+        <div class="stage">
+          <div class="page-head">
+            <div class="navbar"><button class="back" aria-label="Back"><svg class="i"><use href="#i-back"/></svg></button><span></span><span></span></div>
+            <h2 class="page-title">What’s your phone number?</h2>
+            <p class="page-lede">We’ll send you a code. The café uses it to contact you about your order.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Location picker (1.6)</span>
+        <div class="stage">
+          <div class="loc-picker"><small>Delivering to your location</small><button type="button">Current GPS position<svg class="i"><use href="#i-chev-d"/></svg></button></div>
+        </div>
       </div>
     </div>
   </section>
@@ -670,6 +762,18 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
         <span class="state-icon warn"><svg class="i"><use href="#i-pin"/></svg></span>
         <span class="t-cap muted">Error sheets keep an icon in a circle</span>
       </div>
+    </div>
+  
+    <h3 class="sub">Round illustration · 200 px</h3>
+    <div class="illo-row">
+      <figure class="illo illo-round" role="img" aria-label="Map pin inside its delivery radius">
+  <svg class="art" viewBox="0 0 160 160" aria-hidden="true">
+    <ellipse class="dashed drift" cx="80" cy="128" rx="58" ry="12"/>
+    <path class="fill-cream" d="M80 124c-5-7-36-38-36-64a36 36 0 0 1 72 0c0 26-31 57-36 64z"/>
+    <circle class="fill-orange" cx="80" cy="60" r="13"/>
+  </svg>
+</figure>
+      <p class="note">Placeholder for <code>assets/illustrations/location.svg</code> (not in the project yet), used on 1.4 and 1.5.</p>
     </div>
   </section>
 

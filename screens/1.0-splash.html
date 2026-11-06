@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 1.0 Splash</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 1.0 Splash (animated) – layout + timeline only.
+   Values: tokens.css. Keyframes: components.css (13. SPLASH).
+   Story inside the phone: order a coffee → tap → selfie camera → shutter flash
+   → order confirmed (check badge pops, customer cheers). */
+.splash-brand { position: absolute; left: 0; right: 0; top: 19%; z-index: 1; display: flex; justify-content: center; }
+.splash-brand .wordmark { font-size: var(--fs-wordmark); }
+.splash-art { position: absolute; width: 144%; left: -56%; bottom: -11%; animation: rise-in var(--dur-enter) var(--ease-out) both; }
+.splash-art svg { display: block; width: 100%; height: auto; }
+.statusbar, .home-indicator { z-index: 2; }
+
+/* timeline (all transforms on SVG parts use their own box) */
+.splash-art .order-button, .splash-art .tap, .splash-art .state-order,
+.splash-art .state-selfie, .splash-art .camera-ui .accent { transform-box: fill-box; transform-origin: center; }
+.splash-art .order-button { animation: press var(--dur-press) var(--ease-out) var(--splash-tap-at) both; }
+.splash-art .tap          { animation: tap-ripple var(--dur-reveal) var(--ease-out) var(--splash-tap-at) both; }
+.splash-art .state-order  { animation: leave-up var(--dur-swap) var(--ease-out) var(--splash-swap-at) both; }
+.splash-art .state-selfie { animation: settle-in var(--dur-reveal) var(--ease-out) var(--splash-in-at) both,
+                                      leave-up var(--dur-swap) var(--ease-out) var(--splash-selfie-out-at) forwards; }
+.splash-art .confirm-check, .splash-art .confirm-cheer { transform-box: fill-box; transform-origin: center; }
+.splash-art .confirm-check { animation: pop-in var(--dur-reveal) var(--ease-out) var(--splash-confirm-at) both; }
+.splash-art .confirm-cheer { animation: rise-fade var(--dur-reveal) var(--ease-out) var(--splash-cheer-at) both; }
+.splash-art .camera-ui .accent { animation: press var(--dur-press) var(--ease-out) var(--splash-shutter-at) both; }
+.splash-art .flash        { animation: flash var(--dur-flash) var(--ease-out) var(--splash-shutter-at) both; }
+
+/* review-only control outside the phone */
+.mock-controls { display: flex; justify-content: center; gap: var(--space-6); padding-top: var(--space-5); }
+@media (max-width: 430px) { .mock-controls { display: none; } }
+</style>
+</head>
+<body class="screen-page">
+<div>
+<main class="device splash" aria-label="1.0 Splash – tap to continue">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <h1 class="splash-brand"><span class="wordmark">Shoot</span></h1>
+
+  <!-- Illustrations: unDraw "Selfie" + "Order coffee" + "Order confirmed" (unDraw licence, assets/CREDITS.md), recoloured -->
+  <div class="splash-art" role="img" aria-label="A phone ordering a coffee, taking a selfie, then showing the order confirmed">
+    <svg class="illo-color" viewBox="0 0 609.663 720" aria-hidden="true" focusable="false">
+      <defs>
+        <clipPath id="phone-screen"><path d="M864.338,196.984V644a35.264,35.264,0,0,1-35.272,35.268H655.35A35.266,35.266,0,0,1,620.083,644V196.984a35.266,35.266,0,0,1,35.269-35.268h21.081A16.755,16.755,0,0,0,691.945,184.8h99.048A16.762,16.762,0,0,0,806.5,161.716h22.567a35.266,35.266,0,0,1,35.267,35.269Z" transform="translate(363.972 30.573)"/></clipPath>
+      </defs>
+      <g transform="translate(-655 -180)">
+        <path d="M494.3,728.493l-6.031,115.789s255.092-242.79,286.871-313.827S747.1,283.694,747.1,283.694L614.37,356.6Z" transform="translate(336.799 55.718)" class="skin"/>
+        <path d="M818.193,243.4l39.258,3.739s20.564,44.866-43,48.6Z" transform="translate(404.039 47.411)" class="skin"/>
+        <path d="M818.193,300.743l39.258,3.739s20.564,44.866-43,48.6Z" transform="translate(404.039 59.232)" class="skin"/>
+        <path d="M818.193,362.739l39.258,3.739s20.564,44.866-43,48.6Z" transform="translate(404.039 72.012)" class="skin"/>
+        <path d="M808.893,424.735l39.257,3.739s20.563,44.866-43,48.6Z" transform="translate(402.122 84.792)" class="skin"/>
+        <path d="M879.6,280.359h-2.979v-81.6a47.229,47.229,0,0,0-47.229-47.229H656.507a47.229,47.229,0,0,0-47.229,47.229V646.432a47.229,47.229,0,0,0,47.229,47.229H829.392a47.229,47.229,0,0,0,47.229-47.229V338.444H879.6Z" transform="translate(361.744 28.473)" class="ink"/>
+        <path d="M864.338,196.984V644a35.264,35.264,0,0,1-35.272,35.268H655.35A35.266,35.266,0,0,1,620.083,644V196.984a35.266,35.266,0,0,1,35.269-35.268h21.081A16.755,16.755,0,0,0,691.945,184.8h99.048A16.762,16.762,0,0,0,806.5,161.716h22.567a35.266,35.266,0,0,1,35.267,35.269Z" transform="translate(363.972 30.573)" class="screen"/>
+        <rect class="ink" width="24.642" height="1.206" transform="translate(1238.158 302.496) rotate(-20.222)" opacity="0.2"/>
+        <rect class="ink" width="24.642" height="1.206" transform="translate(1238.158 372.452) rotate(-20.222)" opacity="0.2"/>
+        <rect class="ink" width="24.642" height="1.206" transform="translate(1238.158 447.233) rotate(-20.222)" opacity="0.2"/>
+        <rect class="ink" width="12.487" height="1.206" transform="translate(1237.911 518.921) rotate(-25.639)" opacity="0.2"/>
+        <g clip-path="url(#phone-screen)">
+          <!-- state 1: order coffee (cup + order button from unDraw "Order coffee") -->
+          <g class="state-order">
+            <g transform="translate(1106.2 451.1) rotate(5.6) scale(0.96) translate(-165.2 -280.1)">
+              <g transform="rotate(4 200 445)"><g class="order-button"><path d="M128.75752,456.18629v.00006c2.68462,15.66021,17.35228,26.33412,33.07911,24.07222l85.28976-12.26672c16.29293-2.34332,27.46641-17.63456,24.74862-33.86923l-.07803-.46613c-2.64105-15.77619-17.43726-26.52585-33.25735-24.16192l-85.21173,12.73279c-16.26192,2.42994-27.34855,17.75287-24.57036,33.95893Z" class="accent"/></g></g>
+              <path d="M103.92346,242.12029l37.89557,141.69649s46.13374,26.36214,85.67695-11.53343v-146.98908l-123.57252,16.82603Z" class="mid"/>
+        <path d="M95.68529,232.23449v5.72402s-4.9429,7.45705,3.29527,10.75232c8.23817,3.29527,113.68672,0,133.45832-21.41924,0,0,4.9429-1.64763-1.64763-6.59053l-1.64763-6.59053s-6.59053-4.9429-9.8858-4.9429l-4.9429-13.18107s-80.73404-8.23817-110.39145,16.94969l-1.64763,11.06008-6.59053,8.23817Z" class="accent"/>
+        <path d="M102.27582,223.99632v6.59053s67.55298,16.47634,120.27725-14.8287l-3.29527-6.59053" class="accent"/>
+        <path d="M108.86636,273.42533l19.7716,74.14351s59.31481,31.30504,102.15328-14.8287l-1.64763-75.79114s-62.61008,34.6003-120.27725,16.47634Z" class="ink"/>
+              <circle class="tap light" cx="200" cy="445" r="34"/>
+            </g>
+          </g>
+          <!-- state 2: selfie camera (unDraw "Selfie") -->
+          <g class="state-selfie">
+            <path d="M312.558,263.319l-14.052,31.01-25.691,56.7V250.739Z" transform="translate(711.238 231.688)" class="skin"/>
+        <path d="M812.454,327.594c0,42.461-39.262,36.039-87.7,36.039s-87.7,6.422-87.7-36.039,19.179-117.728,87.7-117.728C795.636,209.866,812.454,285.132,812.454,327.594Z" transform="translate(367.472 40.499)" class="ink"/>
+        <path d="M304.558,542.65s20.849,29.268,13.4,37.192,55.862,8.122,55.862,8.122-9.51-42.576-6.711-52.374Z" transform="translate(764.952 -148.376)" class="skin"/>
+        <path d="M828.135,435.73l3.2,19.974V593.408a35,35,0,0,1-4.571,17.369l-32.107-56.291L783.085,436.6,780.2,407.156l43.505.917Z" transform="translate(396.979 81.168)" class="skin"/>
+        <path d="M864.338,441.834c-1.544-5.018-4.161-13.5-7.164-22.953-5.283-16.657-11.748-36.377-15.583-45.773-7.321-17.935-44.627-10.747-44.627-10.747l-127.815-4.788s-4.764-.627-26.2-3.474c-8.986-1.194-16.814,11.4-22.868,26.439v47.341l29.78,2.268a107.475,107.475,0,0,0-4.089,25.655c-.338,11.88,1.761,25.16,10.819,33.4C676.12,507,682.4,587.138,682.4,587.138l-13.738,52.491h160.4a35.264,35.264,0,0,0,35.267-35.272V584.919c-10.12-16.379-18.43-24.617-18.43-24.617L817.214,447.443l43.928-.76,3.2-.06Z" transform="translate(363.971 70.215)" class="ink"/>
+        <circle cx="59.01" cy="59.01" r="59.01" transform="translate(1012.641 340.754) rotate(-45)" class="skin"/>
+        <path d="M653,294.246h23.34l10.3-28.831,2.059,28.831h11.156l6.006-16.818,1.2,16.818h82.89a62.468,62.468,0,0,0-62.468-62.468H715.468A62.468,62.468,0,0,0,653,294.245Z" transform="translate(370.757 45.016)" class="ink"/>
+            <g class="camera-ui">
+            <circle cx="32.566" cy="32.566" r="32.566" transform="translate(1075.275 623.063)" class="accent"/>
+        <circle cx="21.962" cy="21.962" r="21.962" transform="translate(1009.892 634.872)" class="light"/>
+        <path d="M663.63,573.7a22.917,22.917,0,1,1,22.917-22.917A22.917,22.917,0,0,1,663.63,573.7Zm0-43.924a21.007,21.007,0,1,0,21.007,21.007A21.007,21.007,0,0,0,663.63,529.776Z" transform="translate(368.224 106.051)" class="mid"/>
+        <g transform="translate(1015.078 646.572)">
+      <path d="M667.288,556.259h-21.4a.439.439,0,0,1-.08-.006l10.123-17.534a.709.709,0,0,1,1.234,0l6.794,11.767.326.563Z" transform="translate(-645.804 -538.358)" class="screen-2"/>
+      <path d="M676.66,555.376H658.148l3.587-5.21.258-.375,4.675-6.79a.946.946,0,0,1,1.405-.084.855.855,0,0,1,.067.084Z" transform="translate(-643.26 -537.475)" class="screen-2"/>
+    </g>
+        <circle cx="21.962" cy="21.962" r="21.962" transform="translate(1160.659 634.872)" class="light"/>
+        <path d="M788.629,573.7a22.917,22.917,0,1,1,22.917-22.917A22.917,22.917,0,0,1,788.629,573.7Zm0-43.924a21.007,21.007,0,1,0,21.007,21.007A21.007,21.007,0,0,0,788.629,529.776Z" transform="translate(393.992 106.051)" class="mid"/>
+        <path d="M795.392,545.871l-.714.714v-5.17a1.045,1.045,0,0,0-1.045-1.045H777.962a1.045,1.045,0,0,0,0,2.089h14.626v4.126l-.714-.714a1.045,1.045,0,0,0-1.784.739v.052a1.045,1.045,0,0,0,.306.739l2.5,2.5a1.045,1.045,0,0,0,1.477,0l2.5-2.5a1.045,1.045,0,0,0,.306-.739v-.052a1.045,1.045,0,0,0-1.783-.738Z" transform="translate(396.302 108.629)" class="screen-2"/>
+        <path d="M794.926,552.953H780.3v-4.126l.714.714a1.045,1.045,0,0,0,1.783-.739v-.052a1.045,1.045,0,0,0-.306-.739l-2.5-2.5a1.044,1.044,0,0,0-1.477,0l-2.5,2.5a1.045,1.045,0,0,0-.306.739v.052a1.045,1.045,0,0,0,1.784.739l.714-.714V554a1.045,1.045,0,0,0,1.045,1.045h15.671a1.045,1.045,0,0,0,0-2.09Z" transform="translate(396.053 109.626)" class="screen-2"/>
+        <rect width="53.892" height="2.412" transform="translate(997.218 234.96)" class="light"/>
+        <rect width="53.892" height="2.412" transform="translate(1079.236 234.96)" class="accent"/>
+        <rect width="53.892" height="2.412" transform="translate(1161.253 234.96)" class="light"/>
+        <rect width="53.892" height="2.412" transform="translate(997.218 604.04)" class="light"/>
+        <rect width="53.892" height="2.412" transform="translate(1079.236 604.04)" class="light"/>
+        <rect width="53.892" height="2.412" transform="translate(1161.253 604.04)" class="light"/>
+            </g>
+          </g>
+          <!-- state 3: order confirmed (unDraw "Order confirmed") -->
+          <g class="state-confirmed">
+            <g transform="translate(1106.2 287.3) scale(0.65) translate(-191.5 -261.5)"><g class="confirm-check">
+              <circle cx="191.5" cy="261.2336" r="84.4462" class="accent"/>
+        <path d="M375.02417,432.94733a8.75832,8.75832,0,0,1-5.26905-1.75113l-.09426-.07069-19.846-15.18155a8.81941,8.81941,0,1,1,10.73182-13.99843l12.85463,9.85753L403.77751,372.174a8.81571,8.81571,0,0,1,12.36-1.63259l.00256.00192-.18852.26177.19363-.26177a8.82633,8.82633,0,0,1,1.63067,12.36249l-35.729,46.5917a8.821,8.821,0,0,1-7.01492,3.4394Z" transform="translate(-191.89234 -139.5)" class="light"/>
+            </g></g>
+            <g transform="translate(1106.2 372) scale(0.555) translate(-620 -79)"><g class="confirm-cheer">
+              <circle cx="748.04172" cy="268.27646" r="10.93406" class="screen"/>
+        <circle cx="428.04172" cy="298.27646" r="10.93406" class="screen"/>
+        <path d="M626.10766,760.5h381a1,1,0,1,0,0-2h-381a1,1,0,0,0,0,2Z" transform="translate(-191.89234 -139.5)" class="mid"/>
+        <path d="M965.062,236.135a14.65213,14.65213,0,0,0-28.13652-7.42622l-30.91721,35.44433,9.07157,25.33678,31.093-41.4153A14.573,14.573,0,0,0,965.062,236.135Z" transform="translate(-191.89234 -139.5)" class="skin"/>
+        <polygon points="645.013 234.549 747.642 125.02 733.799 103.012 605.076 211.876 645.013 234.549" class="ink-soft"/>
+        <circle cx="622.10766" cy="132" r="36" class="ink"/>
+        <path d="M816.8938,251.16321A75.48534,75.48534,0,0,1,844.35693,233.404c6.63868-2.45941,13.86451-3.97894,20.80494-2.58221,6.94067,1.39666,13.50415,6.19806,15.44042,13.00775,1.58326,5.56836-.05151,11.56378-2.50878,16.80554-2.457,5.24176-5.73755,10.10248-7.72461,15.53986a35.468,35.468,0,0,0,35.68921,47.56231c-6.81934.91437-13.10547,4.119-19.771,5.82483-6.66553,1.70575-14.53272,1.59009-19.48608-3.18524-5.241-5.05243-5.346-13.26715-5.09253-20.54248q.56507-16.22241,1.13012-32.44495c.19214-5.51544.3562-11.20764-1.63305-16.35553-1.989-5.14788-6.71607-9.6557-12.23462-9.60882-4.18262.03546-7.88452,2.56927-11.23853,5.068-3.35449,2.49878-6.90454,5.16474-11.0708,5.53638-4.166.3717-8.92285-2.71143-8.61108-6.88245Z" transform="translate(-191.89234 -139.5)" class="ink"/>
+        <path d="M677.26948,513.22286a14.65213,14.65213,0,0,1-11.0391-26.92491l31.10052-35.28358,26.30491,5.68307-36.99733,36.23807a14.573,14.573,0,0,1-9.36894,20.28732Z" transform="translate(-191.89234 -139.5)" class="skin"/>
+        <polygon points="587.698 247.405 510.183 344.705 486.555 333.857 577.665 192.012 587.698 247.405" class="ink-soft"/>
+        <polygon points="525.848 541.211 507.374 540.921 509.596 603.887 525.845 603.887 525.848 541.211" class="skin"/>
+        <path d="M721.8823,738.08194l-32.00113-.00128h-.00131A20.39476,20.39476,0,0,0,669.48624,758.474v.66272l52.39508.00195Z" transform="translate(-191.89234 -139.5)" class="ink"/>
+        <polygon points="648.165 524.511 627.984 537.467 668.352 586.032 682.026 577.253 648.165 524.511" class="skin"/>
+        <path d="M874.53983,710.04911,847.61075,727.3378l-.00109.00067a20.39471,20.39471,0,0,0-6.14264,28.179l.358.55768,44.09051-28.3067Z" transform="translate(-191.89234 -139.5)" class="ink"/>
+        <path d="M847.24693,471.74009s-44.83957-148.9274-59.24978-150.93993-37.62808,38.21305-37.62808,38.21305c-30.103,38.40821-61.144,162.82087-61.144,162.82087s51.74659,3.23809,89.57339,23.36344,82.46764-1.0188,82.46764-1.0188Z" transform="translate(-191.89234 -139.5)" class="ink-soft"/>
+        <path class="ink" d="M847.24693,471.74009s-44.83957-148.9274-59.24978-150.93993-31.73106,38.62126-31.73106,38.62126c-15,62-67.041,162.41266-67.041,162.41266s51.74659,3.23809,89.57339,23.36344,82.46764-1.0188,82.46764-1.0188Z" transform="translate(-191.89234 -139.5)" opacity="0.1"/>
+        <polygon points="618.567 287.682 618.567 362.517 627.374 470.921 671.374 552.921 650.374 567.921 590.374 489.921 566.643 412.472 529.374 583.921 501.374 581.921 520.82 344.21 557.721 277.3 618.567 287.682" class="ink"/>
+        <path d="M765.24985,354.79968c-14,14-1,29-1,29l-16,36,63,17,22.01624-98.37826-15-16c-30-1-30.01624-1.62174-30.01624-1.62174C782.99363,325.94351,765.24985,354.79968,765.24985,354.79968Z" transform="translate(-191.89234 -139.5)" class="accent"/>
+        <path d="M835.8032,328.22953a26.8839,26.8839,0,0,0-37.77734,5.91308c-15.83789,22.05225-30.48242,57.66114-10.30469,102.07178,32.39893,71.30957,60.59326,107.81445,72.05518,107.81055a4.55981,4.55981,0,0,0,1.47314-.23145c7.05518-2.39355,17.25586-14.332,19.10254-24.85254.66113-3.76562.50391-9.01074-3.99951-12.6123-12.93555-10.34619-36.15772-42.56152-43.40186-84.96387-4.00341-23.42969,3.76026-44.772,10.978-58.5498a26.87922,26.87922,0,0,0-7.77734-34.3291h0Z" transform="translate(-191.89234 -139.5)" class="ink-soft"/>
+        <circle cx="803.14042" cy="280.71068" r="26.50012" transform="translate(-228.11672 280.13426) rotate(-28.6632)" class="skin"/>
+        <path d="M765.872,278.70709h38.26556l.39252-5.49379,1.96191,5.49379h5.89209l.77759-10.88853,3.88855,10.88853h11.40088v-.53947a28.62427,28.62427,0,0,0-28.59192-28.59215h-5.395A28.62448,28.62448,0,0,0,765.872,278.16762Z" transform="translate(-191.89234 -139.5)" class="ink"/>
+        <path d="M822.67028,298.45432,839,293.1556V253.5H808.15564l.76361.76243C819.54388,264.87334,831.36033,302.51949,822.67028,298.45432Z" transform="translate(-191.89234 -139.5)" class="ink"/>
+            </g></g>
+          </g>
+          <path class="flash light" d="M864.338,196.984V644a35.264,35.264,0,0,1-35.272,35.268H655.35A35.266,35.266,0,0,1,620.083,644V196.984a35.266,35.266,0,0,1,35.269-35.268h21.081A16.755,16.755,0,0,0,691.945,184.8h99.048A16.762,16.762,0,0,0,806.5,161.716h22.567a35.266,35.266,0,0,1,35.267,35.269Z" transform="translate(363.972 30.573)"/>
+        </g>
+        <path d="M347.267,801.42,556.508,562.7l7.478-153.291L642.5,278.555l22.433-56.082s52.343,5.608,9.347,112.164l-17.759,57.017h0c16.009,34.48,12.241,72.038,12.241,110.053V632.36c0,30.765-134.545,198.341-151.61,223.939h0Z" transform="translate(307.733 43.097)" class="skin"/>
+        <path class="ink" d="M260.94,136.676,245.33,129l.532-1.083,14.422,7.088,21.771-57.078,1.127.431Z" transform="translate(705.572 196.065)" opacity="0.2"/>
+      </g>
+    </svg>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+<div class="mock-controls">
+  <button class="btn-text sm" type="button" id="replay">Replay animation</button>
+  <a class="btn-text sm" href="1.1-welcome.html">Skip to 1.1</a>
+</div>
+</div>
+<script>
+  /* 1.0 -> 1.1: continue 1.5 s after the last animation ends, or on tap */
+  var NEXT = '1.1-welcome.html';
+  var hold = null;
+  document.addEventListener('animationend', function (e) {
+    if (e.target.classList && e.target.classList.contains('confirm-cheer')) {
+      clearTimeout(hold);
+      hold = setTimeout(function () { location.href = NEXT; }, 1500);
+    }
+  });
+  document.querySelector('.device').addEventListener('click', function () { location.href = NEXT; });
+  document.getElementById('replay').addEventListener('click', function () {
+    clearTimeout(hold);
+    var art = document.querySelector('.splash-art');
+    art.replaceWith(art.cloneNode(true));
+  });
+</script>
+</body>
+</html>
