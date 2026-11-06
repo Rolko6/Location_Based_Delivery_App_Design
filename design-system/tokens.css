@@ -1,0 +1,256 @@
+/* ==========================================================================
+   Shoot – design tokens (customer app, iOS first, light mode only)
+   --------------------------------------------------------------------------
+   The ONLY place design values live. Every screen in screens/ and every
+   component style uses these variables. No hex, rgb, px sizes, font names,
+   radii, shadows or durations anywhere else.
+
+   Load fonts first, then this file:
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="../design-system/tokens.css">
+
+   Sources: brief.md, design-brief-final.md (approved 2026-11-06).
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     1. COLOUR – raw palette
+     Palette 1 = brand. Cream + brown from palette 3, for background and
+     text only (decision 1).
+     ------------------------------------------------------------------------ */
+  --orange: #D06224;            /* palette 1 · burnt orange */
+  --rust:   #AE431E;            /* palette 1 · rust */
+  --olive:  #8A8635;            /* palette 1 · olive */
+  --sand:   #E9C891;            /* palette 1 · sand */
+  --cream:  #F1E3C6;            /* palette 3 · cream */
+  --brown:  #4A2C1E;            /* palette 3 · brown */
+  --white:  #FFFFFF;
+
+  /* derived tones (mixed from the palette above, contrast-checked) */
+  --brown-soft:    #6B5040;     /* 5.81 on cream · 7.38 on white · 4.61 on sand */
+  --brown-faint:   #7A604F;     /* 5.81 on white: placeholders on inputs */
+  --brown-raised:  #5E3D2C;     /* raised surface on camera screens */
+  --cream-soft:    #C9B49A;     /* 6.27 on brown: secondary text on camera */
+
+  /* ------------------------------------------------------------------------
+     2. COLOUR – semantic roles (use these in components)
+     ------------------------------------------------------------------------ */
+  --bg:              var(--cream);
+  --surface:         var(--white);
+  --surface-2:       var(--sand);
+  --surface-muted:   rgba(233, 200, 145, .55);     /* sand at 55%: thumbs on out-of-range cards */
+  --surface-search:  color-mix(in srgb, var(--white) 70%, var(--sand));
+  --surface-header:  color-mix(in srgb, var(--cream) 45%, var(--white));
+  --surface-tabbar:  color-mix(in srgb, var(--white) 88%, var(--cream));
+  --surface-blur:    color-mix(in srgb, var(--cream) 92%, transparent);
+
+  --ink:             var(--brown);   /* all text + icons */
+  --ink-2:           var(--brown-soft);
+  --ink-placeholder: var(--brown-faint);
+  --ink-inverse:     var(--cream);
+
+  --line:            rgba(74, 44, 30, .14);        /* hairlines */
+  --line-strong:     rgba(74, 44, 30, .32);        /* outlines, empty borders */
+  --tint-hover:      rgba(74, 44, 30, .06);        /* hover wash on light */
+  --tint-press:      rgba(74, 44, 30, .12);        /* pressed wash on light */
+  --tint-code:       rgba(74, 44, 30, .07);
+  --scrim:           rgba(74, 44, 30, .42);        /* behind sheets */
+
+  --primary:         var(--rust);
+  --primary-hover:   color-mix(in srgb, var(--rust) 92%, var(--brown));
+  --primary-pressed: color-mix(in srgb, var(--rust) 82%, var(--brown));
+  --on-primary:      var(--white);                 /* 5.80 on rust */
+  --accent:          var(--orange);
+  --on-accent:       var(--white);                 /* 3.85: icons and ≥ 19 px bold only */
+
+  --success:         var(--olive);
+  --on-success:      var(--white);
+  --error:           var(--rust);
+  --warning:         var(--orange);
+  --info-bg:         var(--sand);
+
+  --focus:           var(--orange);
+  --focus-glow:      rgba(208, 98, 36, .28);       /* orange at 28% */
+
+  /* camera / dark context: brown instead of black */
+  --cam-bg:          var(--brown);
+  --cam-raised:      var(--brown-raised);
+  --cam-ink:         var(--cream);
+  --cam-ink-2:       var(--cream-soft);
+  --cam-primary:     var(--cream);
+  --cam-on-primary:  var(--brown);
+  --cam-primary-pressed: var(--sand);
+
+  /* ------------------------------------------------------------------------
+     3. TYPOGRAPHY
+     Shrikhand: wordmark + 4 short headlines only (1.1, 2.9, 3.1).
+     Inter: everything else. Tabular figures for prices, times, distances.
+     ------------------------------------------------------------------------ */
+  --font-display: "Shrikhand", Georgia, serif;
+  --font-ui:      "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Consolas, monospace;   /* docs only */
+
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-display:  400;   /* Shrikhand ships one weight */
+
+  /* size scale (approved: 34 / 28 / 22 / 17 / 15 / 13) + support sizes */
+  --fs-display:   34px;   /* Shrikhand headline */
+  --fs-large:     34px;   /* Large title, ETA number */
+  --fs-title:     28px;   /* Title */
+  --fs-otp:       24px;   /* SMS code digits */
+  --fs-title-2:   22px;   /* Title 2, sheet titles */
+  --fs-headline:  20px;   /* totals, doc sub-headings */
+  --fs-body:      17px;   /* Body, buttons */
+  --fs-button-sm: 16px;   /* side-by-side buttons */
+  --fs-sub:       15px;   /* Subhead, meta */
+  --fs-caption:   13px;   /* Caption, group labels */
+  --fs-micro:     12px;   /* tab labels, tags (iOS floor is 11) */
+  --fs-wordmark:  72px;   /* wordmark at hero scale */
+
+  --lh-display: 1.12;
+  --lh-tight:   1.15;
+  --lh-title:   1.2;
+  --lh-snug:    1.25;
+  --lh-control: 1.3;
+  --lh-sub:     1.4;
+  --lh-body:    1.45;
+  --lh-caption: 1.35;
+  --lh-none:    1;
+
+  --ls-large:   -0.02em;
+  --ls-title:   -0.015em;
+  --ls-title-2: -0.01em;
+  --ls-button:  -0.005em;
+  --ls-group:   0.06em;   /* caps group labels */
+  --ls-none:    0;
+
+  /* ------------------------------------------------------------------------
+     4. SPACING (4-pt grid, with half-steps for optical tuning)
+     ------------------------------------------------------------------------ */
+  --space-0-5: 2px;
+  --space-1:   4px;
+  --space-1-5: 6px;
+  --space-2:   8px;
+  --space-2-5: 10px;
+  --space-3:   12px;
+  --space-3-5: 14px;
+  --space-4:   16px;   /* phone side gutter */
+  --space-5:   20px;   /* screen padding */
+  --space-6:   24px;
+  --space-7:   28px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-14:  56px;
+  --space-16:  64px;
+  --space-18:  72px;
+  --space-24:  96px;
+  --space-30:  120px;
+
+  /* ------------------------------------------------------------------------
+     5. SIZES (controls, icons, media)
+     ------------------------------------------------------------------------ */
+  --size-tap:        44px;   /* minimum tap target (iOS) */
+  --size-control:    56px;   /* buttons, inputs */
+  --size-shutter:    76px;
+  --size-state-icon: 56px;   /* icon circle in sheets */
+  --size-badge:      28px;
+  --size-badge-icon: 32px;
+  --size-pill-h:     36px;
+  --size-step:       32px;
+  --size-tab-pill-w: 60px;
+  --size-tab-pill-h: 32px;
+  --size-navbar:     52px;
+  --size-dot:        8px;
+  --size-grabber-w:  40px;
+  --size-grabber-h:  5px;
+  --size-progress:   6px;
+  --size-ring:       22px;
+
+  --icon-xs: 16px;
+  --icon-sm: 18px;
+  --icon-md: 20px;
+  --icon:    22px;
+  --icon-lg: 24px;
+  --icon-xl: 26px;
+
+  --thumb-xl: 84px;   /* café card */
+  --thumb-lg: 72px;   /* menu row */
+  --thumb-md: 60px;   /* order card, history */
+  --thumb-sm: 56px;   /* cart row */
+  --illo-md:  160px;  /* round illustration */
+
+  --phone-w:  390px;  /* iPhone frame width */
+  --measure:  64ch;   /* max line length for paragraphs */
+
+  /* ------------------------------------------------------------------------
+     6. BORDERS & RADIUS
+     ------------------------------------------------------------------------ */
+  --border-hair:   1px;
+  --border:        1.5px;
+  --border-strong: 2px;
+  --border-focus:  3px;
+  --focus-offset:  2px;
+  --focus-glow-w:  4px;
+  --stroke-icon:   2;      /* Lucide stroke width */
+  --stroke-icon-bold: 2.4;
+  --stroke-illo:   3;      /* illustration line weight */
+  --dash:          3 3.2;  /* dashed range ring */
+  --dash-illo:     2 9;    /* dotted radius in illustrations */
+
+  --radius-card:   20px;
+  --radius-input:  16px;   /* inputs, banners */
+  --radius-otp:    14px;
+  --radius-thumb:  14px;
+  --radius-thumb-sm: 12px;
+  --radius-sheet:  28px;
+  --radius-frame:  24px;   /* phone-width stages, sheet demo */
+  --radius-sm:     8px;
+  --radius-xs:     6px;
+  --radius-bar:    3px;
+  --radius-pill:   999px;
+  --radius-round:  50%;
+
+  /* ------------------------------------------------------------------------
+     7. DEPTH (brown-tinted, offset + blur)
+     ------------------------------------------------------------------------ */
+  --shadow-card:    0 1px 2px rgba(74, 44, 30, .06), 0 6px 16px -6px rgba(74, 44, 30, .14);
+  --shadow-sheet:   0 -8px 32px rgba(74, 44, 30, .18);
+  --shadow-primary: 0 2px 6px -2px rgba(174, 67, 30, .45);
+  --blur-bar:       saturate(1.2) blur(8px);
+
+  /* ------------------------------------------------------------------------
+     8. MOTION
+     ------------------------------------------------------------------------ */
+  --ease-out:  cubic-bezier(.16, 1, .3, 1);
+  --dur-fast:  .15s;
+  --dur:       .18s;
+  --dur-slow:  .2s;
+  --press-scale:      .98;
+  --press-scale-card: .985;
+  --press-scale-shutter: .9;
+
+  /* ------------------------------------------------------------------------
+     9. MISC
+     ------------------------------------------------------------------------ */
+  --opacity-muted: .5;     /* sold-out thumbnails */
+  --z-sticky: 10;
+}
+
+/* --------------------------------------------------------------------------
+   10. LAYOUT (iOS chrome + documentation grid)
+   Breakpoints can't be CSS variables inside @media; the values are listed
+   here and must be copied exactly: --bp-wide = 720px.
+   -------------------------------------------------------------------------- */
+:root {
+  --safe-bottom:  34px;    /* iOS home-indicator inset under the tab bar */
+  --bp-wide:      720px;   /* reference only, see note above */
+  --col-swatch:   240px;
+  --col-icon:     96px;
+  --col-label:    200px;
+  --doc-max:      1120px;
+  --sheet-demo-h: 560px;
+}

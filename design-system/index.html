@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shoot Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<script src="icons.js"></script>
+<style>
+/* Design-system page only. Components come from components.css;
+   values from tokens.css. Breakpoint 720px = --bp-wide. */
+/* ---- PAGE (documentation shell, not app UI) ---- */
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: var(--space-18); scrollbar-color: var(--line-strong) transparent; }
+.doc { max-width: var(--doc-max); margin: 0 auto; padding: 0 var(--space-4) var(--space-24); }
+@media (min-width: 720px) { .doc { padding: 0 var(--space-10) var(--space-30); } }
+.masthead { padding: var(--space-14) 0 var(--space-8); display: grid; gap: var(--space-5); }
+.masthead .wordmark { font-size: var(--fs-wordmark); }
+.masthead h1 { margin: 0; font-size: var(--fs-large); line-height: var(--lh-tight); font-weight: var(--fw-bold); letter-spacing: var(--ls-large); }
+.masthead p { margin: 0; max-width: var(--measure); color: var(--ink-2); }
+.meta { font-size: var(--fs-sub); color: var(--ink-2); }
+.toc {
+  position: sticky; top: 0; z-index: var(--z-sticky);
+  margin: 0 calc(var(--space-4) * -1); padding: var(--space-2-5) var(--space-4);
+  background: var(--surface-blur);
+  backdrop-filter: var(--blur-bar);
+  border-bottom: var(--border-hair) solid var(--line);
+  display: flex; gap: var(--space-2); overflow-x: auto; scrollbar-width: none;
+}
+.toc::-webkit-scrollbar { display: none; }
+@media (min-width: 720px) { .toc { margin: 0 calc(var(--space-10) * -1); padding: var(--space-2-5) var(--space-10); } }
+.toc a {
+  flex: none; text-decoration: none; color: var(--ink);
+  font-size: var(--fs-sub); font-weight: var(--fw-medium); padding: var(--space-2) var(--space-3-5); border-radius: var(--radius-pill);
+  border: var(--border-hair) solid var(--line-strong);
+}
+.toc a:hover { background: var(--surface); }
+.section { padding-top: var(--space-18); }
+.section > h2 { margin: 0 0 var(--space-2); font-size: var(--fs-title); line-height: var(--lh-title); font-weight: var(--fw-bold); letter-spacing: var(--ls-title); }
+.section > .lede { margin: 0 0 var(--space-8); max-width: var(--measure); color: var(--ink-2); }
+.sub { margin: var(--space-10) 0 var(--space-4); font-size: var(--fs-headline); font-weight: var(--fw-semibold); letter-spacing: var(--ls-title-2); }
+.note { font-size: var(--fs-sub); color: var(--ink-2); max-width: var(--measure); }
+.note strong { color: var(--ink); font-weight: var(--fw-semibold); }
+.note-gap { margin-top: var(--space-4); }
+.spec-grid { display: grid; gap: var(--space-8) var(--space-6); grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--phone-w)), 1fr)); align-items: start; }
+.spec { display: grid; gap: var(--space-2-5); }
+.spec-label { font-size: var(--fs-caption); font-weight: var(--fw-semibold); color: var(--ink-2); }
+code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-code); padding: var(--space-0-5) var(--space-1-5); border-radius: var(--radius-xs); }
+.stage { width: 100%; max-width: var(--phone-w); min-width: 0; background: var(--bg); border: var(--border-hair) solid var(--line); border-radius: var(--radius-frame); padding: var(--space-5); display: grid; gap: var(--space-3-5); }
+.stage.on-white { background: var(--surface); }
+.stage.cam { background: var(--cam-bg); border-color: transparent; }
+
+/* ---- 1. COLOR ---- */
+.swatches { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--col-swatch)), 1fr)); }
+.swatch { background: var(--surface); border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); }
+.swatch-chip { height: calc(var(--space-14) * 2); display: flex; align-items: flex-end; padding: var(--space-3) var(--space-4); font-weight: var(--fw-bold); font-size: var(--fs-otp); line-height: var(--lh-none); }
+.swatch-chip.edge { box-shadow: inset 0 calc(var(--border-hair) * -1) 0 var(--line); }
+.swatch-body { padding: var(--space-3-5) var(--space-4) var(--space-4); display: grid; gap: var(--space-1); }
+.swatch-role { font-weight: var(--fw-bold); font-size: var(--fs-body); }
+.swatch-hex { font-size: var(--fs-sub); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.swatch-use { font-size: var(--fs-sub); color: var(--ink-2); margin-top: var(--space-1); }
+.src { display: inline-block; font-size: var(--fs-micro); font-weight: var(--fw-semibold); padding: var(--space-0-5) var(--space-2); border-radius: var(--radius-pill); background: var(--bg); color: var(--ink); margin-left: var(--space-1-5); vertical-align: var(--space-0-5); }
+.contrast { width: 100%; border-collapse: collapse; font-size: var(--fs-sub); font-variant-numeric: tabular-nums; background: var(--surface); border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); }
+.contrast th, .contrast td { text-align: left; padding: var(--space-3) var(--space-4); border-bottom: var(--border-hair) solid var(--line); vertical-align: middle; }
+.contrast th { font-size: var(--fs-caption); font-weight: var(--fw-semibold); color: var(--ink-2); background: var(--surface-header); }
+.contrast tr:last-child td { border-bottom: 0; }
+.pair { display: inline-flex; align-items: center; justify-content: center; min-width: var(--space-14); height: var(--space-8); padding: 0 var(--space-2-5); border-radius: var(--radius-sm); font-weight: var(--fw-semibold); }
+.verdict { display: inline-flex; align-items: center; gap: var(--space-1-5); font-weight: var(--fw-semibold); }
+.verdict svg { width: var(--icon-sm); height: var(--icon-sm); }
+.ok { color: var(--ink); }
+.ok svg { color: var(--success); }
+.lg { color: var(--ink); }
+.lg svg { color: var(--warning); }
+.no { color: var(--error); }
+.table-wrap { overflow-x: auto; border-radius: var(--radius-card); }
+.c-rust   { background: var(--rust);   color: var(--on-primary); }
+.c-orange { background: var(--orange); color: var(--on-accent); }
+.c-olive  { background: var(--olive);  color: var(--on-success); }
+.c-sand   { background: var(--sand);   color: var(--brown); }
+.c-cream  { background: var(--cream);  color: var(--brown); }
+.c-brown  { background: var(--brown);  color: var(--cream); }
+.c-white  { background: var(--white);  color: var(--brown); }
+.c-cream-soft  { background: var(--cream); color: var(--ink-2); }
+.c-sand-soft   { background: var(--sand);  color: var(--ink-2); }
+.c-cream-rust  { background: var(--cream); color: var(--rust); }
+.c-cream-olive { background: var(--cream); color: var(--olive); }
+
+/* ---- 2. TYPE ---- */
+.type-rows { background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.type-row { display: grid; gap: var(--space-1-5) var(--space-6); padding: var(--space-5); border-bottom: var(--border-hair) solid var(--line); align-items: baseline; }
+.type-row:last-child { border-bottom: 0; }
+@media (min-width: 720px) { .type-row { grid-template-columns: var(--col-label) 1fr; } }
+.type-meta { font-size: var(--fs-caption); color: var(--ink-2); line-height: var(--lh-sub); }
+.type-meta b { display: block; color: var(--ink); font-size: var(--fs-sub); font-weight: var(--fw-semibold); }
+.shrikhand-hero { background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: var(--space-7) var(--space-6); display: grid; gap: var(--space-5); }
+.shrikhand-hero .rule-list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-2); font-size: var(--fs-sub); }
+.shrikhand-hero .rule-list li { display: flex; gap: var(--space-2-5); align-items: flex-start; }
+.shrikhand-hero .rule-list svg { width: var(--icon-sm); height: var(--icon-sm); flex: none; margin-top: var(--space-0-5); }
+
+/* ---- ICONS ---- */
+.icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--col-icon), 1fr)); gap: var(--space-2); }
+.icon-cell { background: var(--surface); border-radius: var(--radius-input); padding: var(--space-4) var(--space-2) var(--space-3); display: grid; justify-items: center; gap: var(--space-2); font-size: var(--fs-micro); color: var(--ink-2); text-align: center; }
+.icon-cell .i { width: var(--icon-xl); height: var(--icon-xl); color: var(--ink); }
+
+/* ---- 7. BANNERS & SHEETS ---- */
+.sheet-demo { position: relative; max-width: var(--phone-w); height: var(--sheet-demo-h); border-radius: var(--radius-frame); overflow: hidden; background: var(--bg); border: var(--border-hair) solid var(--line); }
+.sheet-demo .behind { padding: var(--space-18) var(--space-5); display: grid; gap: var(--space-3-5); }
+.sheet-demo .behind div { height: var(--space-4); border-radius: var(--radius-pill); background: var(--surface-2); }
+.sheet-demo .behind div:nth-child(2) { width: 70%; }
+.sheet-demo .behind div:nth-child(3) { height: var(--space-30); border-radius: var(--radius-card); background: var(--surface); }
+
+/* ---- 8. NAVIGATION ---- */
+.tabbar-stage .tabbar { border-radius: 0 0 var(--radius-frame) var(--radius-frame); }
+.illo-row { display: flex; gap: var(--space-6); flex-wrap: wrap; align-items: center; }
+.illo-item { display: grid; gap: var(--space-3); justify-items: center; }
+.tabbar-stage { padding: 0; overflow: hidden; gap: 0; }
+.tabbar-stage .content { padding: var(--space-5); min-height: var(--space-30); display: grid; align-content: end; }
+
+/* ---- MISC ---- */
+.do-dont { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--phone-w)), 1fr)); }
+.dd { background: var(--surface); border-radius: var(--radius-card); padding: var(--space-4) var(--space-5); display: grid; gap: var(--space-2-5); box-shadow: var(--shadow-card); }
+.dd h3 { margin: 0; font-size: var(--fs-body); font-weight: var(--fw-bold); display: flex; align-items: center; gap: var(--space-2); }
+.dd ul { margin: 0; padding-left: var(--space-5); display: grid; gap: var(--space-1-5); font-size: var(--fs-sub); color: var(--ink-2); }
+.dd .i { width: var(--icon-md); height: var(--icon-md); }
+.dd.yes h3 .i { color: var(--success); }
+.dd.no h3 .i { color: var(--error); }
+.footer { margin-top: var(--space-24); padding-top: var(--space-6); border-top: var(--border-hair) solid var(--line); font-size: var(--fs-sub); color: var(--ink-2); display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<main class="doc">
+
+  <header class="masthead">
+    <span class="wordmark" aria-label="Shoot">Shoot</span>
+    <h1>Customer app design system</h1>
+    <p>Colours, type and components for the Shoot customer app on iOS. Everything on this page is shown at real phone size. The wireframes decide structure; this page decides how it looks.</p>
+    <span class="meta">v0.1 · light mode · iOS first · 6 Nov 2026 · Sources: <code>brief.md</code>, <code>design-brief-final.md</code>, <code>references/notes.md</code></span>
+  </header>
+
+  <nav class="toc" aria-label="Sections">
+    <a href="#color">Colour</a>
+    <a href="#type">Typography</a>
+    <a href="#icons">Icons</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#chips">Chips &amp; range</a>
+    <a href="#inputs">Inputs</a>
+    <a href="#cards">Cards &amp; rows</a>
+    <a href="#feedback">Banners &amp; sheets</a>
+    <a href="#nav">Navigation</a>
+    <a href="#illo">Illustrations</a>
+    <a href="#rules">Rules</a>
+  </nav>
+
+  <!-- ========================================================== COLOR -->
+  <section class="section" id="color">
+    <h2>Colour</h2>
+    <p class="lede">Palette 1 carries the brand. Cream and brown come from palette 3 and are used only for background and text. Rust is the one colour that means “tap here”.</p>
+
+    <div class="swatches">
+      <article class="swatch">
+        <div class="swatch-chip c-rust">Aa</div>
+        <div class="swatch-body">
+          <span class="swatch-role">Primary <span class="src">P1</span></span>
+          <span class="swatch-hex">Rust · #AE431E</span>
+          <span class="swatch-use">Primary buttons, links, error text. White text on it: 5.80:1.</span>
+        </div>
+      </article>
+      <article class="swatch">
+        <div class="swatch-chip c-orange">Aa</div>
+        <div class="swatch-body">
+          <span class="swatch-role">Accent <span class="src">P1</span></span>
+          <span class="swatch-hex">Burnt orange · #D06224</span>
+          <span class="swatch-use">Wordmark, active tab, progress, map pins, warnings. Large text only.</span>
+        </div>
+      </article>
+      <article class="swatch">
+        <div class="swatch-chip c-olive">Aa</div>
+        <div class="swatch-body">
+          <span class="swatch-role">Success · in range <span class="src">P1</span></span>
+          <span class="swatch-hex">Olive · #8A8635</span>
+          <span class="swatch-use">Check circles, range ring, delivered. Icons only, always beside a brown label.</span>
+        </div>
+      </article>
+      <article class="swatch">
+        <div class="swatch-chip c-sand">Aa</div>
+        <div class="swatch-body">
+          <span class="swatch-role">Surface 2 <span class="src">P1</span></span>
+          <span class="swatch-hex">Sand · #E9C891</span>
+          <span class="swatch-use">Info boxes, image placeholders, empty progress, disabled buttons.</span>
+        </div>
+      </article>
+      <article class="swatch">
+        <div class="swatch-chip c-cream edge">Aa</div>
+        <div class="swatch-body">
+          <span class="swatch-role">Background <span class="src">P3</span></span>
+          <span class="swatch-hex">Cream · #F1E3C6</span>
+          <span class="swatch-use">Every screen’s ground. Brown text on it: 9.91:1.</span>
+        </div>
+      </article>
+      <article class="swatch">
+        <div class="swatch-chip c-brown">Aa</div>
+        <div class="swatch-body">
+          <span class="swatch-role">Text <span class="src">P3</span></span>
+          <span class="swatch-hex">Brown · #4A2C1E · secondary #6B5040</span>
+          <span class="swatch-use">All text and icons. Ground of the camera screens.</span>
+        </div>
+      </article>
+      <article class="swatch">
+        <div class="swatch-chip c-white edge">Aa</div>
+        <div class="swatch-body">
+          <span class="swatch-role">Surface</span>
+          <span class="swatch-hex">White · #FFFFFF</span>
+          <span class="swatch-use">Cards, sheets, inputs and the tab bar, lifted off the cream.</span>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="sub">Status colours</h3>
+    <div class="spec-grid">
+      <div class="stage">
+        <div class="banner success"><span class="badge-ic"><svg class="i"><use href="#i-check"/></svg></span><div class="banner-body"><span class="banner-title">Success · olive icon</span></div></div>
+        <div class="banner error"><svg class="i"><use href="#i-alert"/></svg><div class="banner-body"><span class="banner-title">Error · rust outline + icon</span></div></div>
+        <div class="banner warn"><svg class="i"><use href="#i-pin"/></svg><div class="banner-body"><span class="banner-title">Warning · orange outline + icon</span></div></div>
+        <div class="banner info"><svg class="i"><use href="#i-clock"/></svg><div class="banner-body"><span class="banner-title">Info · sand box</span></div></div>
+      </div>
+      <p class="note">State colour is never the only signal. Every state pairs its colour with an icon and a brown label, so it still reads in bright sunlight and for colour-blind users. <strong>Olive and orange never carry small text.</strong></p>
+    </div>
+
+    <h3 class="sub">Contrast check (WCAG AA)</h3>
+    <div class="table-wrap">
+      <table class="contrast">
+        <thead><tr><th>Sample</th><th>Foreground on background</th><th>Ratio</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pair c-cream">Aa</span></td><td>Brown on cream</td><td>9.91</td><td><span class="verdict ok"><svg class="i"><use href="#i-check"/></svg>Body text</span></td></tr>
+          <tr><td><span class="pair c-white">Aa</span></td><td>Brown on white</td><td>12.57</td><td><span class="verdict ok"><svg class="i"><use href="#i-check"/></svg>Text on cards</span></td></tr>
+          <tr><td><span class="pair c-cream-soft">Aa</span></td><td>Secondary #6B5040 on cream</td><td>5.81</td><td><span class="verdict ok"><svg class="i"><use href="#i-check"/></svg>Meta text</span></td></tr>
+          <tr><td><span class="pair c-sand-soft">Aa</span></td><td>Secondary #6B5040 on sand</td><td>4.61</td><td><span class="verdict ok"><svg class="i"><use href="#i-check"/></svg>Text in info boxes</span></td></tr>
+          <tr><td><span class="pair c-rust">Aa</span></td><td>White on rust</td><td>5.80</td><td><span class="verdict ok"><svg class="i"><use href="#i-check"/></svg>Button labels</span></td></tr>
+          <tr><td><span class="pair c-cream-rust">Aa</span></td><td>Rust on cream</td><td>4.57</td><td><span class="verdict ok"><svg class="i"><use href="#i-check"/></svg>Links, errors</span></td></tr>
+          <tr><td><span class="pair c-brown">Aa</span></td><td>Cream on brown</td><td>9.91</td><td><span class="verdict ok"><svg class="i"><use href="#i-check"/></svg>Camera screens</span></td></tr>
+          <tr><td><span class="pair c-orange">Aa</span></td><td>White on orange</td><td>3.85</td><td><span class="verdict lg"><svg class="i"><use href="#i-alert"/></svg>Icons, ≥ 19 px bold only</span></td></tr>
+          <tr><td><span class="pair c-cream-olive">Aa</span></td><td>Olive on cream</td><td>2.99</td><td><span class="verdict no">Never text</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========================================================== TYPE -->
+  <section class="section" id="type">
+    <h2>Typography</h2>
+    <p class="lede">Shrikhand is the voice and Inter does the work. Shrikhand shows up in only four places, so it still feels like a moment when it does.</p>
+
+    <div class="shrikhand-hero">
+      <div class="spec-label">Shrikhand · display · 34 px · line-height 1.12 · brown (wordmark in orange)</div>
+      <p class="display flush">Coffee to your spot.</p>
+      <ul class="rule-list">
+        <li><svg class="i tint-success"><use href="#i-check"/></svg><span>Wordmark, 1.1 hero headline, 2.9 “Order sent!”, 3.1 “No café can deliver here yet”.</span></li>
+        <li><svg class="i tint-error"><use href="#i-x"/></svg><span>Never paragraphs, buttons, prices, labels, numbers or screen titles.</span></li>
+        <li><svg class="i tint-error"><use href="#i-x"/></svg><span>Never more than one line of six words or so.</span></li>
+      </ul>
+    </div>
+
+    <h3 class="sub">Inter scale</h3>
+    <div class="type-rows">
+      <div class="type-row"><div class="type-meta"><b>Large title</b>34 · 700 · −2%<br>Top-level screens</div><div class="t-large">Orders</div></div>
+      <div class="type-row"><div class="type-meta"><b>Title</b>28 · 700 · −1.5%<br>Flow screens, café name</div><div class="t-title">Confirm your spot</div></div>
+      <div class="type-row"><div class="type-meta"><b>Title 2</b>22 · 600 · −1%<br>Sheet titles, sections</div><div class="t-title2">You’ve moved out of range</div></div>
+      <div class="type-row"><div class="type-meta"><b>Body</b>17 · 400 · 1.45<br>Default text, inputs</div><div class="t-body">One quick photo shows the staff it’s you and where you’re sitting.</div></div>
+      <div class="type-row"><div class="type-meta"><b>Body strong</b>17 · 600<br>Buttons, names, prices</div><div class="t-bodyst">Flat white <span class="num">€4.20</span></div></div>
+      <div class="type-row"><div class="type-meta"><b>Subhead</b>15 · 400 · 1.4<br>Meta lines, help text</div><div class="t-sub muted">45 m away · Open until 18:00 · Ready in ~10 min</div></div>
+      <div class="type-row"><div class="type-meta"><b>Caption</b>13 · 500<br>Labels, timestamps</div><div class="t-cap muted">Seen · 14:09</div></div>
+      <div class="type-row"><div class="type-meta"><b>Group label</b>13 · 600 · +6% · caps<br>List group headers only</div><div class="t-group">In range · can deliver to you</div></div>
+    </div>
+    <p class="note note-gap">Prices, distances, times and order numbers use <strong>tabular figures</strong>, so columns line up and countdowns don’t jitter. Finnish copy will run about 30% longer, so no label may depend on fitting on one line.</p>
+  </section>
+
+  <!-- ========================================================== ICONS -->
+  <section class="section" id="icons">
+    <h2>Icons</h2>
+    <p class="lede">Rounded line icons (Lucide), 24 px, 2 px stroke, always in brown unless they carry a state. One set, one weight, no emoji.</p>
+    <div class="icon-grid">
+      <div class="icon-cell"><svg class="i"><use href="#i-back"/></svg>Back</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-search"/></svg>Search</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-pin"/></svg>Location</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-pin-off"/></svg>No location</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-camera"/></svg>Photo</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-qr"/></svg>Spot QR</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-shield"/></svg>Privacy</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-clock"/></svg>Time</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-message"/></svg>Message</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-cup"/></svg>Coffee</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-alert"/></svg>Alert</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-check"/></svg>Done</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-home"/></svg>Home</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-receipt"/></svg>Orders</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-user"/></svg>Profile</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-arrow"/></svg>Send</div>
+    </div>
+  </section>
+
+  <!-- ========================================================== BUTTONS -->
+  <section class="section" id="buttons">
+    <h2>Buttons</h2>
+    <p class="lede">Full-width pills, 56 px tall, docked at the bottom of the screen within thumb reach. One primary button per screen.</p>
+
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">Primary · rust · 56 px</span>
+        <div class="stage">
+          <button class="btn btn-primary">Get started</button>
+          <button class="btn btn-primary"><svg class="i"><use href="#i-camera"/></svg>Take a photo</button>
+          <button class="btn btn-primary btn-split"><span>View cart · 2 items</span><span class="num">€9.40</span></button>
+          <button class="btn btn-primary is-pressed">Pressed</button>
+          <button class="btn btn-primary" disabled>Send code</button>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Secondary · outline · and text button</span>
+        <div class="stage">
+          <button class="btn btn-secondary">Back to café list</button>
+          <div class="btn-row">
+            <button class="btn btn-secondary">Message courier</button>
+            <button class="btn btn-secondary">Pick up at counter</button>
+          </div>
+          <button class="btn-text">Or scan the QR code at your spot</button>
+          <button class="btn-text sm">Resend code in 0:42</button>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">On camera screens · brown ground</span>
+        <div class="stage cam">
+          <div class="btn-row">
+            <button class="btn btn-secondary">Retake</button>
+            <button class="btn btn-primary">Use photo</button>
+          </div>
+          <p class="t-sub flush">Only the café sees it, for this order.</p>
+          <div class="row-center"><button class="shutter" aria-label="Take photo"></button></div>
+          <button class="btn-text">Use it anyway</button>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Small controls · 44 px minimum</span>
+        <div class="stage">
+          <div class="row-wrap">
+            <button class="icon-btn" aria-label="Back"><svg class="i"><use href="#i-back"/></svg></button>
+            <button class="add" aria-label="Add Flat white"><svg class="i"><use href="#i-plus"/></svg></button>
+            <button class="add has-qty" aria-label="2 in cart">2</button>
+            <button class="add" aria-label="Sold out" disabled><svg class="i"><use href="#i-plus"/></svg></button>
+            <div class="qty"><button aria-label="Remove one"><svg class="i"><use href="#i-minus"/></svg></button><output>1</output><button aria-label="Add one"><svg class="i"><use href="#i-plus"/></svg></button></div>
+          </div>
+          <button class="btn btn-primary btn-small start">Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== CHIPS -->
+  <section class="section" id="chips">
+    <h2>Chips, badges &amp; the range ring</h2>
+    <p class="lede">The range ring is the one mark that belongs to Shoot: a dot inside its delivery radius. A solid olive ring means the café can reach you. A dashed ring means you’re outside it.</p>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">Filter chips · 44 px</span>
+        <div class="stage">
+          <div class="chips" role="group" aria-label="Filter">
+            <button class="chip" aria-pressed="true">All</button>
+            <button class="chip" aria-pressed="false">Coffee</button>
+            <button class="chip" aria-pressed="false">Pastry</button>
+            <button class="chip" aria-pressed="false">Lunch</button>
+            <button class="chip" aria-pressed="false">Open now</button>
+          </div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Range ring · signature</span>
+        <div class="stage on-white">
+          <span class="range-pill"><svg class="ring in" viewBox="0 0 22 22" aria-hidden="true"><circle class="r" cx="11" cy="11" r="9"/><circle class="c" cx="11" cy="11" r="3.5"/></svg>In range · delivers to you</span>
+          <span class="range-pill out"><svg class="ring out" viewBox="0 0 22 22" aria-hidden="true"><circle class="r" cx="11" cy="11" r="9"/><circle class="c" cx="11" cy="11" r="3.5"/></svg>350 m · out of range</span>
+          <span class="range"><svg class="ring in" viewBox="0 0 22 22" aria-hidden="true"><circle class="r" cx="11" cy="11" r="9"/><circle class="c" cx="11" cy="11" r="3.5"/></svg>Still in range · 35 m from Saaripaahtimo</span>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Status badges · 28 px</span>
+        <div class="stage">
+          <div class="chips">
+            <span class="badge badge-neutral badge-success"><span class="dot"></span>Delivered</span>
+            <span class="badge badge-neutral badge-progress"><span class="dot"></span>On the way</span>
+            <span class="badge badge-outline">Sold out today</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== INPUTS -->
+  <section class="section" id="inputs">
+    <h2>Inputs</h2>
+    <p class="lede">White fields on cream, 56 px tall, 16 px corners. Focus shows a brown border with an orange glow, and errors are spelled out in words, not just shown in colour.</p>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">Phone number</span>
+        <div class="stage">
+          <div class="field">
+            <label class="field-label" for="ph">Phone number</label>
+            <div class="phone">
+              <button class="prefix" aria-label="Country code Finland +358">+358<svg class="i"><use href="#i-chev-d"/></svg></button>
+              <input class="input num" id="ph" inputmode="tel" placeholder="40 123 4567">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="ph2">Phone number · error</label>
+            <div class="phone">
+              <button class="prefix" aria-label="Country code Finland +358">+358<svg class="i"><use href="#i-chev-d"/></svg></button>
+              <input class="input is-error num" id="ph2" value="40 123" aria-invalid="true" aria-describedby="ph2e">
+            </div>
+            <span class="field-error" id="ph2e"><svg class="i"><use href="#i-alert"/></svg>That number looks too short. Check it and try again.</span>
+          </div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">SMS code · 6 digits</span>
+        <div class="stage">
+          <div class="field">
+            <span class="field-label">Enter the code</span>
+            <div class="otp" role="group" aria-label="6-digit code">
+              <input class="filled" value="4" aria-label="Digit 1" inputmode="numeric" maxlength="1">
+              <input class="filled" value="8" aria-label="Digit 2" inputmode="numeric" maxlength="1">
+              <input class="filled" value="1" aria-label="Digit 3" inputmode="numeric" maxlength="1">
+              <input aria-label="Digit 4" inputmode="numeric" maxlength="1" autofocus>
+              <input aria-label="Digit 5" inputmode="numeric" maxlength="1">
+              <input aria-label="Digit 6" inputmode="numeric" maxlength="1">
+            </div>
+            <span class="field-help num">Sent to +358 40 123 4567</span>
+          </div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Search and note</span>
+        <div class="stage">
+          <label class="search"><svg class="i"><use href="#i-search"/></svg><input class="input" placeholder="Search cafés or products" aria-label="Search cafés or products"></label>
+          <div class="field">
+            <label class="field-label" for="note">Note for the café <span class="muted weight-regular">(optional)</span></label>
+            <input class="input" id="note" placeholder="e.g. no sugar, bench by the fountain">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== CARDS -->
+  <section class="section" id="cards">
+    <h2>Cards &amp; rows</h2>
+    <p class="lede">White cards lift off the cream. Menus and carts use plain rows with hairline dividers, not cards inside cards. Out-of-range items drop to an outline and stay browsable.</p>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">Café card · in range / out of range</span>
+        <div class="stage">
+          <span class="t-group muted group-label">In range · can deliver to you</span>
+          <a class="cafe" href="#cards">
+            <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+            <span class="cafe-body">
+              <span class="cafe-name">Saaripaahtimo</span>
+              <span class="cafe-meta num">45 m away<span class="sep">·</span>Open until 18:00</span>
+              <span class="cafe-meta num">Ready in ~10 min<span class="sep">·</span>Delivery €0.50</span>
+            </span>
+          </a>
+          <span class="t-group muted group-label">Out of range · browse only</span>
+          <a class="cafe out" href="#cards">
+            <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+            <span class="cafe-body">
+              <span class="cafe-name">Torikahvila Ruska</span>
+              <span class="cafe-meta num">350 m away<span class="sep">·</span>Out of delivery range</span>
+              <span class="range"><svg class="ring out" viewBox="0 0 22 22" aria-hidden="true"><circle class="r" cx="11" cy="11" r="9"/><circle class="c" cx="11" cy="11" r="3.5"/></svg>Move closer to order</span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Menu rows · add / in cart / sold out</span>
+        <div class="stage on-white">
+          <div>
+            <div class="menu-row">
+              <div class="menu-text"><span class="menu-name">Flat white</span><span class="menu-desc">Double shot, steamed milk</span><span class="menu-price">€4.20</span></div>
+              <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+              <button class="add has-qty" aria-label="1 Flat white in cart">1</button>
+            </div>
+            <div class="menu-row">
+              <div class="menu-text"><span class="menu-name">Korvapuusti</span><span class="menu-desc">Cardamom cinnamon bun</span><span class="menu-price">€3.50</span></div>
+              <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+              <button class="add" aria-label="Add Korvapuusti"><svg class="i"><use href="#i-plus"/></svg></button>
+            </div>
+            <div class="menu-row sold">
+              <div class="menu-text"><span class="menu-name">Mustikkapiirakka</span><span class="menu-desc">Sold out today</span><span class="menu-price">€4.00</span></div>
+              <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+              <button class="add" aria-label="Mustikkapiirakka is sold out" disabled><svg class="i"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Cart row and order summary</span>
+        <div class="stage">
+          <div>
+            <div class="cart-row">
+              <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+              <div class="menu-text"><span class="menu-name">Oat latte</span><span class="menu-desc">Oat milk · €4.80</span></div>
+              <div class="qty"><button aria-label="Remove one"><svg class="i"><use href="#i-minus"/></svg></button><output>1</output><button aria-label="Add one"><svg class="i"><use href="#i-plus"/></svg></button></div>
+            </div>
+          </div>
+          <div class="summary">
+            <div class="line"><span>Subtotal</span><span>€8.30</span></div>
+            <div class="line"><span>Delivery</span><span>€0.50</span></div>
+            <div class="total"><span>Total</span><span>€8.80</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Order in progress · history</span>
+        <div class="stage">
+          <article class="order-card">
+            <div class="order-top"><span class="badge badge-neutral badge-progress"><span class="dot"></span>On the way</span><span class="t-cap muted num">Order #2041</span></div>
+            <div class="order-main">
+              <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+              <div class="cafe-body"><span class="cafe-name">Saaripaahtimo</span><span class="cafe-meta">2 items · to your spot</span></div>
+              <svg class="i chev"><use href="#i-chev-r"/></svg>
+            </div>
+            <div class="stack-2">
+              <div class="progress" aria-label="Step 3 of 4"><span class="done"></span><span class="done"></span><span class="done"></span><span></span></div>
+              <div class="progress-labels"><span>Received</span><span>Prepared</span><b>On the way</b><span>Delivered</span></div>
+            </div>
+            <div class="eta-row"><span class="eta">~2 min</span><span class="t-sub muted">arriving</span></div>
+          </article>
+          <div class="history">
+            <span class="thumb"><svg class="i"><use href="#i-cup"/></svg></span>
+            <div class="cafe-body"><span class="cafe-name">Kampuskuppi</span><span class="cafe-meta num">3 Nov · 1 item · €5.30</span></div>
+            <span class="badge badge-neutral badge-success"><span class="dot"></span>Delivered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== FEEDBACK -->
+  <section class="section" id="feedback">
+    <h2>Banners &amp; sheets</h2>
+    <p class="lede">Banners sit inside the screen and explain what happened. Bottom sheets handle anything you have to deal with before carrying on, with the main action at the bottom.</p>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">Inline banners</span>
+        <div class="stage">
+          <div class="banner success">
+            <span class="badge-ic"><svg class="i"><use href="#i-check"/></svg></span>
+            <div class="banner-body"><span class="banner-title">You’re in range</span><span class="banner-text num">40 m from Saaripaahtimo</span></div>
+            <button class="btn-text sm">Map</button>
+          </div>
+          <div class="banner warn">
+            <svg class="i"><use href="#i-alert"/></svg>
+            <div class="banner-body"><span class="banner-title">You’re out of delivery range</span><span class="banner-text">You can look around. Get within 100 m of the café to start ordering.</span></div>
+          </div>
+          <div class="banner error">
+            <svg class="i"><use href="#i-alert"/></svg>
+            <div class="banner-body"><span class="banner-title">1 item just sold out</span><span class="banner-text">We removed it and updated your total. You weren’t charged for it.</span></div>
+          </div>
+          <div class="privacy">
+            <svg class="i"><use href="#i-shield"/></svg>
+            <span><b>Your photo is your proof of location.</b> It’s only shared with this café, for this order.</span>
+          </div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Bottom sheet · grabber, icon, title, two actions</span>
+        <div class="sheet-demo" aria-label="Bottom sheet example">
+          <div class="behind"><div></div><div></div><div></div></div>
+          <div class="scrim"></div>
+          <div class="sheet" role="dialog" aria-labelledby="sh-t">
+            <span class="grabber"></span>
+            <span class="state-icon error"><svg class="i"><use href="#i-x"/></svg></span>
+            <h3 id="sh-t">Payment failed</h3>
+            <p>You haven’t been charged. Your cart and photo are saved, so try again or choose another card.</p>
+            <button class="btn btn-primary">Try again</button>
+            <button class="btn btn-secondary">Back to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== NAV -->
+  <section class="section" id="nav">
+    <h2>Navigation</h2>
+    <p class="lede">Standard iOS patterns: a back chevron with an inline title, a three-step progress bar for checkout, and a tab bar with three sections. Swiping back from the left edge always works.</p>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">Nav bar and checkout steps</span>
+        <div class="stage">
+          <div class="navbar"><button class="back" aria-label="Back"><svg class="i"><use href="#i-back"/></svg></button><span class="nav-title">Checkout</span><span></span></div>
+          <div class="steps" aria-label="Step 2 of 3: Spot">
+            <div class="step done"><span class="n"><svg class="i"><use href="#i-check"/></svg></span>Cart</div>
+            <span class="bar done"></span>
+            <div class="step current"><span class="n">2</span>Spot</div>
+            <span class="bar"></span>
+            <div class="step"><span class="n">3</span>Payment</div>
+          </div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Tab bar · Home · Orders · Profile</span>
+        <div class="stage tabbar-stage">
+          <div class="content"><span class="t-sub muted">Screen content scrolls behind the bar.</span></div>
+          <nav class="tabbar" role="tablist" aria-label="Main">
+            <button class="tab" role="tab" aria-selected="true"><span class="pill"><svg class="i"><use href="#i-home"/></svg></span>Home</button>
+            <button class="tab" role="tab" aria-selected="false"><span class="pill"><svg class="i"><use href="#i-receipt"/></svg></span>Orders</button>
+            <button class="tab" role="tab" aria-selected="false"><span class="pill"><svg class="i"><use href="#i-user"/></svg></span>Profile</button>
+          </nav>
+        </div>
+        <p class="note">The active tab gets an orange pill with a white icon (3.85:1, enough for an icon) and a brown label in semibold. Inactive tabs use secondary brown.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== ILLUSTRATIONS -->
+  <section class="section" id="illo">
+    <h2>Illustration placeholders</h2>
+    <p class="lede">One-colour line art in brown, round line ends, no shading. Orange appears once per drawing, on the coffee. These are placeholders: final art comes from a licensed pack or our own drawings, and each placeholder says what it should show.</p>
+    <div class="illo-row">
+      <figure class="illo illo-lg">
+        <!-- placeholder: person on a bench, coffee arriving -->
+        <svg class="art" viewBox="0 0 320 220" aria-hidden="true">
+          <!-- delivery radius drawn on the ground -->
+          <ellipse class="dashed" cx="160" cy="194" rx="138" ry="18"/>
+          <!-- bench -->
+          <path d="M84 140h132"/><path d="M92 140v54"/><path d="M208 140v54"/>
+          <!-- legs -->
+          <path d="M132 138q20-2 40 2l2 52h12"/>
+          <path d="M148 138q18 0 36 2l2 52h12"/>
+          <!-- torso -->
+          <path class="fill-cream" d="M120 140c-3-26 0-46 16-56 16 10 18 30 16 56z"/>
+          <!-- head -->
+          <circle class="fill-cream" cx="136" cy="62" r="18"/>
+          <path d="M120 56c4-14 26-16 33-2"/>
+          <path d="M131 66c3 3 8 3 11 0"/>
+          <!-- cup -->
+          <path class="fill-cream" d="M174 92h24l-3 24h-18z"/>
+          <path class="fill-orange" d="M175.6 92h20.8v6h-20.8z"/>
+          <path d="M174 92h24"/>
+          <path d="M198 99c8 0 8 11 -1 11"/>
+          <path d="M182 84c-2-5 2-7 0-12"/><path d="M190 84c-2-5 2-7 0-12"/>
+          <!-- arm -->
+          <path d="M142 94c4 18 10 26 18 24 6-2 10-8 15-12"/>
+        </svg>
+        <figcaption class="tag">Placeholder · 1.1 · person on a bench, coffee in hand</figcaption>
+      </figure>
+      <div class="illo-item">
+        <figure class="illo illo-md">
+          <svg class="art" viewBox="0 0 120 120" aria-hidden="true">
+            <path d="M34 54h46l-6 44H40z" class="fill-cream"/>
+            <path d="M80 62c12 0 12 20 0 20"/>
+            <path d="M37 54h40v10H37z" class="fill-orange"/>
+            <path d="M48 44c-3-7 3-10 0-18"/><path d="M60 44c-3-7 3-10 0-18"/><path d="M72 44c-3-7 3-10 0-18" />
+            <path d="M24 104h72"/>
+          </svg>
+        </figure>
+        <span class="t-cap muted">Medium · 160 px · 2.9, 3.1, 1.5</span>
+      </div>
+      <div class="illo-item">
+        <span class="state-icon warn"><svg class="i"><use href="#i-pin"/></svg></span>
+        <span class="t-cap muted">Error sheets keep an icon in a circle</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== RULES -->
+  <section class="section" id="rules">
+    <h2>Rules of thumb</h2>
+    <div class="do-dont">
+      <div class="dd yes">
+        <h3><svg class="i"><use href="#i-check"/></svg>Do</h3>
+        <ul>
+          <li>One rust button per screen, docked at the bottom.</li>
+          <li>Pair every state colour with an icon and words.</li>
+          <li>Use the range ring wherever distance decides what you can do.</li>
+          <li>Keep tap targets at 44 px or more, with at least 8 px between them.</li>
+          <li>Leave room for Finnish (about 30% longer).</li>
+        </ul>
+      </div>
+      <div class="dd no">
+        <h3><svg class="i"><use href="#i-x"/></svg>Don’t</h3>
+        <ul>
+          <li>Small text in orange or olive.</li>
+          <li>Shrikhand on buttons, prices or anything you read twice.</li>
+          <li>Moodboard patterns (stripes, dots, checkerboard), gradients, emoji.</li>
+          <li>Small labels above headings, or cards inside cards.</li>
+          <li>“Our couriers”. The courier belongs to the café.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>Shoot · customer app design system v0.1</span>
+    <span>Fonts: Shrikhand, Inter (Google Fonts) · Icons: Lucide</span>
+  </footer>
+</main>
+</body>
+</html>

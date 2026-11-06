@@ -1,0 +1,41 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+*.lnk
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*~
+
+# Dependencies and build output (React Native later)
+node_modules/
+dist/
+build/
+.expo/
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Impeccable design tool: keep shared config, ignore runtime output
+.impeccable/review/
+.impeccable/questions/
+.impeccable/mocks/
+.impeccable/build/
+.impeccable/critique/snapshots/
+.impeccable/config.local.json
+
+# Temporary files
+*.tmp
+~$*
