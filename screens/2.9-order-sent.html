@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 2.9 Order sent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 2.9 Order sent – layout only. Values: tokens.css. Components: components.css. */
+.sent-body { flex: 1; display: grid; align-content: center; justify-items: center; gap: var(--space-3); text-align: center; }
+.sent-body .display { margin: var(--space-3) 0 0; }
+.sent-body p { margin: 0; text-wrap: balance; }
+.sent-body .summary { width: 100%; margin-top: var(--space-4); text-align: left; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="2.9 Order sent">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen sent">
+    <section class="sent-body" aria-labelledby="sent-title">
+      <!-- placeholder: assets/illustrations/order-sent.svg is not in the project yet -->
+      <figure class="illo illo-md" role="img" aria-label="Order sent">
+        <svg class="art" viewBox="0 0 160 160" aria-hidden="true">
+          <circle class="fill-cream" cx="80" cy="80" r="46"/>
+          <path d="M60 81l14 14 27-30"/>
+        </svg>
+      </figure>
+      <h1 class="display" id="sent-title">Order sent!</h1>
+      <p class="muted">Saaripaahtimo got your order and your photo. Stay where you are — they’ll bring it to you.</p>
+      <div class="summary facts">
+        <div class="line"><span>Order</span><strong class="num">#2041</strong></div>
+        <div class="line"><span>Estimated time</span><strong class="num">9:51 · in ~10 min</strong></div>
+        <div class="line"><span>Paid</span><strong class="num">€11.70</strong></div>
+      </div>
+    </section>
+    <footer class="screen-footer">
+      <a class="btn btn-primary" href="2.10-orders.html">Track order</a>
+    </footer>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

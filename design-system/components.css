@@ -165,6 +165,7 @@ a { color: var(--primary); text-underline-offset: var(--space-1); text-decoratio
 .input::placeholder { color: var(--ink-placeholder); opacity: 1; }
 .input:focus, .input.is-focused { outline: none; border-color: var(--ink); box-shadow: 0 0 0 var(--focus-glow-w) var(--focus-glow); }
 .input.is-error { border-color: var(--error); }
+.input.multiline { display: block; padding: var(--space-3) var(--space-4); resize: none; line-height: var(--lh-body); min-height: 0; }
 .field-help { font-size: var(--fs-caption); color: var(--ink-2); }
 .field-error { font-size: var(--fs-caption); font-weight: var(--fw-semibold); color: var(--error); display: flex; align-items: center; gap: var(--space-1-5); }
 .field-error .i { width: var(--icon-xs); height: var(--icon-xs); }
@@ -210,7 +211,7 @@ a { color: var(--primary); text-underline-offset: var(--space-1); text-decoratio
 .menu-row.sold .menu-name, .menu-row.sold .menu-price { color: var(--ink-2); }
 .menu-row.sold .thumb { opacity: var(--opacity-muted); filter: var(--photo-sold-out); }
 .cart-row { display: flex; gap: var(--space-3-5); align-items: center; padding: var(--space-3-5) 0; border-bottom: var(--border-hair) solid var(--line); }
-.cart-row .thumb { width: var(--thumb-sm); height: var(--thumb-sm); border-radius: var(--radius-thumb-sm); }
+.cart-row .thumb { width: var(--thumb-lg); height: var(--thumb-lg); }   /* product photos: one size everywhere */
 .cart-row .menu-text { gap: 0; }
 .order-card { background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: var(--space-4); display: grid; gap: var(--space-3-5); }
 .order-top { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); }
@@ -269,8 +270,8 @@ a { color: var(--primary); text-underline-offset: var(--space-1); text-decoratio
    9. NAVIGATION
    ============================================================ */
 .navbar { display: grid; grid-template-columns: var(--size-tap) 1fr var(--size-tap); align-items: center; gap: var(--space-2); min-height: var(--size-navbar); }
-.navbar .back { appearance: none; background: none; border: 0; width: var(--size-tap); height: var(--size-tap); display: grid; place-items: center; color: var(--ink); cursor: pointer; border-radius: var(--radius-round); margin-left: calc(var(--space-2-5) * -1); }
-.navbar .back .i { width: var(--icon-xl); height: var(--icon-xl); }
+.navbar .back, .nav-inline .back { appearance: none; background: none; border: 0; width: var(--size-tap); height: var(--size-tap); display: grid; place-items: center; color: var(--ink); cursor: pointer; border-radius: var(--radius-round); margin-left: calc(var(--space-2-5) * -1); }
+.navbar .back .i, .nav-inline .back .i { width: var(--icon-xl); height: var(--icon-xl); }
 .navbar .nav-title { margin: 0; font-size: var(--fs-body); font-weight: var(--fw-semibold); text-align: center; }
 .steps { display: grid; grid-template-columns: auto 1fr auto 1fr auto; align-items: center; gap: var(--space-2); }
 .step { display: grid; justify-items: center; gap: var(--space-1-5); font-size: var(--fs-caption); color: var(--ink-2); }
@@ -287,7 +288,7 @@ a { color: var(--primary); text-underline-offset: var(--space-1); text-decoratio
   border-top: var(--border-hair) solid var(--line);
   padding: var(--space-2) var(--space-2) var(--safe-bottom);
 }
-.tab { appearance: none; background: none; border: 0; cursor: pointer; display: grid; justify-items: center; gap: var(--space-1); padding: var(--space-1) 0; min-height: var(--size-navbar); font-family: var(--font-ui); font-weight: var(--fw-medium); font-size: var(--fs-micro); line-height: var(--lh-title); color: var(--ink-2); }
+.tab { appearance: none; background: none; border: 0; cursor: pointer; text-decoration: none; display: grid; justify-items: center; gap: var(--space-1); padding: var(--space-1) 0; min-height: var(--size-navbar); font-family: var(--font-ui); font-weight: var(--fw-medium); font-size: var(--fs-micro); line-height: var(--lh-title); color: var(--ink-2); }
 .tab .pill { width: var(--size-tab-pill-w); height: var(--size-tab-pill-h); border-radius: var(--radius-pill); display: grid; place-items: center; transition: background-color var(--dur-slow) var(--ease-out); }
 .tab .i { width: var(--icon-lg); height: var(--icon-lg); }
 .tab[aria-selected="true"] { color: var(--ink); font-weight: var(--fw-semibold); }
@@ -449,6 +450,108 @@ a { color: var(--primary); text-underline-offset: var(--space-1); text-decoratio
 
 /* tab bar docked inside a device screen */
 .device > .tabbar { flex: none; }
+
+/* ============================================================
+   15. ORDERING (UC-02)
+   cover · menu tabs · inline title · summary variants · live order ·
+   payment option · spot card · example photo · camera · QR · pay sheet
+   ============================================================ */
+/* café cover photo under the status bar (2.1) */
+.cover { position: relative; flex: none; height: var(--cover-h); background: var(--surface-2); overflow: hidden; }
+.cover > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cover::before { content: ""; position: absolute; inset: 0 0 auto; height: var(--size-statusbar); background: linear-gradient(var(--scrim-photo), transparent); }
+.cover .icon-btn { position: absolute; left: var(--screen-gutter); bottom: var(--space-4); }
+.statusbar.overlay { position: absolute; inset: 0 0 auto; z-index: 4; color: var(--cam-ink); }
+
+/* underline tabs (menu categories) */
+.tabs { flex: none; display: flex; gap: var(--space-6); overflow-x: auto; scrollbar-width: none; border-bottom: var(--border-hair) solid var(--line); margin: 0 calc(var(--screen-gutter) * -1); padding: 0 var(--screen-gutter); }
+.tabs::-webkit-scrollbar { display: none; }
+.tab-link {
+  appearance: none; background: none; border: 0; cursor: pointer; flex: none;
+  min-height: var(--size-tap); padding: var(--space-3) 0; margin-bottom: calc(var(--border-hair) * -1);
+  border-bottom: var(--border-focus) solid transparent; color: var(--ink-2);
+  font-family: var(--font-ui); font-size: var(--fs-body); font-weight: var(--fw-medium);
+}
+.tab-link[aria-selected="true"] { color: var(--ink); font-weight: var(--fw-semibold); border-bottom-color: var(--accent); }
+
+/* back button + large inline title on one row (2.2, 2.3, 2.7) */
+.nav-inline { flex: none; display: flex; align-items: center; gap: var(--space-2); min-height: var(--size-navbar); }
+.nav-inline .back { margin-left: calc(var(--space-2-5) * -1); }
+.nav-inline :is(h1, h2, h3) { margin: 0; font-size: var(--fs-title); font-weight: var(--fw-bold); letter-spacing: var(--ls-title); line-height: var(--lh-title); }
+
+/* summary variants */
+.summary.plain { background: transparent; border-radius: 0; padding: var(--space-4) 0 0; border-top: var(--border-hair) solid var(--line); }
+.summary.plain .total { border-top: 0; padding-top: 0; }
+.summary .line strong { color: var(--ink); font-weight: var(--fw-semibold); }
+
+/* live order card (2.10, 4.1) */
+.order-card.live { box-shadow: inset 0 0 0 var(--border-strong) var(--ink), var(--shadow-card); }
+.order-status { font-size: var(--fs-sub); font-weight: var(--fw-semibold); color: var(--ink); }
+
+/* payment method option (2.7) */
+.option {
+  display: flex; align-items: center; gap: var(--space-3-5); min-height: var(--size-control);
+  padding: var(--space-3) var(--space-4); background: var(--surface); border-radius: var(--radius-input);
+  box-shadow: inset 0 0 0 var(--border) var(--line-strong); cursor: pointer;
+}
+.option:has(input:checked) { box-shadow: inset 0 0 0 var(--border-strong) var(--ink); }
+.option .label { flex: 1; font-weight: var(--fw-semibold); }
+.option .label.regular { font-weight: var(--fw-regular); }
+.option input { appearance: none; flex: none; margin: 0; width: var(--size-radio); height: var(--size-radio); border-radius: var(--radius-round); border: var(--border-strong) solid var(--line-strong); display: grid; place-content: center; cursor: pointer; }
+.option input:checked { border-color: var(--ink); }
+.option input:checked::before { content: ""; width: var(--size-radio-dot); height: var(--size-radio-dot); border-radius: var(--radius-round); background: var(--ink); }
+.pay-mark { flex: none; width: var(--size-mark-w); height: var(--size-mark-h); border-radius: var(--radius-xs); display: grid; place-items: center; background: var(--surface-2); color: var(--ink); }
+.pay-mark.ink { background: var(--ink); color: var(--ink-inverse); }
+.pay-mark .i { width: var(--icon-md); height: var(--icon-md); }
+
+/* "deliver to" spot card with the customer's photo (2.7, 2.8) */
+.spot-card { display: flex; align-items: center; gap: var(--space-3-5); padding: var(--space-3) var(--space-4) var(--space-3) var(--space-3); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.spot-card .thumb { width: var(--thumb-md); height: var(--thumb-md); }
+.spot-card .spot-body { flex: 1; min-width: 0; display: grid; gap: var(--space-0-5); }
+.spot-card .spot-title { font-weight: var(--fw-bold); line-height: var(--lh-snug); }
+.done-line { display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--fs-sub); font-weight: var(--fw-semibold); color: var(--ink); }
+.done-line .i { width: var(--icon-sm); height: var(--icon-sm); color: var(--success); stroke-width: var(--stroke-icon-bold); }
+
+/* photo + front-camera inset ("you") */
+.pip { position: absolute; top: var(--space-3); left: var(--space-3); z-index: 1; width: var(--size-pip-w); aspect-ratio: var(--ratio-pip); border-radius: var(--radius-input); overflow: hidden; background: var(--illo-screen); box-shadow: 0 0 0 var(--border-focus) var(--white); }
+.pip > :is(img, svg) { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pip.sm { width: var(--size-pip-sm); }
+.example { position: relative; aspect-ratio: var(--ratio-example); border-radius: var(--radius-card); overflow: hidden; background: var(--surface-2); }
+.example > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.photo-tag { position: absolute; left: var(--space-3); bottom: var(--space-3); padding: var(--space-1) var(--space-2-5); border-radius: var(--radius-pill); background: var(--surface); color: var(--ink); font-size: var(--fs-caption); font-weight: var(--fw-semibold); }
+
+/* camera screens (2.4, 2.5, 2.6): .device.cam */
+.device.cam { background: var(--cam-bg); color: var(--cam-ink); }
+.cam-top { flex: none; color: var(--cam-ink); display: grid; grid-template-columns: var(--size-tap) 1fr var(--size-tap); align-items: center; min-height: var(--size-navbar); padding: 0 var(--space-4); }
+.cam-top :is(h1, h2, h3) { margin: 0; text-align: center; font-size: var(--fs-body); font-weight: var(--fw-semibold); }
+.cam-top .close { display: grid; place-items: center; width: var(--size-tap); height: var(--size-tap); border-radius: var(--radius-round); color: var(--cam-ink); }
+.cam-top .close .i { width: var(--icon-xl); height: var(--icon-xl); }
+.viewfinder { position: relative; flex: 1; min-height: 0; margin: var(--space-2) var(--space-4) 0; border-radius: var(--radius-frame); overflow: hidden; background: var(--cam-raised); }
+.viewfinder > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.viewfinder .pip { top: var(--space-4); left: var(--space-4); }
+.hint { position: absolute; left: 50%; bottom: var(--space-5); translate: -50% 0; z-index: 1; padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); background: var(--hint-bg); color: var(--cam-ink); font-size: var(--fs-sub); white-space: nowrap; }
+.viewfinder .banner { position: absolute; left: var(--space-4); right: var(--space-4); bottom: var(--space-4); z-index: 1; }
+.cam-note { flex: none; margin: var(--space-4) var(--space-6) 0; text-align: center; color: var(--cam-ink-2); font-size: var(--fs-sub); line-height: var(--lh-sub); text-wrap: balance; }
+.cam-controls { flex: none; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: var(--space-4) var(--space-8) var(--safe-bottom); }
+.cam-controls .shutter { grid-column: 2; }
+.cam-controls .side { justify-self: end; display: grid; place-items: center; width: var(--size-tap); height: var(--size-tap); border-radius: var(--radius-round); border: var(--border-hair) solid var(--cam-ink-2); color: var(--cam-ink); background: transparent; }
+.cam-actions { flex: none; display: grid; gap: var(--space-3); padding: var(--space-4) var(--space-4) var(--safe-bottom); }
+.cam-actions .btn-row .btn { font-size: var(--fs-body); }
+
+/* QR frame: clear square, the rest of the camera view dimmed */
+.qr-frame { position: absolute; left: 50%; top: 46%; translate: -50% -50%; width: var(--size-qr); aspect-ratio: 1; border-radius: var(--radius-card); border: var(--stroke-qr) solid var(--cam-ink); outline: var(--spread-max) solid var(--cam-dim); display: grid; place-items: center; text-decoration: none; }
+.qr-frame .qr-code { width: 62%; height: auto; }
+.qr-code rect { fill: var(--ink); }
+.qr-code .light { fill: var(--white); }
+
+/* neutral button (system sheets) */
+.btn-ink { background: var(--ink); color: var(--ink-inverse); }
+.btn-ink:active { background: var(--ink-pressed); }
+
+/* system payment sheet (2.8): neutral, not brand-styled */
+.sheet.system { background: var(--surface-alert); padding: var(--space-2-5) var(--space-4) var(--safe-bottom); gap: var(--space-3); }
+.pay-row { display: flex; align-items: center; gap: var(--space-3); min-height: var(--size-control); padding: 0 var(--space-4); background: var(--surface); border-radius: var(--radius-input); color: var(--ink); text-decoration: none; }
+.pay-row .chev { margin-left: auto; color: var(--ink-2); width: var(--icon); height: var(--icon); }
 
 /* ============================================================
    11. MOTION

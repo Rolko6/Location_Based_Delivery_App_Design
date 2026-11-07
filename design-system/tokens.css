@@ -354,3 +354,25 @@
 :root {
   --photo-sold-out: grayscale(.8);   /* sold-out product photos (with --opacity-muted) */
 }
+
+/* --------------------------------------------------------------------------
+   15. ORDERING (UC-02): cover, tabs, camera, QR, payment
+   -------------------------------------------------------------------------- */
+:root {
+  --cover-h:         180px;   /* café cover photo incl. status bar (2.1) */
+  --scrim-photo:     rgba(74, 44, 30, .55);   /* status-bar legibility on photos */
+  --size-pip-w:      110px;   /* front-camera inset in the viewfinder */
+  --size-pip-sm:     78px;    /* inset in the example photo (2.3) */
+  --ratio-pip:       11 / 15;
+  --ratio-example:   2 / 1;
+  --hint-bg:         color-mix(in srgb, var(--brown) 78%, transparent);
+  --cam-dim:         rgba(74, 44, 30, .5);    /* camera view outside the QR frame */
+  --size-qr:         230px;
+  --stroke-qr:       4px;
+  --spread-max:      100vmax;
+  --size-radio:      24px;
+  --size-radio-dot:  12px;
+  --size-mark-w:     44px;    /* payment method mark */
+  --size-mark-h:     30px;
+  --ink-pressed:     color-mix(in srgb, var(--brown) 80%, var(--brown-soft));
+}

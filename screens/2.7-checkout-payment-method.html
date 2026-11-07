@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 2.7 Checkout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 2.7 Checkout – layout only. Values: tokens.css. Components: components.css. */
+.flow { padding-bottom: var(--space-4); gap: var(--space-4); }
+.flow .scroll { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; display: flex; flex-direction: column; gap: var(--space-3); }
+.flow .scroll > * { flex: none; }
+.flow .scroll::-webkit-scrollbar { display: none; }
+.flow .scroll > * { margin: 0; }
+
+.pay { border: 0; margin: 0; padding: 0; display: grid; gap: var(--space-3); min-width: 0; }
+.pay legend { padding: 0; margin-bottom: var(--space-3); }
+.add-card { justify-self: center; gap: var(--space-1-5); }
+.add-card .i { width: var(--icon-sm); height: var(--icon-sm); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="2.7 Checkout">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen flow">
+    <div class="scroll">
+      <nav class="nav-inline"><a class="back" href="2.5-photo-review.html" aria-label="Back to photo"><svg class="i"><use href="#i-back"/></svg></a><h1>Checkout</h1></nav>
+      <div class="steps" aria-label="Step 3 of 3: Payment"><div class="step done"><span class="n"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>Cart</div><span class="bar done"></span><div class="step done"><span class="n"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>Spot</div><span class="bar done"></span><div class="step current" aria-current="step"><span class="n">3</span>Payment</div></div>
+      <div class="spot-card">
+        <span class="thumb"><img src="../assets/pictures/web/spot.jpg" alt="" loading="lazy"></span>
+        <div class="spot-body">
+          <span class="t-group muted">Deliver to</span>
+          <span class="spot-title">Saaripaahtimo · Your spot</span>
+          <span class="done-line">Photo added<svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>
+        </div>
+        <a class="btn-text sm" href="2.3-confirm-your-spot.html">Change</a>
+      </div>
+      <fieldset class="pay">
+        <legend class="t-title2">Payment method</legend>
+        <label class="option"><span class="pay-mark ink"><svg class="i" aria-hidden="true"><use href="#i-wallet"/></svg></span><span class="label">Apple Pay</span><input type="radio" name="pay" value="apple-pay" checked></label>
+        <label class="option"><span class="pay-mark"><svg class="i" aria-hidden="true"><use href="#i-card"/></svg></span><span class="label regular num">Card ending in 4242</span><input type="radio" name="pay" value="card"></label>
+        <button class="btn-text add-card" type="button"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add another card</button>
+      </fieldset>
+      <div class="summary">
+        <div class="line"><span>Subtotal</span><span>€11.20</span></div>
+        <div class="line"><span>Delivery / service fee</span><span>€0.50</span></div>
+        <div class="total"><span>Total</span><span>€11.70</span></div>
+      </div>
+    </div>
+
+    <footer class="screen-footer">
+      <a class="btn btn-primary" href="2.8-apple-google-pay-sheet.html">Pay €11.70 with Apple Pay</a>
+    </footer>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

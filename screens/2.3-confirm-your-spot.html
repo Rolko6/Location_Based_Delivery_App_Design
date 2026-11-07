@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 2.3 Confirm your spot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 2.3 Confirm your spot – layout only. Values: tokens.css. Components: components.css. */
+.flow { padding-bottom: var(--space-4); gap: var(--space-4); }
+.flow .scroll { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; display: flex; flex-direction: column; gap: var(--space-3); }
+.flow .scroll > * { flex: none; }
+.flow .scroll::-webkit-scrollbar { display: none; }
+.flow .scroll > * { margin: 0; }
+
+.flow .scroll { gap: var(--space-2-5); }
+.example { aspect-ratio: 9 / 4; }
+.example .photo-tag { left: auto; right: var(--space-3); }
+.spot-intro { display: grid; gap: var(--space-1-5); margin-top: var(--space-1); }
+.flow .screen-footer { justify-items: stretch; gap: var(--space-2); border-top: var(--border-hair) solid var(--line); margin: 0 calc(var(--screen-gutter) * -1); padding: var(--space-3) var(--screen-gutter) 0; }
+.flow .screen-footer .btn-text { justify-self: center; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="2.3 Confirm your spot">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen flow">
+    <div class="scroll">
+      <nav class="nav-inline"><a class="back" href="2.2-cart.html" aria-label="Back to cart"><svg class="i"><use href="#i-back"/></svg></a><h1>Confirm your spot</h1></nav>
+      <div class="steps" aria-label="Step 2 of 3: Spot"><div class="step done"><span class="n"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>Cart</div><span class="bar done"></span><div class="step current" aria-current="step"><span class="n">2</span>Spot</div><span class="bar"></span><div class="step"><span class="n">3</span>Payment</div></div>
+      <div class="banner success">
+        <span class="badge-ic"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>
+        <div class="banner-body"><span class="banner-title">You’re in range</span><span class="banner-text num">40 m from Saaripaahtimo</span></div>
+        <a class="btn-text sm" href="#map">Map</a>
+      </div>
+      <div class="spot-intro">
+        <h2 class="t-title2 flush">Show them it’s you – and where you are</h2>
+        <p class="t-sub muted flush">One quick photo does two things: the staff recognise you when they bring your order, and it confirms you’re here so the café can accept it.</p>
+      </div>
+      <figure class="example flush">
+        <img src="../assets/pictures/web/spot-wide.jpg" alt="" loading="lazy">
+        <div class="pip sm"><svg class="illo-color" viewBox="329 50 244 333" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false"><g transform="translate(-655 -180)"><path d="M864.338,196.984V644a35.264,35.264,0,0,1-35.272,35.268H655.35A35.266,35.266,0,0,1,620.083,644V196.984a35.266,35.266,0,0,1,35.269-35.268h21.081A16.755,16.755,0,0,0,691.945,184.8h99.048A16.762,16.762,0,0,0,806.5,161.716h22.567a35.266,35.266,0,0,1,35.267,35.269Z" transform="translate(363.972 30.573)" class="screen"/>
+<path d="M312.558,263.319l-14.052,31.01-25.691,56.7V250.739Z" transform="translate(711.238 231.688)" class="skin"/>
+<path d="M812.454,327.594c0,42.461-39.262,36.039-87.7,36.039s-87.7,6.422-87.7-36.039,19.179-117.728,87.7-117.728C795.636,209.866,812.454,285.132,812.454,327.594Z" transform="translate(367.472 40.499)" class="ink"/>
+<path d="M304.558,542.65s20.849,29.268,13.4,37.192,55.862,8.122,55.862,8.122-9.51-42.576-6.711-52.374Z" transform="translate(764.952 -148.376)" class="skin"/>
+<path d="M828.135,435.73l3.2,19.974V593.408a35,35,0,0,1-4.571,17.369l-32.107-56.291L783.085,436.6,780.2,407.156l43.505.917Z" transform="translate(396.979 81.168)" class="skin"/>
+<path d="M864.338,441.834c-1.544-5.018-4.161-13.5-7.164-22.953-5.283-16.657-11.748-36.377-15.583-45.773-7.321-17.935-44.627-10.747-44.627-10.747l-127.815-4.788s-4.764-.627-26.2-3.474c-8.986-1.194-16.814,11.4-22.868,26.439v47.341l29.78,2.268a107.475,107.475,0,0,0-4.089,25.655c-.338,11.88,1.761,25.16,10.819,33.4C676.12,507,682.4,587.138,682.4,587.138l-13.738,52.491h160.4a35.264,35.264,0,0,0,35.267-35.272V584.919c-10.12-16.379-18.43-24.617-18.43-24.617L817.214,447.443l43.928-.76,3.2-.06Z" transform="translate(363.971 70.215)" class="ink"/>
+<circle cx="59.01" cy="59.01" r="59.01" transform="translate(1012.641 340.754) rotate(-45)" class="skin"/>
+<path d="M653,294.246h23.34l10.3-28.831,2.059,28.831h11.156l6.006-16.818,1.2,16.818h82.89a62.468,62.468,0,0,0-62.468-62.468H715.468A62.468,62.468,0,0,0,653,294.245Z" transform="translate(370.757 45.016)" class="ink"/></g></svg></div>
+        <figcaption class="photo-tag">A good photo looks like this</figcaption>
+      </figure>
+      <div class="privacy">
+        <svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>
+        <span><b>Your photo is your proof of location.</b> It’s required to place the order and only shared with this café, for this order.</span>
+      </div>
+    </div>
+
+    <footer class="screen-footer">
+      <a class="btn btn-primary" href="2.4-photo-front-back.html"><svg class="i" aria-hidden="true"><use href="#i-camera"/></svg>Take a photo</a>
+      <a class="btn-text" href="2.6-scan-spot-qr.html">Or scan the QR code at your spot</a>
+    </footer>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

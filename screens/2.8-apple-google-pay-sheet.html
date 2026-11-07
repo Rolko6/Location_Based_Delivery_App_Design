@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 2.8 Apple Pay sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 2.8 Apple Pay sheet – layout only. Values: tokens.css. Components: components.css. */
+.flow { padding-bottom: var(--space-4); gap: var(--space-4); }
+.flow .scroll { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; display: flex; flex-direction: column; gap: var(--space-3); }
+.flow .scroll > * { flex: none; }
+.flow .scroll::-webkit-scrollbar { display: none; }
+.flow .scroll > * { margin: 0; }
+
+.sheet.system { z-index: 3; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="2.8 Apple Pay sheet">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen flow" aria-hidden="true">
+    <div class="scroll">
+      <nav class="nav-inline"><a class="back" href="2.7-checkout-payment-method.html" tabindex="-1"><svg class="i"><use href="#i-back"/></svg></a><h1>Pay</h1></nav>
+      <p class="muted">Step 3 of 3 · Pay</p>
+      <div class="spot-card">
+        <span class="thumb"><img src="../assets/pictures/web/spot.jpg" alt="" loading="lazy"></span>
+        <div class="spot-body">
+          <span class="spot-title">Spot confirmed · photo added</span>
+          <span class="cafe-meta num">Saaripaahtimo · 3 items · 40 m</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scrim"></div>
+
+  <!-- system payment sheet: neutral mock, not the real Apple Pay / Google Pay UI -->
+  <div class="sheet system" role="dialog" aria-modal="true" aria-label="Confirm payment">
+    <span class="grabber"></span>
+    <a class="pay-row" href="#change-card"><span class="pay-mark"><svg class="i" aria-hidden="true"><use href="#i-card"/></svg></span><span class="num">Card •••• 4242</span><svg class="i chev" aria-hidden="true"><use href="#i-chev-r"/></svg></a>
+    <div class="summary">
+      <div class="line"><span>Saaripaahtimo</span><span>€11.20</span></div>
+      <div class="line"><span>Delivery</span><span>€0.50</span></div>
+      <div class="total"><span>Pay Shoot</span><span>€11.70</span></div>
+    </div>
+    <a class="btn btn-ink" href="2.9-order-sent.html"><svg class="i" aria-hidden="true"><use href="#i-face-id"/></svg>Confirm with Face ID</a>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>
