@@ -9,7 +9,7 @@
 
 **In scope now:** the customer app, iOS, 31 screens from `wireframes/` (sign-up, ordering, café-list edge cases, tracking and messaging, ordering edge cases E1–E10).
 
-**Out of scope until wireframes exist:** group order (C2, C3), one-tap "Order again" (C5), Profile tab content, merchant app (M1–M6), runner view.
+**Out of scope until wireframes exist:** Profile tab content, merchant app (M1–M6), runner view. (Group order and "Order again" were designed on 2026-11-07, see 7c.)
 
 **Source priority:** wireframes → brief.md → references/apps → references/inspirations. Layout and content always follow the matching wireframe.
 
@@ -48,7 +48,7 @@
 
 Primary buttons use **rust**, not orange. Orange with white text only reaches 3.85:1, which passes AA for large text only. Rust passes AA at any size, and orange stays the brand accent.
 
-Camera screens (2.4, 2.5, 2.6, E3, E4, E5) keep the wireframes' dark layout but use **brown `#4A2C1E`** instead of black, with cream text.
+Camera screens (2.4, 2.4b, 2.5, 2.6, E3, E4, E5) keep the wireframes' dark layout but use **brown `#4A2C1E`** instead of black, with cream text.
 
 Secondary text uses brown at reduced strength (about 75% opacity on cream), and it must stay ≥ 4.5:1. No grey.
 
@@ -97,9 +97,9 @@ Secondary text uses brown at reduced strength (about 75% opacity on cream), and 
 
 - Say "**courier**", never "our couriers". The courier belongs to the café.
 - Privacy copy stays visible where the wireframes have it (2.3, 2.4, 2.5, E2): the photo is shared only with the café, only for this order.
-- Order status labels follow the wireframe: **Received → Prepared → On the way → Delivered** (the brief's "accepted → preparing" wording is replaced).
+- Order status labels: **Received → Preparing → On the way → Delivered**. (Wireframe said "Prepared"; changed on 2026-11-07 after the critique so the current step reads as in progress, not done.)
 - Wireframe prototype links such as "[prototype: photo is blurry]" are **not** shown in the mockups. The edge cases are designed as their own screens.
-- Kept as visible placeholders until decided: E8 "Cancel order · refund [policy – TBD]".
+- E8 refund decided on 2026-11-07 (see 7c); the placeholder is gone.
 
 ---
 
@@ -109,7 +109,7 @@ One screen at a time, saved as HTML in `screens/`. Wait for feedback after each 
 
 **UC-01 Sign-up:** 1.1 Welcome · 1.2 Phone number · 1.3 SMS code · 1.4 Location permission (iOS system alert over a pre-permission screen) · 1.5 Location denied · 1.6 Café list (home)
 
-**UC-02 Ordering:** 2.1 Café menu · 2.2 Cart · 2.3 Confirm your spot · 2.4 Photo (front + back camera) · 2.5 Photo review · 2.6 Scan spot QR · 2.7 Checkout (Apple Pay selected) · 2.8 Apple Pay sheet · 2.9 Order sent · 2.10 Orders
+**UC-02 Ordering:** 2.1 Café menu · 2.2 Cart · 2.3 Confirm your spot · 2.4 Photo (first press: selfie; the other camera is always live in the top-left inset) · 2.4b Photo – second press: your spot · 2.5 Photo review (always shown; also opened from the 2.7 thumbnail) · 2.6 Scan spot QR · 2.7 Checkout (Apple Pay selected) · 2.8 Apple Pay sheet · 2.9 Order sent · 2.10 Orders
 
 **UC-03 Café list – edge cases:** 3.1 No café in range · 3.2 Menu – browse only
 
@@ -124,9 +124,24 @@ Notes:
 
 ---
 
+## 7b. Flow changes after the critique (2026-11-07)
+
+- **2.3 Confirm your spot is shown on the first order only.** Repeat orders go from the cart straight to the camera (2.4); the camera note carries the privacy line ("Only [café] sees them, for this order"). The prototype remembers a completed order (2.9) and then skips 2.3. Reusing the last photo is not possible: it is deleted at delivery.
+- **Both photos are taken by hand** (changed again on 2026-11-07 at the user's request): the first press takes the selfie and flips the view to the back camera (selfie moves to the inset), the second press takes your spot. No countdown.
+- **2.5 Photo review is always shown** after the second photo, so the customer can check both before checkout. The 2.7 thumbnail also opens 2.5. A blurry photo opens E3.
+- **The Apple Pay sheet names the café as the merchant** ("Pay Saaripaahtimo"), not Shoot.
+- **2.9 Order sent is a short success moment** (~3 s) that shows the handoff instead of a receipt (the café has your photo, step 1 of 4, ETA) and then opens tracking (4.2) by itself; "Track order" goes there at once.
+- **Meta lines have no separator dots.** Facts sit side by side and wrap whole; the key fact (distance, ready time) is semibold ink, the rest secondary. One distance per café across the flow (Saaripaahtimo: 45 m).
+- **4.2b Order delivered** (decided 2026-11-07): the end state of tracking. Full olive progress, "Delivered to your spot · 9:51", and in place of the map two olive confirmations: "Location sharing stopped" and "Your photo was deleted" (the photo is deleted at delivery). Chat closes. Answers C8 (Laura).
+- **Former dead links now open sheets:** "Map" on 2.3 → 2.3b Your spot on the map (with the location privacy line); "?" in the camera → 2.4c Photo tips.
+
+## 7c. Decisions on 2026-11-07 (group order, reorder, refund)
+
+- **Group order (C2, C3):** the host starts it from the menu ("Order together"), shares a link or QR code, friends add their own items, and the host chooses who pays: "I'll pay for everyone" or "Everyone pays for their own". One delivery to the host's spot; only the host takes the photo.
+- **Order again (C5):** a card at the top of Home (1.6) with the last order and one tap back to a filled cart, plus an "Order again" button on delivered and past orders.
+- **Refund (E8):** full refund while the order is only Received; once the café is Preparing there is no refund, only "go back to my spot" or "pick it up at the counter". Matches E9 ("already made").
+- **Pick up at the counter (4.5):** shows the order number to show at the counter, the walk to the café, and that location sharing stopped.
+
 ## 8. Still open (not blocking the customer-app mockups)
 
-- Group order payment: one person pays, or split?
 - Runner phase: who assigns orders when a café has more than one runner?
-- Refund policy for E8.
-- How the end of location sharing after delivery (C8, Laura) is shown. It's not in any wireframe yet, so it won't be designed until it's added.

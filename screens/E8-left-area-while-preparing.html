@@ -14,6 +14,7 @@
 /* E8 Left the area while preparing – sheet over 4.2 Order status (step 2). Layout only. */
 .status { padding-bottom: var(--space-4); gap: var(--space-3-5); }
 .status .nav-inline { margin-bottom: var(--space-1); }
+.refund-note { margin: 0; text-align: center; }
 </style>
 </head>
 <body class="screen-page">
@@ -36,7 +37,7 @@
       <div class="eta-row"><span class="eta">~6 min</span><span class="eta-at">at 9:51</span><span class="t-cap muted eta-step">Step 2 of 4</span></div>
       <div class="stack-2">
         <div class="progress"><span class="done"></span><span class="done now"></span><span></span><span></span></div>
-        <div class="progress-labels"><span>Received</span><b>Prepared</b><span>On the way</span><span>Delivered</span></div>
+        <div class="progress-labels"><span>Received</span><b>Preparing</b><span>On the way</span><span>Delivered</span></div>
       </div>
     </article>
     <div class="map live"></div>
@@ -67,9 +68,9 @@
     </div>
     <div class="actions">
       <a class="btn btn-primary" href="4.2-order-status.html">I’m going back to my spot</a>
-      <a class="btn btn-secondary" href="#pick-up-at-counter">Pick it up at the counter instead</a>
+      <a class="btn btn-secondary" href="4.5-pick-up-at-counter.html">Pick it up at the counter instead</a>
     </div>
-    <a class="btn-text sm quiet" href="#cancel-order">Cancel order · refund [policy – TBD]</a>
+    <p class="t-sub muted refund-note">It’s already being made, so it can’t be cancelled for a refund.</p>
   </div>
 
   <span class="home-indicator" aria-hidden="true"></span>

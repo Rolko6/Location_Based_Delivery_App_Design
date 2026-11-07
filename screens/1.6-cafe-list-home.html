@@ -38,10 +38,22 @@
     <div class="loc-picker">
       <small>Delivering to your location</small>
       <!-- prototype: changing the location shows 3.1 (no café in range) -->
-      <button type="button" onclick="location.href='3.1-no-cafe-in-range.html'">Current GPS position<svg class="i" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+      <button type="button" onclick="location.href='3.1-no-cafe-in-range.html'">Current location<svg class="i" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
     </div>
 
     <label class="search"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input class="input" type="search" placeholder="Search cafés or products" aria-label="Search cafés or products"></label>
+
+    <section class="group" aria-labelledby="again">
+      <h2 class="t-group flush" id="again">Order again</h2>
+      <div class="again">
+        <div class="again-body">
+          <span class="cafe-name">Saaripaahtimo</span>
+          <span class="cafe-meta">Cappuccino, 2 croissants</span>
+          <span class="menu-price num">€11.70</span>
+        </div>
+        <a class="btn btn-primary btn-small" href="2.2-cart.html"><svg class="i lead" aria-hidden="true"><use href="#i-again"/></svg>Order again</a>
+      </div>
+    </section>
 
     <div class="chips scroll" role="group" aria-label="Filter">
       <button class="chip" type="button" aria-pressed="true">All</button>
@@ -57,16 +69,16 @@
         <span class="thumb"><img src="../assets/pictures/web/coffee-shop-3.jpg" alt="" loading="lazy"></span>
         <span class="cafe-body">
           <span class="cafe-name">Saaripaahtimo</span>
-          <span class="cafe-meta num"><span class="seg">45 m away</span> <span class="seg">· Open until 18:00</span></span>
-          <span class="cafe-meta num"><span class="seg">Ready in ~10 min</span> <span class="seg">· Delivery €0.50</span></span>
+          <span class="cafe-meta num meta"><b>45 m away</b><span>Open until 18:00</span></span>
+          <span class="cafe-meta num meta"><b>Ready in ~10 min</b><span>Delivery €0.50</span></span>
         </span>
       </a>
       <a class="cafe" href="#kampuskuppi">
         <span class="thumb"><img src="../assets/pictures/web/coffee-shop-1.jpg" alt="" loading="lazy"></span>
         <span class="cafe-body">
           <span class="cafe-name">Kampuskuppi</span>
-          <span class="cafe-meta num"><span class="seg">80 m away</span> <span class="seg">· Open until 20:00</span></span>
-          <span class="cafe-meta num"><span class="seg">Ready in ~15 min</span> <span class="seg">· Delivery €0.50</span></span>
+          <span class="cafe-meta num meta"><b>80 m away</b><span>Open until 20:00</span></span>
+          <span class="cafe-meta num meta"><b>Ready in ~15 min</b><span>Delivery €0.50</span></span>
         </span>
       </a>
     </section>
@@ -77,17 +89,17 @@
         <span class="thumb"><img src="../assets/pictures/web/coffee-shop-2.jpg" alt="" loading="lazy"></span>
         <span class="cafe-body">
           <span class="cafe-name">Torikahvila Ruska</span>
-          <span class="cafe-meta num"><span class="seg">350 m away</span> <span class="seg">· Out of delivery range</span></span>
+          <span class="cafe-meta num meta"><b>350 m away</b></span>
           <span class="range"><svg class="ring out" viewBox="0 0 22 22" aria-hidden="true"><circle class="r" cx="11" cy="11" r="9"/><circle class="c" cx="11" cy="11" r="3.5"/></svg>Move closer to order</span>
         </span>
       </a>
     </section>
   </div>
 
-  <nav class="tabbar" role="tablist" aria-label="Main">
-    <button class="tab" role="tab" aria-selected="true"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span>Home</button>
-    <button class="tab" role="tab" aria-selected="false"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></span>Orders</button>
-    <button class="tab" role="tab" aria-selected="false"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg></span>Profile</button>
+  <nav class="tabbar" aria-label="Main">
+    <a class="tab" href="1.6-cafe-list-home.html" aria-current="page" aria-selected="true"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span>Home</a>
+    <a class="tab" href="4.1-orders-tab.html"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></span>Orders</a>
+    <a class="tab" href="#profile"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg></span>Profile</a>
   </nav>
 
   <span class="home-indicator" aria-hidden="true"></span>

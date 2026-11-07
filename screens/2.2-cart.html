@@ -36,6 +36,7 @@
   <div class="screen flow">
     <div class="scroll">
       <nav class="nav-inline"><a class="back" href="2.1-cafe-menu.html" aria-label="Back to menu"><svg class="i"><use href="#i-back"/></svg></a><h1>Your cart</h1></nav>
+      <div class="steps" aria-label="Step 1 of 3: Cart"><div class="step current" aria-current="step"><span class="n">1</span>Cart</div><span class="bar"></span><div class="step"><span class="n">2</span>Spot</div><span class="bar"></span><div class="step"><span class="n">3</span>Payment</div></div>
       <p class="muted num">From Saaripaahtimo · 45 m away</p>
       <div class="cart-list">
         <div class="cart-row">
@@ -61,12 +62,21 @@
         <div class="line"><span>Delivery</span><span>€0.50</span></div>
         <div class="total"><span>Total</span><span>€11.70</span></div>
       </div>
-      <a class="btn btn-primary" href="2.3-confirm-your-spot.html">Go to checkout</a>
+      <a class="btn btn-primary" id="checkout" href="2.3-confirm-your-spot.html">Go to checkout</a>
     </footer>
   </div>
 
   <span class="home-indicator" aria-hidden="true"></span>
 </main>
 
+<script>
+/* Prototype: 2.3 explains the photo on the first order only. After one completed
+   order (2.9 sets the flag) "Go to checkout" opens the camera (2.4) directly. */
+(function () {
+  var repeat = false;
+  try { repeat = localStorage.getItem('shoot-has-ordered') === '1'; } catch (e) {}
+  if (repeat) document.getElementById('checkout').setAttribute('href', '2.4-photo-front.html');
+})();
+</script>
 </body>
 </html>

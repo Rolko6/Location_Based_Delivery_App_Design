@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 2.2b Cart – Kampuskuppi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 2.2b Cart filled by "Order again" (Kampuskuppi #2017) – layout only. Values: tokens.css. Components: components.css. */
+.flow { padding-bottom: var(--space-4); gap: var(--space-4); }
+.flow .scroll { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; display: flex; flex-direction: column; gap: var(--space-3); }
+.flow .scroll > * { flex: none; }
+.flow .scroll::-webkit-scrollbar { display: none; }
+.flow .scroll > * { margin: 0; }
+
+.cart-list .cart-row:last-child { border-bottom: 0; }
+.flow .field { margin-top: var(--space-2); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="2.2b Cart – Kampuskuppi">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen flow">
+    <div class="scroll">
+      <nav class="nav-inline"><a class="back" href="4.2c-past-order.html" aria-label="Back to the order"><svg class="i"><use href="#i-back"/></svg></a><h1>Your cart</h1></nav>
+      <div class="steps" aria-label="Step 1 of 3: Cart"><div class="step current" aria-current="step"><span class="n">1</span>Cart</div><span class="bar"></span><div class="step"><span class="n">2</span>Spot</div><span class="bar"></span><div class="step"><span class="n">3</span>Payment</div></div>
+      <p class="muted num">From Kampuskuppi · 80 m away</p>
+      <div class="cart-list">
+        <div class="cart-row">
+          <span class="thumb"><img src="../assets/pictures/web/cappuccino.jpg" alt="" loading="lazy"></span>
+          <div class="menu-text"><span class="menu-name">Cappuccino</span><span class="menu-desc num">€3.70</span></div>
+          <div class="qty"><button type="button" aria-label="Remove one cappuccino"><svg class="i"><use href="#i-minus"/></svg></button><output>1</output><button type="button" aria-label="Add one cappuccino"><svg class="i"><use href="#i-plus"/></svg></button></div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="note">Note for the café <span class="muted weight-regular">(optional)</span></label>
+        <textarea class="input multiline" id="note" rows="2" placeholder="e.g. no sugar, I’m on the bench by the fountain"></textarea>
+      </div>
+    </div>
+
+    <footer class="screen-footer">
+      <div class="summary plain">
+        <div class="line"><span>Subtotal</span><span>€3.70</span></div>
+        <div class="line"><span>Delivery</span><span>€0.50</span></div>
+        <div class="total"><span>Total</span><span>€4.20</span></div>
+      </div>
+      <a class="btn btn-primary" id="checkout" href="2.3-confirm-your-spot.html">Go to checkout</a>
+    </footer>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+<script>
+/* Prototype: 2.3 explains the photo on the first order only. After one completed
+   order (2.9 sets the flag) "Go to checkout" opens the camera (2.4) directly. */
+(function () {
+  var repeat = false;
+  try { repeat = localStorage.getItem('shoot-has-ordered') === '1'; } catch (e) {}
+  if (repeat) document.getElementById('checkout').setAttribute('href', '2.4-photo-front.html');
+})();
+</script>
+</body>
+</html>

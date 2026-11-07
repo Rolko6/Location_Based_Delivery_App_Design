@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 4.2c Past order #2017</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 4.2c Past order – opened from "Earlier" on 4.1 / 2.10. Same layout as 4.2b. Layout only. */
+.status { padding-bottom: var(--space-4); gap: var(--space-3-5); overflow-y: auto; scrollbar-width: none; }
+.status::-webkit-scrollbar { display: none; }
+.status .nav-inline { margin-bottom: var(--space-1); }
+.ended { display: grid; gap: var(--space-2-5); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="4.2c Past order 2017">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:49</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen status">
+    <nav class="nav-inline">
+      <a class="back" href="4.1-orders-tab.html" aria-label="Back to orders"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></a>
+      <div class="nav-titles"><h1>Order #2017</h1><span class="nav-sub">Kampuskuppi</span></div>
+    </nav>
+
+    <article class="order-card" aria-label="Order status">
+      <span class="t-sub muted">Delivered to your spot</span>
+      <div class="eta-row"><span class="eta">12:34</span><span class="eta-at">5 Nov</span><span class="t-cap muted eta-step">Step 4 of 4</span></div>
+      <div class="stack-2">
+        <div class="progress delivered" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="progress-labels"><span>Received</span><span>Preparing</span><span>On the way</span><b aria-current="step">Delivered</b></div>
+      </div>
+    </article>
+
+    <div class="banner success">
+      <span class="badge-ic"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>
+      <div class="banner-body"><span class="banner-title">Photo and location deleted</span><span class="banner-text">Right after delivery.</span></div>
+    </div>
+
+    <section class="track-card" aria-label="Courier and order">
+      <div class="courier-card">
+        <span class="avatar" aria-hidden="true">V</span>
+        <div class="courier-body">
+          <span class="courier-name">Ville brought it</span>
+          <span class="cafe-meta">Café staff</span>
+        </div>
+      </div>
+      <details class="receipt" open>
+        <summary><span>1 item</span><span class="num">€4.20</span><svg class="i" aria-hidden="true"><use href="#i-chev-d"/></svg></summary>
+        <div class="summary">
+          <div class="line"><span>1× Cappuccino</span><span>€3.70</span></div>
+          <div class="line"><span>Delivery</span><span>€0.50</span></div>
+          <div class="total"><span>Paid with Apple Pay</span><span>€4.20</span></div>
+        </div>
+      </details>
+    </section>
+
+    <a class="btn btn-primary" href="2.2b-cart-kampuskuppi.html"><svg class="i lead" aria-hidden="true"><use href="#i-again"/></svg>Order again</a>
+  </div>
+
+  <nav class="tabbar" aria-label="Main">
+    <a class="tab" href="1.6-cafe-list-home.html"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span>Home</a>
+    <a class="tab" href="4.1-orders-tab.html" aria-selected="true"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></span>Orders</a>
+    <a class="tab" href="#profile"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg></span>Profile</a>
+  </nav>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

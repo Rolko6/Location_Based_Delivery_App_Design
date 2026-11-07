@@ -158,6 +158,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
     <a href="#tracking">Tracking</a>
     <a href="#edge">Empty states</a>
     <a href="#errors">Edge cases</a>
+    <a href="#group">Group &amp; reorder</a>
     <a href="#rules">Rules</a>
   </nav>
 
@@ -307,6 +308,11 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
       <div class="icon-cell"><svg class="i"><use href="#i-receipt"/></svg>Orders</div>
       <div class="icon-cell"><svg class="i"><use href="#i-user"/></svg>Profile</div>
       <div class="icon-cell"><svg class="i"><use href="#i-arrow"/></svg>Send</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-users"/></svg>Group</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-share"/></svg>Share</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-again"/></svg>Order again</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-walk"/></svg>Walk</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-store"/></svg>Counter</div>
     </div>
   </section>
 
@@ -499,8 +505,8 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
             <span class="thumb"><img src="../assets/pictures/web/coffee-shop-3.jpg" alt="" loading="lazy"></span>
             <span class="cafe-body">
               <span class="cafe-name">Saaripaahtimo</span>
-              <span class="cafe-meta num"><span class="seg">45 m away</span> <span class="seg">· Open until 18:00</span></span>
-              <span class="cafe-meta num"><span class="seg">Ready in ~10 min</span> <span class="seg">· Delivery €0.50</span></span>
+              <span class="cafe-meta num meta"><b>45 m away</b><span>Open until 18:00</span></span>
+              <span class="cafe-meta num meta"><b>Ready in ~10 min</b><span>Delivery €0.50</span></span>
             </span>
           </a>
           <span class="t-group muted group-label">Out of range · browse only</span>
@@ -508,7 +514,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
             <span class="thumb"><img src="../assets/pictures/web/coffee-shop-2.jpg" alt="" loading="lazy"></span>
             <span class="cafe-body">
               <span class="cafe-name">Torikahvila Ruska</span>
-              <span class="cafe-meta num"><span class="seg">350 m away</span> <span class="seg">· Out of delivery range</span></span>
+              <span class="cafe-meta num meta"><b>350 m away</b></span>
               <span class="range"><svg class="ring out" viewBox="0 0 22 22" aria-hidden="true"><circle class="r" cx="11" cy="11" r="9"/><circle class="c" cx="11" cy="11" r="3.5"/></svg>Move closer to order</span>
             </span>
           </a>
@@ -565,7 +571,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
             </div>
             <div class="stack-2">
               <div class="progress" aria-label="Step 3 of 4"><span class="done"></span><span class="done"></span><span class="done"></span><span></span></div>
-              <div class="progress-labels"><span>Received</span><span>Prepared</span><b>On the way</b><span>Delivered</span></div>
+              <div class="progress-labels"><span>Received</span><span>Preparing</span><b>On the way</b><span>Delivered</span></div>
             </div>
             <div class="eta-row"><span class="eta">~2 min</span><span class="t-sub muted">arriving</span></div>
           </article>
@@ -589,7 +595,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
         <div class="stage">
           <div class="banner success">
             <span class="badge-ic"><svg class="i"><use href="#i-check"/></svg></span>
-            <div class="banner-body"><span class="banner-title">You’re in range</span><span class="banner-text num">40 m from Saaripaahtimo</span></div>
+            <div class="banner-body"><span class="banner-title">You’re in range</span><span class="banner-text num">45 m from Saaripaahtimo</span></div>
             <button class="btn-text sm">Map</button>
           </div>
           <div class="banner warn">
@@ -668,7 +674,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
     <p class="lede">Standard iOS patterns: a back chevron with an inline title, a three-step progress bar for checkout, and a tab bar with three sections. Swiping back from the left edge always works.</p>
     <div class="spec-grid">
       <div class="spec">
-        <span class="spec-label">Nav bar and checkout steps</span>
+        <span class="spec-label">Nav bar and checkout steps (every checkout screen: 2.2–2.8; compact on camera screens)</span>
         <div class="stage">
           <div class="navbar"><button class="back" aria-label="Back"><svg class="i"><use href="#i-back"/></svg></button><span class="nav-title">Checkout</span><span></span></div>
           <div class="steps" aria-label="Step 2 of 3: Spot">
@@ -716,7 +722,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
       <div class="spec">
         <span class="spec-label">Location picker (1.6)</span>
         <div class="stage">
-          <div class="loc-picker"><small>Delivering to your location</small><button type="button">Current GPS position<svg class="i"><use href="#i-chev-d"/></svg></button></div>
+          <div class="loc-picker"><small>Delivering to your location</small><button type="button">Current location<svg class="i"><use href="#i-chev-d"/></svg></button></div>
         </div>
       </div>
     </div>
@@ -825,13 +831,13 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
 <path d="M828.135,435.73l3.2,19.974V593.408a35,35,0,0,1-4.571,17.369l-32.107-56.291L783.085,436.6,780.2,407.156l43.505.917Z" transform="translate(396.979 81.168)" class="skin"/>
 <path d="M864.338,441.834c-1.544-5.018-4.161-13.5-7.164-22.953-5.283-16.657-11.748-36.377-15.583-45.773-7.321-17.935-44.627-10.747-44.627-10.747l-127.815-4.788s-4.764-.627-26.2-3.474c-8.986-1.194-16.814,11.4-22.868,26.439v47.341l29.78,2.268a107.475,107.475,0,0,0-4.089,25.655c-.338,11.88,1.761,25.16,10.819,33.4C676.12,507,682.4,587.138,682.4,587.138l-13.738,52.491h160.4a35.264,35.264,0,0,0,35.267-35.272V584.919c-10.12-16.379-18.43-24.617-18.43-24.617L817.214,447.443l43.928-.76,3.2-.06Z" transform="translate(363.971 70.215)" class="ink"/>
 <circle cx="59.01" cy="59.01" r="59.01" transform="translate(1012.641 340.754) rotate(-45)" class="skin"/>
-<path d="M653,294.246h23.34l10.3-28.831,2.059,28.831h11.156l6.006-16.818,1.2,16.818h82.89a62.468,62.468,0,0,0-62.468-62.468H715.468A62.468,62.468,0,0,0,653,294.245Z" transform="translate(370.757 45.016)" class="ink"/></g></svg></div><span class="photo-tag">A good photo looks like this</span></div>
+<path d="M653,294.246h23.34l10.3-28.831,2.059,28.831h11.156l6.006-16.818,1.2,16.818h82.89a62.468,62.468,0,0,0-62.468-62.468H715.468A62.468,62.468,0,0,0,653,294.245Z" transform="translate(370.757 45.016)" class="ink"/></g></svg></div><span class="photo-tag">A good photo</span></div>
         </div>
       </div>
       <div class="spec">
-        <span class="spec-label">Camera · viewfinder · hint · shutter (2.4)</span>
+        <span class="spec-label">Camera · compact stepper · viewfinder · hint · shutter (2.4)</span>
         <div class="stage cam tabbar-stage">
-          <div class="cam-top"><a class="close" href="#ordering" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></a><h3>Step 2 of 3 · Photo</h3><span></span></div>
+          <div class="cam-top"><a class="close" href="#ordering" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></a><div class="steps compact" aria-label="Step 2 of 3: Spot"><div class="step done"><span class="n"><svg class="i"><use href="#i-check"/></svg></span>Cart</div><span class="bar done"></span><div class="step current"><span class="n">2</span>Spot</div><span class="bar"></span><div class="step"><span class="n">3</span>Payment</div></div><span></span></div>
           <div class="viewfinder ds-viewfinder"><img src="../assets/pictures/web/spot-tall.jpg" alt=""><div class="pip"><svg class="illo-color" viewBox="329 50 244 333" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false"><g transform="translate(-655 -180)"><path d="M864.338,196.984V644a35.264,35.264,0,0,1-35.272,35.268H655.35A35.266,35.266,0,0,1,620.083,644V196.984a35.266,35.266,0,0,1,35.269-35.268h21.081A16.755,16.755,0,0,0,691.945,184.8h99.048A16.762,16.762,0,0,0,806.5,161.716h22.567a35.266,35.266,0,0,1,35.267,35.269Z" transform="translate(363.972 30.573)" class="screen"/>
 <path d="M312.558,263.319l-14.052,31.01-25.691,56.7V250.739Z" transform="translate(711.238 231.688)" class="skin"/>
 <path d="M812.454,327.594c0,42.461-39.262,36.039-87.7,36.039s-87.7,6.422-87.7-36.039,19.179-117.728,87.7-117.728C795.636,209.866,812.454,285.132,812.454,327.594Z" transform="translate(367.472 40.499)" class="ink"/>
@@ -839,7 +845,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
 <path d="M828.135,435.73l3.2,19.974V593.408a35,35,0,0,1-4.571,17.369l-32.107-56.291L783.085,436.6,780.2,407.156l43.505.917Z" transform="translate(396.979 81.168)" class="skin"/>
 <path d="M864.338,441.834c-1.544-5.018-4.161-13.5-7.164-22.953-5.283-16.657-11.748-36.377-15.583-45.773-7.321-17.935-44.627-10.747-44.627-10.747l-127.815-4.788s-4.764-.627-26.2-3.474c-8.986-1.194-16.814,11.4-22.868,26.439v47.341l29.78,2.268a107.475,107.475,0,0,0-4.089,25.655c-.338,11.88,1.761,25.16,10.819,33.4C676.12,507,682.4,587.138,682.4,587.138l-13.738,52.491h160.4a35.264,35.264,0,0,0,35.267-35.272V584.919c-10.12-16.379-18.43-24.617-18.43-24.617L817.214,447.443l43.928-.76,3.2-.06Z" transform="translate(363.971 70.215)" class="ink"/>
 <circle cx="59.01" cy="59.01" r="59.01" transform="translate(1012.641 340.754) rotate(-45)" class="skin"/>
-<path d="M653,294.246h23.34l10.3-28.831,2.059,28.831h11.156l6.006-16.818,1.2,16.818h82.89a62.468,62.468,0,0,0-62.468-62.468H715.468A62.468,62.468,0,0,0,653,294.245Z" transform="translate(370.757 45.016)" class="ink"/></g></svg></div><span class="hint">Show where you’re sitting</span></div>
+<path d="M653,294.246h23.34l10.3-28.831,2.059,28.831h11.156l6.006-16.818,1.2,16.818h82.89a62.468,62.468,0,0,0-62.468-62.468H715.468A62.468,62.468,0,0,0,653,294.245Z" transform="translate(370.757 45.016)" class="ink"/></g></svg></div><span class="hint">First, a selfie</span></div>
           <div class="cam-controls"><button class="shutter" aria-label="Take photo"></button><button class="side" aria-label="Help"><svg class="i"><use href="#i-help"/></svg></button></div>
         </div>
       </div>
@@ -854,7 +860,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
         <div class="stage">
           <div class="spot-card">
             <span class="thumb"><img src="../assets/pictures/web/spot.jpg" alt=""></span>
-            <div class="spot-body"><span class="t-group muted">Deliver to</span><span class="spot-title">Saaripaahtimo · Your spot</span><span class="done-line">Photo added<svg class="i"><use href="#i-check"/></svg></span></div>
+            <div class="spot-body"><span class="t-group muted">Deliver to</span><span class="spot-title">Your spot near Saaripaahtimo</span><span class="done-line">Photo added<svg class="i"><use href="#i-check"/></svg></span></div>
             <a class="btn-text sm" href="#ordering">Change</a>
           </div>
           <label class="option"><span class="pay-mark ink"><svg class="i"><use href="#i-wallet"/></svg></span><span class="label">Apple Pay</span><input type="radio" name="ds-pay" checked></label>
@@ -869,7 +875,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
           <div class="sheet system">
             <span class="grabber"></span>
             <a class="pay-row" href="#ordering"><span class="pay-mark"><svg class="i"><use href="#i-card"/></svg></span><span class="num">Card •••• 4242</span><svg class="i chev"><use href="#i-chev-r"/></svg></a>
-            <div class="summary"><div class="line"><span>Saaripaahtimo</span><span>€11.20</span></div><div class="line"><span>Delivery</span><span>€0.50</span></div><div class="total"><span>Pay Shoot</span><span>€11.70</span></div></div>
+            <div class="summary"><div class="line"><span>Subtotal</span><span>€11.20</span></div><div class="line"><span>Delivery</span><span>€0.50</span></div><div class="total"><span>Pay Saaripaahtimo</span><span>€11.70</span></div></div>
             <button class="btn btn-ink"><svg class="i"><use href="#i-face-id"/></svg>Confirm with Face ID</button>
           </div>
         </div>
@@ -902,11 +908,11 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
             <div class="eta-row"><span class="eta">~2 min</span><span class="eta-at">at 9:51</span><span class="t-cap muted eta-step">Step 3 of 4</span></div>
             <div class="stack-2">
               <div class="progress"><span class="done"></span><span class="done"></span><span class="done now"></span><span></span></div>
-              <div class="progress-labels"><span>Received</span><span>Prepared</span><b>On the way</b><span>Delivered</span></div>
+              <div class="progress-labels"><span>Received</span><span>Preparing</span><b>On the way</b><span>Delivered</span></div>
             </div>
           </article>
         </div>
-        <p class="note">Add <code>.now</code> to the current segment of <code>.progress</code>. Status labels follow the wireframe: Received → Prepared → On the way → Delivered.</p>
+        <p class="note">Add <code>.now</code> to the current segment of <code>.progress</code>. Status labels: Received → Preparing → On the way → Delivered.</p>
       </div>
       <div class="spec">
         <span class="spec-label">Live map · courier, route, you · map tags (4.2)</span>
@@ -939,7 +945,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
           <div class="row-wrap"><span class="avatar">E</span><span class="avatar sm">E</span></div>
           <div class="courier-card">
             <span class="avatar">E</span>
-            <div class="courier-body"><span class="courier-name">Eetu is bringing it</span><span class="cafe-meta"><span class="seg">Café staff ·</span> <span class="seg">has your photo</span></span></div>
+            <div class="courier-body"><span class="courier-name">Eetu, café staff</span><span class="cafe-meta">Has your photo</span></div>
             <a class="btn btn-primary btn-small" href="#tracking">Message</a>
           </div>
         </div>
@@ -962,6 +968,21 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
           </div>
         </div>
         <p class="note">Incoming: white bubble. Yours: brown bubble with cream text (9.91:1). No call button anywhere.</p>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Delivered · privacy kept · receipt (4.2b, 4.2)</span>
+        <div class="stage">
+          <div class="banner success"><span class="badge-ic"><svg class="i"><use href="#i-pin-off"/></svg></span><div class="banner-body"><span class="banner-title">Location sharing stopped</span><span class="banner-text">Saaripaahtimo can no longer see where you are.</span></div></div>
+          <div class="banner success"><span class="badge-ic"><svg class="i"><use href="#i-check"/></svg></span><div class="banner-body"><span class="banner-title">Your photo was deleted</span><span class="banner-text">It was only for this order.</span></div></div>
+          <section class="track-card">
+            <div class="courier-card"><span class="avatar">E</span><div class="courier-body"><span class="courier-name">Eetu, café staff</span><span class="cafe-meta">Has your photo</span></div><a class="btn btn-primary btn-small" href="#tracking">Message</a></div>
+            <details class="receipt" open>
+            <summary><span>3 items</span><span class="num">€11.70</span><svg class="i" aria-hidden="true"><use href="#i-chev-d"/></svg></summary>
+            <div class="summary"><div class="line"><span>1× Cappuccino, oat milk</span><span>€4.20</span></div><div class="line"><span>2× Croissant</span><span>€7.00</span></div><div class="line"><span>Delivery</span><span>€0.50</span></div><div class="total"><span>Paid with Apple Pay</span><span>€11.70</span></div></div>
+          </details>
+          </section>
+        </div>
+        <p class="note">At delivery the map is replaced by two olive confirmations: the promise "until delivery" is kept on screen. Courier and receipt share one track card under the map: the receipt row stays collapsed and opens to items and payment, and the map keeps a 220 px floor so it never shrinks under it.</p>
       </div>
     </div>
   </section>
@@ -1073,6 +1094,37 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
           </div>
         </div>
         <p class="note">On E2 the small frame shows the “you” illustration from the camera screens.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== AGAIN / GROUP / PICKUP -->
+  <section class="section" id="group">
+    <h2>Order again, group order, pickup</h2>
+    <p class="lede">Added on 7 Nov 2026 from DESIGN.md (no wireframes). Reordering is one tap from Home; a group order collects everyone's items into one delivery; pickup puts the order number first.</p>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">Order again card (1.6) · chip with icon (2.1)</span>
+        <div class="stage">
+          <div class="again"><div class="again-body"><span class="cafe-name">Saaripaahtimo</span><span class="cafe-meta">Cappuccino, 2 croissants</span><span class="menu-price num">€11.70</span></div><a class="btn btn-primary btn-small" href="#group"><svg class="i lead"><use href="#i-again"/></svg>Order again</a></div>
+          <div class="row-wrap"><a class="chip" href="#group"><svg class="i"><use href="#i-users"/></svg>Order together</a></div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">People · person head · invite (G1, G2)</span>
+        <div class="stage">
+          <div class="people"><span class="stack"><span class="avatar you">A</span><span class="avatar">V</span><span class="avatar">S</span><span class="avatar waiting">J</span></span><span class="t-sub"><b>3 joined</b> <span class="muted">· Joona is choosing</span></span></div>
+          <div class="person-head"><span class="avatar you">A</span>Aino (you)<span class="muted">1 item</span></div>
+          <div class="person-head waiting"><span class="avatar">J</span>Joona<span class="muted">Still choosing…</span></div>
+          <div class="invite"><svg class="qr-code" viewBox="-2 -2 25 25" aria-hidden="true" focusable="false"><rect class="light" x="-2" y="-2" width="25" height="25" rx="2"/><rect x="0" y="0" width="7" height="7"/><rect class="light" x="1" y="1" width="5" height="5"/><rect x="2" y="2" width="3" height="3"/><rect x="14" y="0" width="7" height="7"/><rect class="light" x="15" y="1" width="5" height="5"/><rect x="16" y="2" width="3" height="3"/><rect x="0" y="14" width="7" height="7"/><rect class="light" x="1" y="15" width="5" height="5"/><rect x="2" y="16" width="3" height="3"/><rect x="8" y="0" width="1" height="1"/><rect x="9" y="0" width="1" height="1"/><rect x="11" y="0" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="9" y="1" width="1" height="1"/><rect x="11" y="1" width="1" height="1"/><rect x="12" y="1" width="1" height="1"/><rect x="8" y="2" width="1" height="1"/><rect x="9" y="2" width="1" height="1"/><rect x="10" y="2" width="1" height="1"/><rect x="12" y="2" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="12" y="3" width="1" height="1"/><rect x="9" y="4" width="1" height="1"/><rect x="11" y="4" width="1" height="1"/><rect x="12" y="4" width="1" height="1"/><rect x="8" y="5" width="1" height="1"/><rect x="9" y="5" width="1" height="1"/><rect x="11" y="5" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="11" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="10" y="7" width="1" height="1"/><rect x="11" y="7" width="1" height="1"/><rect x="0" y="8" width="1" height="1"/><rect x="1" y="8" width="1" height="1"/><rect x="4" y="8" width="1" height="1"/><rect x="9" y="8" width="1" height="1"/><rect x="11" y="8" width="1" height="1"/><rect x="12" y="8" width="1" height="1"/><rect x="14" y="8" width="1" height="1"/><rect x="16" y="8" width="1" height="1"/><rect x="0" y="9" width="1" height="1"/><rect x="4" y="9" width="1" height="1"/><rect x="7" y="9" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/><rect x="14" y="9" width="1" height="1"/><rect x="15" y="9" width="1" height="1"/><rect x="17" y="9" width="1" height="1"/><rect x="18" y="9" width="1" height="1"/><rect x="19" y="9" width="1" height="1"/><rect x="20" y="9" width="1" height="1"/><rect x="0" y="10" width="1" height="1"/><rect x="2" y="10" width="1" height="1"/><rect x="3" y="10" width="1" height="1"/><rect x="4" y="10" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="7" y="10" width="1" height="1"/><rect x="12" y="10" width="1" height="1"/><rect x="13" y="10" width="1" height="1"/><rect x="14" y="10" width="1" height="1"/><rect x="17" y="10" width="1" height="1"/><rect x="18" y="10" width="1" height="1"/><rect x="19" y="10" width="1" height="1"/><rect x="20" y="10" width="1" height="1"/><rect x="2" y="11" width="1" height="1"/><rect x="3" y="11" width="1" height="1"/><rect x="4" y="11" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="12" y="11" width="1" height="1"/><rect x="17" y="11" width="1" height="1"/><rect x="18" y="11" width="1" height="1"/><rect x="19" y="11" width="1" height="1"/><rect x="0" y="12" width="1" height="1"/><rect x="1" y="12" width="1" height="1"/><rect x="2" y="12" width="1" height="1"/><rect x="3" y="12" width="1" height="1"/><rect x="4" y="12" width="1" height="1"/><rect x="5" y="12" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="7" y="12" width="1" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="9" y="12" width="1" height="1"/><rect x="10" y="12" width="1" height="1"/><rect x="13" y="12" width="1" height="1"/><rect x="14" y="12" width="1" height="1"/><rect x="15" y="12" width="1" height="1"/><rect x="16" y="12" width="1" height="1"/><rect x="17" y="12" width="1" height="1"/><rect x="20" y="12" width="1" height="1"/><rect x="9" y="13" width="1" height="1"/><rect x="10" y="13" width="1" height="1"/><rect x="11" y="13" width="1" height="1"/><rect x="12" y="13" width="1" height="1"/><rect x="14" y="13" width="1" height="1"/><rect x="15" y="13" width="1" height="1"/><rect x="18" y="13" width="1" height="1"/><rect x="20" y="13" width="1" height="1"/><rect x="12" y="14" width="1" height="1"/><rect x="13" y="14" width="1" height="1"/><rect x="14" y="14" width="1" height="1"/><rect x="18" y="14" width="1" height="1"/><rect x="19" y="14" width="1" height="1"/><rect x="13" y="15" width="1" height="1"/><rect x="15" y="15" width="1" height="1"/><rect x="16" y="15" width="1" height="1"/><rect x="17" y="15" width="1" height="1"/><rect x="18" y="15" width="1" height="1"/><rect x="19" y="15" width="1" height="1"/><rect x="9" y="16" width="1" height="1"/><rect x="13" y="16" width="1" height="1"/><rect x="14" y="16" width="1" height="1"/><rect x="15" y="16" width="1" height="1"/><rect x="16" y="16" width="1" height="1"/><rect x="17" y="16" width="1" height="1"/><rect x="8" y="17" width="1" height="1"/><rect x="11" y="17" width="1" height="1"/><rect x="16" y="17" width="1" height="1"/><rect x="17" y="17" width="1" height="1"/><rect x="19" y="17" width="1" height="1"/><rect x="9" y="18" width="1" height="1"/><rect x="10" y="18" width="1" height="1"/><rect x="13" y="18" width="1" height="1"/><rect x="14" y="18" width="1" height="1"/><rect x="15" y="18" width="1" height="1"/><rect x="18" y="18" width="1" height="1"/><rect x="9" y="19" width="1" height="1"/><rect x="11" y="19" width="1" height="1"/><rect x="12" y="19" width="1" height="1"/><rect x="17" y="19" width="1" height="1"/><rect x="20" y="19" width="1" height="1"/><rect x="8" y="20" width="1" height="1"/><rect x="9" y="20" width="1" height="1"/><rect x="10" y="20" width="1" height="1"/><rect x="12" y="20" width="1" height="1"/><rect x="13" y="20" width="1" height="1"/><rect x="14" y="20" width="1" height="1"/><rect x="16" y="20" width="1" height="1"/><rect x="17" y="20" width="1" height="1"/><rect x="20" y="20" width="1" height="1"/></svg><span class="link num">shoot.app/g/7KQ2</span></div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Pickup code (4.5) · map card (E9b)</span>
+        <div class="stage">
+          <section class="pickup-code"><span class="t-group muted">Show this at the counter</span><span class="code">#2041</span><span class="t-sub muted">Ready in ~6 min · they’ll keep it for you</span></section>
+          <div class="map live"><div class="map-card"><span class="t-sub muted">Back to your spot</span><span class="big">120 m · 2 min walk</span><span class="t-sub num">Eetu is waiting there · <b>4:12</b></span></div></div>
+        </div>
       </div>
     </div>
   </section>

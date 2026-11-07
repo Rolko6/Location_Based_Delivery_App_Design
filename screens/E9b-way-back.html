@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · E9b The way back</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* E9b The way back – layout only. Values: tokens.css. Components: components.css. */
+.way { gap: var(--space-3-5); }
+.way .map.live { flex: 1; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="E9b The way back">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:52</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen way">
+    <nav class="nav-inline"><a class="back" href="E9-courier-cant-find-you.html" aria-label="Back"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></a><h1>The way back</h1></nav>
+
+    <div class="map live">
+      <svg viewBox="0 0 342 520" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map: walking route from you back to your last spot, where Eetu is waiting, 120 m">
+        <path class="park" d="M-10 260C40 240 86 266 104 310c14 34 0 66-20 90H-10Z"/>
+        <path class="park" d="M230 60c8 40 50 62 122 54V60Z"/>
+        <path class="road" stroke-width="12" d="M-10 172c90 14 230-14 362 2"/>
+        <path class="road" stroke-width="8" d="M114 60c-6 50 4 104 36 148s48 90 50 312"/>
+        <path class="road" stroke-width="6" d="M352 330c-60-6-110 20-140 46"/>
+        <path class="road" stroke-width="5" d="M-10 420c70-14 120-6 196 10"/>
+        <path class="route" d="M232 392c-10-30-18-60-30-96s-26-60-46-80-28-24-34-26"/>
+        <path class="route-head" d="M131 203l-8.5-1.8 4.5-7.4"/>
+        <circle class="pulse" cx="112" cy="196" r="16"/>
+        <rect class="spot-mark" x="98" y="182" width="28" height="28" rx="7"/>
+        <text class="courier-initial" x="112" y="196" text-anchor="middle" dominant-baseline="central">E</text>
+        <circle class="halo" cx="238" cy="398" r="22"/>
+        <circle class="pin" cx="238" cy="398" r="9"/>
+      </svg>
+      <div class="map-card">
+        <span class="t-sub muted">Back to your spot</span>
+        <span class="big">120 m · 2 min walk</span>
+        <span class="t-sub num">Eetu is waiting there · <b id="timer">4:12</b></span>
+      </div>
+    </div>
+
+    <footer class="screen-footer">
+      <a class="btn btn-primary" href="4.3-message-courier.html">Message Eetu</a>
+    </footer>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

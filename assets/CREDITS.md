@@ -3,4 +3,4 @@
 - Photos (`assets/pictures/`): Unsplash (https://unsplash.com), Unsplash License – free for commercial use, no attribution required
   - Café photos: `coffee_shop_1.jpg`, `coffee_shop_2.jpg`, `coffee_shop_3.jpg` → café cards (crops avoid real shop names and flags)
   - Product photos: `espresso.jpg`, `americano.jpg`, `cappucino.jpg`, `croissant.jpg` → menu and cart items
-  - Web crops in `assets/pictures/web/`: 480 × 480 thumbnails; `coffee-shop-3-cover.jpg` (menu header), `counter-tall.jpg` (QR camera) from coffee_shop_3; `spot*.jpg` (customer spot example) from coffee_shop_2, cropped below the shop sign; `coffee-shop-2-cover.jpg` (menu header, 3.2) from coffee_shop_2, cropped below the shop sign
+  - Web crops in `assets/pictures/web/`: 480 × 480 thumbnails; `coffee-shop-3-cover.jpg` (menu header), `counter-tall.jpg` (QR camera) from coffee_shop_3; `spot*.jpg` (customer spot example) from coffee_shop_3, cropped to the empty stools and deck so no faces are shown; `coffee-shop-2-cover.jpg` (menu header, 3.2) from coffee_shop_2, cropped below the shop sign

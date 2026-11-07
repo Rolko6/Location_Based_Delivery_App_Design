@@ -18,7 +18,6 @@
 .flow .scroll::-webkit-scrollbar { display: none; }
 .flow .scroll > * { margin: 0; }
 
-.sheet.system { z-index: 3; }
 </style>
 </head>
 <body class="screen-page">
@@ -32,17 +31,16 @@
       <svg class="i battery"><use href="#i-battery"/></svg>
     </span>
   </div>
-  <div class="screen flow" aria-hidden="true">
+  <div class="screen flow" aria-hidden="true" inert>
     <div class="scroll">
-      <nav class="nav-inline"><a class="back" href="2.7-checkout-payment-method.html" tabindex="-1"><svg class="i"><use href="#i-back"/></svg></a><h1>Pay</h1></nav>
-      <p class="muted">Step 3 of 3 · Pay</p>
+      <nav class="nav-inline"><span class="back"><svg class="i"><use href="#i-back"/></svg></span><h1>Checkout</h1></nav>
+      <div class="steps" aria-label="Step 3 of 3: Payment"><div class="step done"><span class="n"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>Cart</div><span class="bar done"></span><div class="step done"><span class="n"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>Spot</div><span class="bar done"></span><div class="step current" aria-current="step"><span class="n">3</span>Payment</div></div>
       <div class="spot-card">
-        <span class="thumb"><img src="../assets/pictures/web/spot.jpg" alt="" loading="lazy"></span>
-        <div class="spot-body">
-          <span class="spot-title">Spot confirmed · photo added</span>
-          <span class="cafe-meta num">Saaripaahtimo · 3 items · 40 m</span>
-        </div>
+        <span class="thumb"><img src="../assets/pictures/web/spot.jpg" alt=""></span>
+        <div class="spot-body"><span class="t-group muted">Deliver to</span><span class="spot-title">Your spot near Saaripaahtimo</span><span class="done-line">Photo added<svg class="i"><use href="#i-check"/></svg></span></div>
+        <span class="btn-text sm">Change</span>
       </div>
+      <div class="option"><span class="pay-mark ink"><svg class="i"><use href="#i-wallet"/></svg></span><span class="label">Apple Pay</span></div>
     </div>
   </div>
 
@@ -53,9 +51,9 @@
     <span class="grabber"></span>
     <a class="pay-row" href="#change-card"><span class="pay-mark"><svg class="i" aria-hidden="true"><use href="#i-card"/></svg></span><span class="num">Card •••• 4242</span><svg class="i chev" aria-hidden="true"><use href="#i-chev-r"/></svg></a>
     <div class="summary">
-      <div class="line"><span>Saaripaahtimo</span><span>€11.20</span></div>
+      <div class="line"><span>Subtotal</span><span>€11.20</span></div>
       <div class="line"><span>Delivery</span><span>€0.50</span></div>
-      <div class="total"><span>Pay Shoot</span><span>€11.70</span></div>
+      <div class="total"><span>Pay Saaripaahtimo</span><span>€11.70</span></div>
     </div>
     <a class="btn btn-ink" href="2.9-order-sent.html"><svg class="i" aria-hidden="true"><use href="#i-face-id"/></svg>Confirm with Face ID</a>
   </div>

@@ -159,13 +159,29 @@ Build in the order below: main flow first, then edge cases.
 | 2.1 | `2.1-cafe-menu.png` | Café menu |
 | 2.2 | `2.2-cart.png` | Cart |
 | 2.3 | `2.3-confirm-your-spot.png` | Confirm your spot |
-| 2.4 | `2.4-photo-front-back.png` | Photo (front / back camera) |
+| 2.3b | – (no wireframe, from the 2.3 "Map" link) | Your spot on the map (sheet) |
+| 2.4 | `2.4-photo-front-back.png` | Photo: first press takes the selfie, then the view flips to the back camera |
+| 2.4b | – (state of 2.4, no own wireframe) | Photo: second shot (selfie taken and in the corner, back camera live) |
+| 2.4c | – (no wireframe, from the camera "?" button) | Photo tips (sheet) |
 | 2.5 | `2.5-photo-review.png` | Photo review |
 | 2.6 | `2.6-scan-spot-qr.png` | Scan spot QR |
 | 2.7 | `2.7-checkout-payment-method.png` | Checkout – payment method |
 | 2.8 | `2.8-apple-google-pay-sheet.png` | Apple Pay / Google Pay sheet |
-| 2.9 | `2.9-order-sent.png` | Order sent |
+| 2.9 | `2.9-order-sent.png` | Order sent (short success moment, opens tracking 4.2 by itself) |
 | 2.10 | `2.10-orders.png` | Orders |
+
+### Added 2026-11-07 (no wireframes; designed from DESIGN.md at the user's request)
+| ID | File | Screen |
+|---|---|---|
+| G1 | – | Order together: invite sheet over the menu (QR + share link) |
+| G2 | – | Group cart: items per person, who pays (host chooses) |
+| G3 | – | Join a group order: menu as seen by an invited friend |
+| 2.2b | – | Cart filled by "Order again" (Kampuskuppi) |
+| 4.4 | – | All orders ("View all") |
+| 4.5 | – | Pick up at the counter (from E8 / E9) |
+| E9b | – | The way back (walking map from E9) |
+
+"Order again" lives on Home (1.6) and on delivered / past orders (4.2b, 4.2c, 4.2d).
 
 ### UC-03 Café list – edge cases
 | ID | File | Screen |
@@ -178,6 +194,8 @@ Build in the order below: main flow first, then edge cases.
 |---|---|---|
 | 4.1 | `4.1-orders-tab.png` | Orders tab |
 | 4.2 | `4.2-order-status.png` | Order status |
+| 4.2b | – (no wireframe, decided 2026-11-07) | Order delivered: location sharing stopped, photo deleted |
+| 4.2c / 4.2d | – (no wireframe) | Past orders opened from "Earlier" (Kampuskuppi #2017, Saaripaahtimo #1987) |
 | 4.3 | `4.3-message-courier.png` | Message the courier |
 
 ### UC-02 Ordering – edge cases
@@ -197,8 +215,6 @@ Build in the order below: main flow first, then edge cases.
 Edge cases reuse the components of the main flow (same cards, buttons, sheets). Design them as states or sheets, not as new layouts.
 
 ### Not wireframed yet (don't design until I add wireframes)
-- Group order (C2, C3)
-- "Order again" / one-tap reorder (C5)
 - Merchant app: incoming orders, delivery radius, pause orders, sold out (M1–M4)
 - Runner view (phase 2)
 

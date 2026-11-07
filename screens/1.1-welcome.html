@@ -16,8 +16,7 @@
 
 .welcome-brand { flex: none; display: flex; justify-content: center; padding-top: var(--space-5); }
 
-.welcome-intro { flex: none; display: grid; gap: var(--space-3); margin-top: var(--space-10); }
-.welcome-intro .t-group { color: var(--ink-2); }
+.welcome-intro { flex: none; display: grid; gap: var(--space-3); margin-top: var(--space-12); }
 .welcome-intro h1 { margin: 0; text-wrap: balance; }
 .welcome-intro p { margin: 0; color: var(--ink-2); text-wrap: balance; }
 
@@ -43,9 +42,8 @@
     </header>
 
     <section class="welcome-intro" aria-labelledby="welcome-title">
-      <span class="t-group">Order without the queue</span>
       <h1 class="display" id="welcome-title">Your favourites, delivered right to <span class="text-accent">your spot.</span></h1>
-      <p class="t-body">At a table, in your seat, or anywhere at the venue. Order, relax, and we’ll find you.</p>
+      <p class="t-body">Skip the queue. The café brings it to you.</p>
     </section>
 
     <div class="welcome-art">
@@ -64,5 +62,6 @@
   <span class="home-indicator" aria-hidden="true"></span>
 </main>
 
+<script>try { localStorage.removeItem('shoot-has-ordered'); } catch (e) {}</script>
 </body>
 </html>

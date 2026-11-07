@@ -40,19 +40,21 @@ Success: a customer gets from opening the app to a paid order in as few steps as
 ## Operating Context
 
 - Location: Oulu, Finland: Linnanmaa campus, Hupisaaret park, Kauppatori market square. Outdoor use in sunlight, crowds, one hand busy.
-- Customer flow: sign-up (phone + SMS code + location permission only) → café list (in range / out of range) → menu → cart → confirm your spot (photo, or scan the spot's QR code) → checkout → Apple Pay / Google Pay → order sent → live tracking (Received → Prepared → On the way → Delivered) → in-app messages with the courier.
+- Customer flow: sign-up (phone + SMS code + location permission only) → café list (in range / out of range) → menu → cart → confirm your spot (photo, or scan the spot's QR code) → checkout → Apple Pay / Google Pay → order sent → live tracking (Received → Preparing → On the way → Delivered) → in-app messages with the courier.
 - Communication happens in the app (status updates, short messages, quick replies). No phone calls.
 - Out of range: the menu stays browsable but ordering is disabled. If the customer moves out of range or leaves the area while the order is prepared, the app says so and lets them update their spot.
 
 ## Capabilities and Constraints
 
 - Sign-up is phone number + SMS code + location permission, nothing else. The photo is taken per order, never during sign-up.
-- The photo is proof of location; it is shared only with that café, only for that order.
+- The photo is proof of location; it is shared only with that café, only for that order, and **deleted when the order is delivered**. Location sharing stops at delivery too; the Delivered screen says both.
 - Payment: Apple Pay / Google Pay, saved cards.
 - Delivery fee is shown as a separate line (example amount €0.50).
 - **Terminology:** say "courier" in the customer UI, never "our couriers". The courier belongs to the café; any employment agreement is between the café and the runner, never the platform.
-- **Not designed until wireframes exist:** group order, one-tap "Order again", Profile tab, merchant app, runner view.
-- **Undecided:** group order payment (one person pays or split), runner order assignment when a café has several runners, refund policy when the customer leaves the area (E8), how the end of location sharing after delivery is shown (C8).
+- **Not designed until wireframes exist:** Profile tab, merchant app, runner view.
+- **Group order:** the host shares a link / QR code, friends add their own items, the host chooses who pays (one for all, or each their own). One delivery, one photo (the host's).
+- **Refunds:** full refund while an order is only Received; none once the café is preparing (pick-up at the counter instead).
+- **Undecided:** runner order assignment when a café has several runners.
 - Language: English now, **Finnish to be added later**. Copy and layouts must leave room for longer Finnish words.
 
 ## Brand Commitments

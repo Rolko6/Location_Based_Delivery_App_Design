@@ -161,6 +161,7 @@
   --size-badge-icon: 32px;
   --size-pill-h:     36px;
   --size-step:       32px;
+  --size-step-sm:    24px;   /* compact stepper in the camera header */
   --size-tab-pill-w: 60px;
   --size-tab-pill-h: 32px;
   --size-navbar:     52px;
@@ -238,6 +239,7 @@
      ------------------------------------------------------------------------ */
   --opacity-muted: .5;     /* sold-out thumbnails */
   --z-sticky: 10;
+  --z-overlay: 5;          /* scrim + bottom sheet above everything on the screen behind */
 }
 
 /* --------------------------------------------------------------------------
@@ -346,6 +348,7 @@
   --map-road:         var(--white);
   --map-park:         color-mix(in srgb, var(--olive) 30%, var(--sand));
   --map-h:            120px;   /* map preview height in the alert */
+  --map-h-lg:         220px;   /* map in the "your spot" sheet (2.3b) */
   --illo-lg:          200px;   /* round illustration (1.4, 1.5) */
   --dur-otp-advance:  .45s;    /* pause before auto-continue after the 6th digit */
 }
@@ -365,6 +368,7 @@
   --size-pip-sm:     78px;    /* inset in the example photo (2.3) */
   --ratio-pip:       11 / 15;
   --ratio-example:   2 / 1;
+  --ratio-example-tall: 3 / 2;  /* example photo when it is the main thing on the screen (2.3) */
   --hint-bg:         color-mix(in srgb, var(--brown) 78%, transparent);
   --cam-dim:         rgba(74, 44, 30, .5);    /* camera view outside the QR frame */
   --size-qr:         230px;
@@ -420,4 +424,14 @@
   --size-pair-w:     116px;       /* back-camera frame in the photo pair (E2) */
   --size-pair-sm-w:  68px;        /* front-camera frame in the photo pair (E2) */
   --strike:          line-through;
+}
+
+/* --------------------------------------------------------------------------
+   19. ORDER AGAIN · GROUP ORDER · PICKUP (2026-11-07)
+   -------------------------------------------------------------------------- */
+:root {
+  --avatar-overlap:  -10px;   /* stacked avatars in a group order */
+  --size-avatar-xs:  32px;    /* person row in the group cart */
+  --fs-code:         48px;    /* order number shown at the counter */
+  --size-invite-qr:  168px;   /* group invite code */
 }

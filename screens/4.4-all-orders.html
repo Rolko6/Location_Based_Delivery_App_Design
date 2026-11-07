@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 4.4 All orders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 4.4 All orders – opened from "View all". Layout only. Values: tokens.css. Components: components.css. */
+.orders { padding-bottom: var(--space-4); gap: var(--space-5); overflow-y: auto; scrollbar-width: none; }
+.orders::-webkit-scrollbar { display: none; }
+.orders .nav-inline { margin-top: var(--space-1); }
+.order-link { display: block; color: inherit; text-decoration: none; border-radius: var(--radius-card); }
+.earlier { display: grid; gap: var(--space-3); margin-top: var(--space-2); }
+.end-note { margin: 0; text-align: center; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="4.4 All orders">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:49</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen orders">
+    <nav class="nav-inline"><a class="back" href="4.1-orders-tab.html" aria-label="Back to orders"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></a><h1>All orders</h1></nav>
+
+    <a class="order-link" href="4.2-order-status.html" aria-label="Order 2041 from Saaripaahtimo, on the way, arriving at 9:51">
+      <article class="order-card live">
+        <div class="order-top"><span class="t-cap">In progress</span><span class="t-cap muted num">Order #2041</span></div>
+        <div class="order-main">
+          <span class="thumb"><img src="../assets/pictures/web/coffee-shop-3.jpg" alt="" loading="lazy"></span>
+          <div class="cafe-body"><span class="cafe-name">Saaripaahtimo</span><span class="cafe-meta">3 items · to your spot</span><span class="order-status">On the way</span></div>
+          <svg class="i chev" aria-hidden="true"><use href="#i-chev-r"/></svg>
+        </div>
+        <div class="progress" aria-label="Step 3 of 4: on the way"><span class="done"></span><span class="done"></span><span class="done now"></span><span></span></div>
+        <span class="t-sub muted num">Arriving at 9:51 · in ~2 min</span>
+      </article>
+    </a>
+
+    <section class="earlier" aria-labelledby="earlier">
+      <h2 class="t-group muted flush list-month" id="earlier">November</h2>
+      <a class="order-link" href="4.2c-past-order.html" aria-label="Past order from Kampuskuppi"><div class="history">
+        <span class="thumb"><img src="../assets/pictures/web/coffee-shop-1.jpg" alt="" loading="lazy"></span>
+        <div class="cafe-body"><span class="cafe-name">Kampuskuppi</span><span class="cafe-meta num">5 Nov · 1 item</span><span class="menu-price num">€4.20</span></div>
+        <span class="badge badge-neutral badge-success"><span class="dot"></span>Delivered</span><svg class="i chev" aria-hidden="true"><use href="#i-chev-r"/></svg>
+      </div></a>
+      <a class="order-link" href="4.2d-past-order.html" aria-label="Past order from Saaripaahtimo"><div class="history">
+        <span class="thumb"><img src="../assets/pictures/web/coffee-shop-3.jpg" alt="" loading="lazy"></span>
+        <div class="cafe-body"><span class="cafe-name">Saaripaahtimo</span><span class="cafe-meta num">2 Nov · 3 items</span><span class="menu-price num">€11.70</span></div>
+        <span class="badge badge-neutral badge-success"><span class="dot"></span>Delivered</span><svg class="i chev" aria-hidden="true"><use href="#i-chev-r"/></svg>
+      </div></a>
+    </section>
+    <p class="t-sub muted end-note">That’s all your orders so far.</p>
+  </div>
+
+  <nav class="tabbar" aria-label="Main">
+    <a class="tab" href="1.6-cafe-list-home.html"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span>Home</a>
+    <a class="tab" href="4.1-orders-tab.html" aria-current="page" aria-selected="true"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></span>Orders</a>
+    <a class="tab" href="#profile"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg></span>Profile</a>
+  </nav>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 4.5 Pick up at the counter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 4.5 Pick up at the counter – layout only. Values: tokens.css. Components: components.css. */
+.status { padding-bottom: var(--space-4); gap: var(--space-3-5); overflow-y: auto; scrollbar-width: none; }
+.status::-webkit-scrollbar { display: none; }
+.status .nav-inline { margin-bottom: var(--space-1); }
+.map-tag .i { width: var(--icon-sm); height: var(--icon-sm); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="4.5 Pick up at the counter">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:46</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen status">
+    <nav class="nav-inline">
+      <a class="back" href="E8-left-area-while-preparing.html" aria-label="Back"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></a>
+      <div class="nav-titles"><h1>Pick up at the counter</h1><span class="nav-sub">Saaripaahtimo</span></div>
+    </nav>
+
+    <section class="pickup-code" aria-label="Your order number">
+      <span class="t-group muted">Show this at the counter</span>
+      <span class="code">#2041</span>
+      <span class="t-sub muted">Ready in ~6 min · they’ll keep it for you</span>
+    </section>
+
+    <div class="map live keep">
+      <svg viewBox="0 0 342 340" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map: the walk from you to Saaripaahtimo, 160 m">
+        <path class="park" d="M-10 150C40 132 92 156 120 210c22 44 8 96-30 140H-10Z"/>
+        <path class="park" d="M226 -10c6 40 52 66 126 58V-10Z"/>
+        <path class="road" stroke-width="12" d="M-10 96c90 10 230-20 362 0"/>
+        <path class="road" stroke-width="8" d="M98-10c-6 70 30 118 92 150s58 90 52 210"/>
+        <path class="road" stroke-width="6" d="M352 196c-60-6-100 20-118 60"/>
+        <path class="route" d="M262 236c-10-26-24-50-46-70s-34-40-46-60"/>
+        <path class="route-head" d="M166.5 113.5l3.5-7.5 7.8 2.6"/>
+        <circle class="cafe-dot" cx="168" cy="98" r="9"/>
+        <circle class="halo" cx="266" cy="242" r="22"/>
+        <circle class="pin" cx="266" cy="242" r="9"/>
+      </svg>
+      <span class="map-tag top"><svg class="i" aria-hidden="true"><use href="#i-walk"/></svg>160 m · 2 min walk</span>
+    </div>
+
+    <div class="banner success" role="status">
+      <span class="badge-ic"><svg class="i" aria-hidden="true"><use href="#i-pin-off"/></svg></span>
+      <div class="banner-body"><span class="banner-title">Location sharing stopped</span><span class="banner-text">You’re picking it up yourself.</span></div>
+    </div>
+
+    <section class="track-card" aria-label="Order">
+      <details class="receipt">
+        <summary><span>3 items</span><span class="num">€11.70</span><svg class="i" aria-hidden="true"><use href="#i-chev-d"/></svg></summary>
+        <div class="summary">
+          <div class="line"><span>1× Cappuccino, oat milk</span><span>€4.20</span></div>
+          <div class="line"><span>2× Croissant</span><span>€7.00</span></div>
+          <div class="line"><span>Delivery</span><span>€0.50</span></div>
+          <div class="total"><span>Paid with Apple Pay</span><span>€11.70</span></div>
+        </div>
+      </details>
+    </section>
+  </div>
+
+  <nav class="tabbar" aria-label="Main">
+    <a class="tab" href="1.6-cafe-list-home.html"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span>Home</a>
+    <a class="tab" href="4.1-orders-tab.html" aria-selected="true"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></span>Orders</a>
+    <a class="tab" href="#profile"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg></span>Profile</a>
+  </nav>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

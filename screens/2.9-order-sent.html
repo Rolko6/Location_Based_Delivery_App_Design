@@ -11,11 +11,13 @@
 <link rel="stylesheet" href="../design-system/components.css">
 <script src="../design-system/icons.js"></script>
 <style>
-/* 2.9 Order sent – layout only. Values: tokens.css. Components: components.css. */
+/* 2.9 Order sent – a short success moment that opens tracking (4.2) by itself.
+   Layout only. Values: tokens.css. Components: components.css. */
 .sent-body { flex: 1; display: grid; align-content: center; justify-items: center; gap: var(--space-3); text-align: center; }
-.sent-body .display { margin: var(--space-3) 0 0; }
+.sent-body .display { margin: var(--space-2) 0 0; }
 .sent-body p { margin: 0; text-wrap: balance; }
-.sent-body .summary { width: 100%; margin-top: var(--space-4); text-align: left; }
+.sent-body .order-card { width: 100%; margin-top: var(--space-5); text-align: left; }
+.sent .screen-footer { justify-items: center; }
 </style>
 </head>
 <body class="screen-page">
@@ -32,27 +34,49 @@
   <div class="screen sent">
     <section class="sent-body" aria-labelledby="sent-title">
       <!-- placeholder: assets/illustrations/order-sent.svg is not in the project yet -->
-      <figure class="illo illo-md" role="img" aria-label="Order sent">
+      <figure class="illo illo-md pop-in" role="img" aria-label="Order sent">
         <svg class="art" viewBox="0 0 160 160" aria-hidden="true">
           <circle class="fill-cream" cx="80" cy="80" r="46"/>
           <path d="M60 81l14 14 27-30"/>
         </svg>
       </figure>
       <h1 class="display" id="sent-title">Order sent!</h1>
-      <p class="muted">Saaripaahtimo got your order and your photo. Stay where you are — they’ll bring it to you.</p>
-      <div class="summary facts">
-        <div class="line"><span>Order</span><strong class="num">#2041</strong></div>
-        <div class="line"><span>Estimated time</span><strong class="num">9:51 · in ~10 min</strong></div>
-        <div class="line"><span>Paid</span><strong class="num">€11.70</strong></div>
-      </div>
+      <p class="muted">Stay where you are. Saaripaahtimo will bring it to you.</p>
+
+      <!-- the handoff, not a receipt: the café has your photo and the order is already moving -->
+      <article class="order-card live rise-in" aria-label="Order 2041 status">
+        <div class="order-top"><span class="t-cap">Received</span><span class="t-cap muted num">Order #2041</span></div>
+        <div class="order-main">
+          <span class="thumb"><img src="../assets/pictures/web/spot.jpg" alt="" loading="lazy"></span>
+          <div class="cafe-body"><span class="cafe-name">Saaripaahtimo has your photo</span><span class="cafe-meta">3 items · to your spot</span></div>
+        </div>
+        <div class="eta-row"><span class="eta">~10 min</span><span class="eta-at">at 9:51</span><span class="t-cap muted eta-step">Step 1 of 4</span></div>
+        <div class="progress" aria-hidden="true"><span class="done now"></span><span></span><span></span><span></span></div>
+      </article>
     </section>
     <footer class="screen-footer">
       <a class="btn btn-primary" href="4.2-order-status.html">Track order</a>
+      <span class="t-cap muted" id="auto-note" aria-live="polite">Opening tracking…</span>
     </footer>
   </div>
 
   <span class="home-indicator" aria-hidden="true"></span>
 </main>
 
+<script>
+/* Prototype memory: from now on this customer is a repeat customer (2.2 skips 2.3). */
+try { localStorage.setItem('shoot-has-ordered', '1'); } catch (e) {}
+</script>
+<script>
+/* Prototype: after a short success moment the app opens live tracking by itself.
+   Tapping anywhere first cancels the automatic move. */
+(function () {
+  var t = setTimeout(function () { location.href = '4.2-order-status.html'; }, 3200);
+  document.addEventListener('pointerdown', function () {
+    clearTimeout(t);
+    document.getElementById('auto-note').textContent = '';
+  }, { once: true });
+})();
+</script>
 </body>
 </html>

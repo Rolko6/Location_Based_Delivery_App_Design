@@ -12,8 +12,10 @@
 <script src="../design-system/icons.js"></script>
 <style>
 /* 4.2 Order status – layout only. Values: tokens.css. Components: components.css. */
-.status { padding-bottom: var(--space-4); gap: var(--space-3-5); }
+.status { padding-bottom: var(--space-4); gap: var(--space-3-5); overflow-y: auto; scrollbar-width: none; }
+.status::-webkit-scrollbar { display: none; }
 .status .nav-inline { margin-bottom: var(--space-1); }
+.order-link { display: block; color: inherit; text-decoration: none; border-radius: var(--radius-card); }
 </style>
 </head>
 <body class="screen-page">
@@ -33,16 +35,19 @@
       <div class="nav-titles"><h1>Order #2041</h1><span class="nav-sub">Saaripaahtimo</span></div>
     </nav>
 
-    <article class="order-card live" aria-live="polite" aria-label="Order status">
+    <!-- prototype: tapping the status card jumps to the moment of delivery (4.2b) -->
+    <a class="order-link" href="4.2b-order-delivered.html" aria-label="Order status. Prototype: see the delivered state">
+    <article class="order-card live" aria-live="polite">
       <span class="t-sub muted">On the way to you</span>
       <div class="eta-row"><span class="eta">~2 min</span><span class="eta-at">at 9:51</span><span class="t-cap muted eta-step">Step 3 of 4</span></div>
       <div class="stack-2">
         <div class="progress" aria-hidden="true"><span class="done"></span><span class="done"></span><span class="done now"></span><span></span></div>
-        <div class="progress-labels"><span>Received</span><span>Prepared</span><b aria-current="step">On the way</b><span>Delivered</span></div>
+        <div class="progress-labels"><span>Received</span><span>Preparing</span><b aria-current="step">On the way</b><span>Delivered</span></div>
       </div>
     </article>
+    </a>
 
-    <div class="map live">
+    <div class="map live keep">
       <svg viewBox="0 0 342 340" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Live map: Eetu is on the way from the café to your spot, about 2 minutes away">
         <path class="park" d="M-10 150C40 132 92 156 120 210c22 44 8 96-30 140H-10Z"/>
         <path class="park" d="M226 -10c6 40 52 66 126 58V-10Z"/>
@@ -51,24 +56,35 @@
         <path class="road" stroke-width="8" d="M98-10c-6 70 30 118 92 150s58 90 52 210"/>
         <path class="road" stroke-width="6" d="M352 196c-60-6-100 20-118 60"/>
         <path class="road" stroke-width="5" d="M-10 252c70-14 120-6 170 20"/>
-        <path class="route" d="M102 82c8 34 38 52 74 68s52 48 60 84c3 12 6 20 10 28"/>
-        <circle class="halo" cx="246" cy="262" r="24"/>
-        <circle class="pin" cx="246" cy="262" r="9"/>
-        <circle class="pulse" cx="102" cy="82" r="16"/>
-        <circle class="courier" cx="102" cy="82" r="15"/>
-        <text class="courier-initial" x="102" y="82" text-anchor="middle" dominant-baseline="central">E</text>
+        <path class="route" d="M186 138c24 12 42 44 50 84c2 6 3 12 4 18"/>
+        <circle class="halo" cx="240" cy="240" r="24"/>
+        <circle class="pin" cx="240" cy="240" r="9"/>
+        <circle class="pulse" cx="186" cy="138" r="16"/>
+        <circle class="courier" cx="186" cy="138" r="15"/>
+        <text class="courier-initial" x="186" y="138" text-anchor="middle" dominant-baseline="central">E</text>
       </svg>
       <span class="map-tag top"><span class="live-dot" aria-hidden="true"></span>Location shared until delivery</span>
       <span class="map-tag bottom"><span class="thumb"><img src="../assets/pictures/web/spot.jpg" alt="" loading="lazy"></span>Your spot ·<a class="btn-text sm" href="E10-update-my-spot.html">Update</a></span>
     </div>
 
-    <section class="courier-card" aria-label="Courier">
-      <span class="avatar" aria-hidden="true">E</span>
-      <div class="courier-body">
-        <span class="courier-name">Eetu is bringing it</span>
-        <span class="cafe-meta"><span class="seg">Café staff ·</span> <span class="seg">has your photo</span></span>
+    <section class="track-card" aria-label="Courier and order">
+      <div class="courier-card">
+        <span class="avatar" aria-hidden="true">E</span>
+        <div class="courier-body">
+          <span class="courier-name">Eetu, café staff</span>
+          <span class="cafe-meta">Has your photo</span>
+        </div>
+        <a class="btn btn-primary btn-small" href="4.3-message-courier.html">Message</a>
       </div>
-      <a class="btn btn-primary btn-small" href="4.3-message-courier.html">Message</a>
+      <details class="receipt">
+        <summary><span>3 items</span><span class="num">€11.70</span><svg class="i" aria-hidden="true"><use href="#i-chev-d"/></svg></summary>
+        <div class="summary">
+          <div class="line"><span>1× Cappuccino, oat milk</span><span>€4.20</span></div>
+          <div class="line"><span>2× Croissant</span><span>€7.00</span></div>
+          <div class="line"><span>Delivery</span><span>€0.50</span></div>
+          <div class="total"><span>Paid with Apple Pay</span><span>€11.70</span></div>
+        </div>
+      </details>
     </section>
   </div>
 

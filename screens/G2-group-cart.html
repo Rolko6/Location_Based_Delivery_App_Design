@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · G2 Group cart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* G2 Group cart – layout only. Values: tokens.css. Components: components.css. */
+.flow { padding-bottom: var(--space-4); gap: var(--space-4); }
+.flow .scroll { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; display: flex; flex-direction: column; gap: var(--space-3); }
+.flow .scroll > * { flex: none; margin: 0; }
+.flow .scroll::-webkit-scrollbar { display: none; }
+.flow .people { margin-top: var(--space-1); }
+.flow .people .btn-text { margin-left: auto; }
+.cart-list .cart-row:last-child { border-bottom: 0; }
+.pay-choice { border: 0; margin: var(--space-2) 0 0; padding: 0; display: grid; gap: var(--space-2-5); min-width: 0; }
+.pay-choice legend { padding: 0; margin-bottom: var(--space-2-5); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="G2 Group cart">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen flow">
+    <div class="scroll">
+      <nav class="nav-inline"><a class="back" href="2.1-cafe-menu.html" aria-label="Back to menu"><svg class="i"><use href="#i-back"/></svg></a><h1>Group order</h1></nav>
+      <div class="steps" aria-label="Step 1 of 3: Cart"><div class="step current" aria-current="step"><span class="n">1</span>Cart</div><span class="bar"></span><div class="step"><span class="n">2</span>Spot</div><span class="bar"></span><div class="step"><span class="n">3</span>Payment</div></div>
+      <div class="people">
+        <span class="stack" aria-hidden="true"><span class="avatar you">A</span><span class="avatar">V</span><span class="avatar">S</span><span class="avatar waiting">J</span></span>
+        <span class="t-sub"><b>3 joined</b> <span class="muted">· Joona is choosing</span></span>
+        <a class="btn-text sm" href="G1-order-together.html">Invite</a>
+      </div>
+
+      <div class="cart-list">
+        <div class="person-head"><span class="avatar you" aria-hidden="true">A</span>Aino (you)<span class="muted">1 item</span></div>
+        <div class="cart-row">
+          <span class="thumb"><img src="../assets/pictures/web/cappuccino.jpg" alt="" loading="lazy"></span>
+          <div class="menu-text"><span class="menu-name">Cappuccino</span><span class="menu-desc num">Oat milk · €4.20</span></div>
+          <div class="qty"><button type="button" aria-label="Remove one cappuccino"><svg class="i"><use href="#i-minus"/></svg></button><output>1</output><button type="button" aria-label="Add one cappuccino"><svg class="i"><use href="#i-plus"/></svg></button></div>
+        </div>
+        <div class="person-head"><span class="avatar" aria-hidden="true">V</span>Ville<span class="muted">1 item</span></div>
+        <div class="cart-row">
+          <span class="thumb"><img src="../assets/pictures/web/americano.jpg" alt="" loading="lazy"></span>
+          <div class="menu-text"><span class="menu-name">Americano</span><span class="menu-desc num">€3.60</span></div>
+        </div>
+        <div class="person-head"><span class="avatar" aria-hidden="true">S</span>Sara<span class="muted">1 item</span></div>
+        <div class="cart-row">
+          <span class="thumb"><img src="../assets/pictures/web/croissant.jpg" alt="" loading="lazy"></span>
+          <div class="menu-text"><span class="menu-name">Croissant</span><span class="menu-desc num">€3.50</span></div>
+        </div>
+        <div class="person-head waiting"><span class="avatar" aria-hidden="true">J</span>Joona<span class="muted">Still choosing…</span></div>
+      </div>
+
+      <fieldset class="pay-choice">
+        <legend class="t-title2">Who pays?</legend>
+        <label class="option"><span class="label">I’ll pay for everyone</span><span class="num">€11.80</span><input type="radio" name="who" checked></label>
+        <label class="option"><span class="label regular">Everyone pays for their own</span><input type="radio" name="who"></label>
+      </fieldset>
+      <p class="t-sub muted">One delivery to your spot. Only you take the photo.</p>
+    </div>
+
+    <footer class="screen-footer">
+      <div class="summary plain">
+        <div class="line"><span>Subtotal · 3 items</span><span>€11.30</span></div>
+        <div class="line"><span>Delivery</span><span>€0.50</span></div>
+        <div class="total"><span>Total</span><span>€11.80</span></div>
+      </div>
+      <a class="btn btn-primary" href="2.3-confirm-your-spot.html">Go to checkout</a>
+    </footer>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>
