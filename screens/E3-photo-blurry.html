@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · E3 Photo blurry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* E3 Photo blurry – 2.5 with a blurry capture. Layout only. Values: tokens.css. Components: components.css. */
+.device.cam > .screen-cam { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device cam" aria-label="E3 Photo blurry">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen-cam">
+    <header class="cam-top"><span></span><h1>Check your photo</h1><span></span></header>
+    <div class="viewfinder" role="img" aria-label="Your photo: you, and a blurry picture of your spot">
+      <img class="blurry" src="../assets/pictures/web/spot-tall.jpg" alt="" loading="lazy">
+      <div class="pip"><svg class="illo-color" viewBox="329 50 244 333" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false"><g transform="translate(-655 -180)"><path d="M864.338,196.984V644a35.264,35.264,0,0,1-35.272,35.268H655.35A35.266,35.266,0,0,1,620.083,644V196.984a35.266,35.266,0,0,1,35.269-35.268h21.081A16.755,16.755,0,0,0,691.945,184.8h99.048A16.762,16.762,0,0,0,806.5,161.716h22.567a35.266,35.266,0,0,1,35.267,35.269Z" transform="translate(363.972 30.573)" class="screen"/>
+<path d="M312.558,263.319l-14.052,31.01-25.691,56.7V250.739Z" transform="translate(711.238 231.688)" class="skin"/>
+<path d="M812.454,327.594c0,42.461-39.262,36.039-87.7,36.039s-87.7,6.422-87.7-36.039,19.179-117.728,87.7-117.728C795.636,209.866,812.454,285.132,812.454,327.594Z" transform="translate(367.472 40.499)" class="ink"/>
+<path d="M304.558,542.65s20.849,29.268,13.4,37.192,55.862,8.122,55.862,8.122-9.51-42.576-6.711-52.374Z" transform="translate(764.952 -148.376)" class="skin"/>
+<path d="M828.135,435.73l3.2,19.974V593.408a35,35,0,0,1-4.571,17.369l-32.107-56.291L783.085,436.6,780.2,407.156l43.505.917Z" transform="translate(396.979 81.168)" class="skin"/>
+<path d="M864.338,441.834c-1.544-5.018-4.161-13.5-7.164-22.953-5.283-16.657-11.748-36.377-15.583-45.773-7.321-17.935-44.627-10.747-44.627-10.747l-127.815-4.788s-4.764-.627-26.2-3.474c-8.986-1.194-16.814,11.4-22.868,26.439v47.341l29.78,2.268a107.475,107.475,0,0,0-4.089,25.655c-.338,11.88,1.761,25.16,10.819,33.4C676.12,507,682.4,587.138,682.4,587.138l-13.738,52.491h160.4a35.264,35.264,0,0,0,35.267-35.272V584.919c-10.12-16.379-18.43-24.617-18.43-24.617L817.214,447.443l43.928-.76,3.2-.06Z" transform="translate(363.971 70.215)" class="ink"/>
+<circle cx="59.01" cy="59.01" r="59.01" transform="translate(1012.641 340.754) rotate(-45)" class="skin"/>
+<path d="M653,294.246h23.34l10.3-28.831,2.059,28.831h11.156l6.006-16.818,1.2,16.818h82.89a62.468,62.468,0,0,0-62.468-62.468H715.468A62.468,62.468,0,0,0,653,294.245Z" transform="translate(370.757 45.016)" class="ink"/></g></svg></div>
+      <div class="banner warn" role="alert">
+        <svg class="i" aria-hidden="true"><use href="#i-alert"/></svg>
+        <div class="banner-body"><span class="banner-title">This photo looks blurry</span><span class="banner-text">The café may not recognise your spot. Hold the phone steady and try again.</span></div>
+      </div>
+    </div>
+    <div class="cam-actions">
+      <a class="btn btn-primary" href="2.4-photo-front-back.html">Retake photo</a>
+      <a class="btn-text" href="2.7-checkout-payment-method.html">Use it anyway</a>
+    </div>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

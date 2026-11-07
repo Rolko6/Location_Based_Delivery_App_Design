@@ -119,6 +119,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
 .tabbar-stage { padding: 0; overflow: hidden; gap: 0; }
 .ds-viewfinder { flex: none; height: calc(var(--phone-h) / 2); }
 .tabbar-stage .content { padding: var(--space-5); min-height: var(--space-30); display: grid; align-content: end; }
+.stage > .map.live { flex: none; height: calc(var(--map-h) * 2.6); }
 
 /* ---- MISC ---- */
 .do-dont { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--phone-w)), 1fr)); }
@@ -154,6 +155,9 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
     <a href="#nav">Navigation</a>
     <a href="#illo">Illustrations</a>
     <a href="#ordering">Ordering</a>
+    <a href="#tracking">Tracking</a>
+    <a href="#edge">Empty states</a>
+    <a href="#errors">Edge cases</a>
     <a href="#rules">Rules</a>
   </nav>
 
@@ -289,6 +293,8 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
       <div class="icon-cell"><svg class="i"><use href="#i-search"/></svg>Search</div>
       <div class="icon-cell"><svg class="i"><use href="#i-pin"/></svg>Location</div>
       <div class="icon-cell"><svg class="i"><use href="#i-pin-off"/></svg>No location</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-pin-alert"/></svg>Out of range</div>
+      <div class="icon-cell"><svg class="i"><use href="#i-qr-x"/></svg>Code not valid</div>
       <div class="icon-cell"><svg class="i"><use href="#i-camera"/></svg>Photo</div>
       <div class="icon-cell"><svg class="i"><use href="#i-qr"/></svg>Spot QR</div>
       <div class="icon-cell"><svg class="i"><use href="#i-shield"/></svg>Privacy</div>
@@ -758,7 +764,7 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
             <path d="M24 104h72"/>
           </svg>
         </figure>
-        <span class="t-cap muted">Medium · 160 px · 2.9, 3.1, 1.5</span>
+        <span class="t-cap muted">Medium · 160 px · 2.9, 1.5 (3.1 uses the 112 px size in its card)</span>
       </div>
       <div class="illo-item">
         <span class="state-icon warn"><svg class="i"><use href="#i-pin"/></svg></span>
@@ -878,6 +884,195 @@ code { font-family: var(--font-mono); font-size: .86em; background: var(--tint-c
             <span class="t-sub muted num">Arriving at 9:51 · in ~2 min</span>
           </article>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== TRACKING -->
+  <section class="section" id="tracking">
+    <h2>Tracking &amp; messaging</h2>
+    <p class="lede">Used after payment (UC-04). The status card gives the exact time and the four steps; the current step breathes while the order is live. The map always says that your location is shared only until delivery. Talking to the courier happens in short in-app messages, never by phone.</p>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">Title with subtitle · live status card (4.2)</span>
+        <div class="stage">
+          <div class="nav-inline"><a class="back" href="#tracking" aria-label="Back"><svg class="i"><use href="#i-back"/></svg></a><div class="nav-titles"><h3>Order #2041</h3><span class="nav-sub">Saaripaahtimo</span></div></div>
+          <article class="order-card live">
+            <span class="t-sub muted">On the way to you</span>
+            <div class="eta-row"><span class="eta">~2 min</span><span class="eta-at">at 9:51</span><span class="t-cap muted eta-step">Step 3 of 4</span></div>
+            <div class="stack-2">
+              <div class="progress"><span class="done"></span><span class="done"></span><span class="done now"></span><span></span></div>
+              <div class="progress-labels"><span>Received</span><span>Prepared</span><b>On the way</b><span>Delivered</span></div>
+            </div>
+          </article>
+        </div>
+        <p class="note">Add <code>.now</code> to the current segment of <code>.progress</code>. Status labels follow the wireframe: Received → Prepared → On the way → Delivered.</p>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Live map · courier, route, you · map tags (4.2)</span>
+        <div class="stage">
+          <div class="map live">
+            <svg viewBox="0 0 342 340" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Live map: courier on the way to your spot">
+              <path class="park" d="M-10 150C40 132 92 156 120 210c22 44 8 96-30 140H-10Z"/>
+              <path class="park" d="M226 -10c6 40 52 66 126 58V-10Z"/>
+              <path class="park" d="M190 300c30-34 92-40 162-20v70H170Z"/>
+              <path class="road" stroke-width="12" d="M-10 96c90 10 230-20 362 0"/>
+              <path class="road" stroke-width="8" d="M98-10c-6 70 30 118 92 150s58 90 52 210"/>
+              <path class="road" stroke-width="6" d="M352 196c-60-6-100 20-118 60"/>
+              <path class="road" stroke-width="5" d="M-10 252c70-14 120-6 170 20"/>
+              <path class="route" d="M102 82c8 34 38 52 74 68s52 48 60 84c3 12 6 20 10 28"/>
+              <circle class="halo" cx="246" cy="262" r="24"/>
+              <circle class="pin" cx="246" cy="262" r="9"/>
+              <circle class="pulse" cx="102" cy="82" r="16"/>
+              <circle class="courier" cx="102" cy="82" r="15"/>
+              <text class="courier-initial" x="102" y="82" text-anchor="middle" dominant-baseline="central">E</text>
+            </svg>
+            <span class="map-tag top"><span class="live-dot" aria-hidden="true"></span>Location shared until delivery</span>
+            <span class="map-tag bottom"><span class="thumb"><img src="../assets/pictures/web/spot.jpg" alt=""></span>Your spot ·<a class="btn-text sm" href="#tracking">Update</a></span>
+          </div>
+        </div>
+        <p class="note">Brown marker with the courier’s initial = courier (pulses while moving). Orange pin with a soft halo = you. Dotted line = route.</p>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Avatar · courier card (4.2)</span>
+        <div class="stage">
+          <div class="row-wrap"><span class="avatar">E</span><span class="avatar sm">E</span></div>
+          <div class="courier-card">
+            <span class="avatar">E</span>
+            <div class="courier-body"><span class="courier-name">Eetu is bringing it</span><span class="cafe-meta"><span class="seg">Café staff ·</span> <span class="seg">has your photo</span></span></div>
+            <a class="btn btn-primary btn-small" href="#tracking">Message</a>
+          </div>
+        </div>
+        <p class="note">Say “courier” or “café staff”, never “our couriers”: the courier belongs to the café.</p>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Chat · header, note, bubbles, quick replies, composer (4.3)</span>
+        <div class="stage tabbar-stage">
+          <div class="chat-head"><a class="back" href="#tracking" aria-label="Back"><svg class="i"><use href="#i-back"/></svg></a><span class="avatar sm">E</span><div class="who"><h3 class="who-name">Eetu</h3><span class="who-status">On the way · ~2 min</span></div></div>
+          <div class="thread">
+            <span class="chat-note">Eetu picked up your order · 9:47</span>
+            <p class="bubble in flush">Hi! Coming out of the café now, I have your photo.</p>
+            <p class="bubble out flush">I’m waving</p>
+            <span class="chat-seen">Seen</span>
+          </div>
+          <div class="chat-dock">
+            <span class="quick-label">Quick replies</span>
+            <div class="chips"><button class="chip">I’m waving</button><button class="chip">Coming to you</button><button class="chip">I can’t see you</button></div>
+            <div class="composer"><input class="input" placeholder="Write a message…" aria-label="Write a message"><button class="send-btn" aria-label="Send"><svg class="i"><use href="#i-arrow"/></svg></button></div>
+          </div>
+        </div>
+        <p class="note">Incoming: white bubble. Yours: brown bubble with cream text (9.91:1). No call button anywhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== EDGE STATES -->
+  <section class="section" id="edge">
+    <h2>Empty &amp; limited states</h2>
+    <p class="lede">When nothing can be ordered, say why in one friendly line and point at the next step. Out of range, the menu stays fully browsable; only the add buttons turn into dashed, disabled circles.</p>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">Empty-state card · small round illustration (3.1)</span>
+        <div class="stage">
+          <section class="empty-card">
+            <figure class="illo illo-sm" role="img" aria-label="You are outside the café's delivery radius">
+              <svg class="art" viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="dashed drift" cx="48" cy="72" r="34"/>
+                <path class="fill-cream" d="M36 64h24l-3 19H39z"/>
+                <path class="fill-orange" d="M37.4 64h21.2v4.5H37.4z"/>
+                <path d="M36 64h24"/>
+                <path d="M60 68c6 0 6 9-1 9"/>
+                <path class="fill-cream" d="M94 66c-3-4-18-18-18-31a18 18 0 0 1 36 0c0 13-15 27-18 31z"/>
+                <circle cx="94" cy="35" r="6"/>
+              </svg>
+            </figure>
+            <h3 class="display sm">No café can deliver here yet</h3>
+            <p>Cafés deliver only within a short walk. Move closer to one of the cafés below to start ordering.</p>
+          </section>
+        </div>
+        <p class="note">Placeholder for <code>assets/illustrations/no-cafe-in-range.svg</code> (not in the project yet): you, just outside a café’s delivery radius. The headline is one of the few Shrikhand lines, at 28 px inside a card.</p>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Browse only · warning banner + disabled add (3.2)</span>
+        <div class="stage">
+          <div class="banner warn">
+            <svg class="i"><use href="#i-alert"/></svg>
+            <div class="banner-body"><span class="banner-title">You’re out of delivery range</span><span class="banner-text">You can look around. Get within 100 m of the café to start ordering.</span></div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-text"><span class="menu-name">Cappuccino</span><span class="menu-desc">Double shot, milk foam</span><span class="menu-price">€4.20</span></div>
+            <span class="thumb"><img src="../assets/pictures/web/cappuccino.jpg" alt="" loading="lazy"></span>
+            <button class="add" aria-label="Can’t add: out of delivery range" disabled><svg class="i"><use href="#i-plus"/></svg></button>
+          </div>
+        </div>
+        <p class="note">Unlike sold-out rows, out-of-range rows keep their full colour: the product is available, you’re just too far away.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== ORDERING EDGE CASES -->
+  <section class="section" id="errors">
+    <h2>Ordering edge cases</h2>
+    <p class="lede">E1–E10 reuse the main-flow screens and add a sheet or a state on top. Warnings (out of range) get an orange icon circle, errors (payment, wrong code) a rust one. Every sheet ends with one rust action.</p>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="spec-label">Sheet with a mini map · last spot, you now, walking direction (E1, E8)</span>
+        <div class="sheet-demo">
+          <div class="behind"><div></div><div></div><div></div></div>
+          <div class="scrim"></div>
+          <div class="sheet">
+            <span class="grabber"></span>
+            <span class="state-icon warn"><svg class="i"><use href="#i-pin-alert"/></svg></span>
+            <h3>You’re outside the delivery area</h3>
+            <div class="map">
+              <svg viewBox="0 0 340 120" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map: delivery radius, your spot inside it, you now outside it">
+                <path class="road" stroke-width="10" d="M-10 30c90 10 220-12 360 6"/>
+                <path class="road" stroke-width="6" d="M210-10c-6 50 10 90 2 140"/>
+                <circle class="radius" cx="96" cy="58" r="46"/>
+                <circle class="cafe-dot" cx="80" cy="48" r="5"/>
+                <rect class="spot-mark" x="110" y="62" width="13" height="13" rx="3"/>
+                <path class="route" d="M180 84.5l-44-9"/>
+                <path class="route-head" d="M138.5 70.3l-5.6 5.1 6 4.8"/>
+                <circle class="halo" cx="190" cy="86.5" r="15"/>
+                <circle class="pin" cx="190" cy="86.5" r="7"/>
+              </svg>
+            </div>
+            <div class="actions"><button class="btn btn-primary">I’m going back to my spot</button></div>
+            <a class="btn-text sm quiet" href="#errors">Cancel order · refund [policy – TBD]</a>
+          </div>
+        </div>
+        <p class="note">Square = the spot where you ordered (with the courier’s initial when they are waiting there, E9). Orange pin = you now. <code>.btn-text.quiet</code> is for the least important way out.</p>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Removed cart row · success badge in an info banner (E6, E10)</span>
+        <div class="stage">
+          <div class="cart-row removed">
+            <span class="thumb"><img src="../assets/pictures/web/croissant.jpg" alt=""></span>
+            <div class="menu-text"><span class="menu-name">Croissant</span><span class="menu-desc">Sold out · removed</span></div>
+            <a class="btn-text sm" href="#errors">Replace</a>
+          </div>
+          <div class="banner success info">
+            <span class="badge-ic"><svg class="i"><use href="#i-check"/></svg></span>
+            <span class="banner-text"><b>Still in range</b> · 35 m from Saaripaahtimo</span>
+          </div>
+        </div>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Unreadable QR · blurry capture (E4, E3)</span>
+        <div class="stage cam tabbar-stage">
+          <div class="viewfinder ds-viewfinder"><img class="blurry" src="../assets/pictures/web/counter-tall.jpg" alt=""><div class="qr-frame fail"><svg class="qr-code" viewBox="-2 -2 25 25" aria-hidden="true"><rect class="light" x="-2" y="-2" width="25" height="25" rx="2"/><rect x="0" y="0" width="7" height="7"/><rect class="light" x="1" y="1" width="5" height="5"/><rect x="2" y="2" width="3" height="3"/><rect x="14" y="0" width="7" height="7"/><rect class="light" x="15" y="1" width="5" height="5"/><rect x="16" y="2" width="3" height="3"/><rect x="0" y="14" width="7" height="7"/><rect class="light" x="1" y="15" width="5" height="5"/><rect x="2" y="16" width="3" height="3"/><rect x="9" y="9" width="3" height="3"/><rect x="14" y="14" width="3" height="3"/></svg></div></div>
+        </div>
+        <p class="note">Add <code>.blurry</code> to the captured photo and <code>.fail</code> to <code>.qr-frame</code>. The warning banner sits at the bottom of the viewfinder.</p>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Photo pair · back camera + you (E2)</span>
+        <div class="stage">
+          <div class="photo-pair">
+            <div class="frame"><img src="../assets/pictures/web/spot-tall.jpg" alt=""><span class="photo-tag">Your spot</span></div>
+            <div class="frame sm"><img src="../assets/pictures/web/spot.jpg" alt=""><span class="photo-tag">You</span></div>
+          </div>
+        </div>
+        <p class="note">On E2 the small frame shows the “you” illustration from the camera screens.</p>
       </div>
     </div>
   </section>

@@ -376,3 +376,48 @@
   --size-mark-h:     30px;
   --ink-pressed:     color-mix(in srgb, var(--brown) 80%, var(--brown-soft));
 }
+
+/* --------------------------------------------------------------------------
+   16. TRACKING & MESSAGING (UC-04): live map, courier, chat
+   -------------------------------------------------------------------------- */
+:root {
+  --size-avatar:      44px;    /* courier avatar (4.2) */
+  --size-avatar-sm:   40px;    /* courier avatar in the chat header (4.3) */
+  --size-live-dot:    8px;     /* "live" dot on the location-sharing tag */
+  --size-map-thumb:   28px;    /* spot photo inside the map tag */
+  --size-send:        48px;    /* round send button (4.3) */
+  --map-route:        var(--ink);
+  --stroke-route:     3;       /* courier → you route, SVG user units */
+  --dash-route:       0 8;     /* round-capped dots */
+  --map-halo:         color-mix(in srgb, var(--orange) 22%, transparent);  /* soft ring round "you" */
+  --map-pulse:        color-mix(in srgb, var(--brown) 30%, transparent);   /* ring round the moving courier */
+  --live-pulse:       color-mix(in srgb, var(--olive) 45%, transparent);
+  --radius-bubble:    20px;
+  --radius-bubble-tail: 6px;   /* corner that points at the sender */
+  --bubble-max:       78%;     /* max bubble width in the chat column */
+  --surface-chat:     var(--cream);
+  --dur-pulse:        1.8s;    /* live markers (courier, sharing dot) */
+  --dur-live:         1.6s;    /* current progress segment breathing */
+  --pulse-scale:      2.2;
+  --live-dim:         .55;     /* low point of the breathing segment */
+}
+
+/* --------------------------------------------------------------------------
+   17. CAFÉ LIST EDGE CASES (UC-03): empty state
+   -------------------------------------------------------------------------- */
+:root {
+  --illo-sm:        112px;   /* round illustration inside the empty-state card (3.1) */
+  --fs-display-sm:  28px;    /* Shrikhand headline inside a card (3.1) */
+  --dash-border:    dashed;  /* empty / out-of-range outline style */
+}
+
+/* --------------------------------------------------------------------------
+   18. ORDERING EDGE CASES (E1–E10)
+   -------------------------------------------------------------------------- */
+:root {
+  --photo-blurry:    blur(5px);   /* blurry capture (E3) and unreadable QR (E4) */
+  --blur-bleed:      1.08;        /* scale a blurred photo so its soft edge stays hidden */
+  --size-pair-w:     116px;       /* back-camera frame in the photo pair (E2) */
+  --size-pair-sm-w:  68px;        /* front-camera frame in the photo pair (E2) */
+  --strike:          line-through;
+}

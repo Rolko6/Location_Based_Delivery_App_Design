@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 4.2 Order status</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 4.2 Order status – layout only. Values: tokens.css. Components: components.css. */
+.status { padding-bottom: var(--space-4); gap: var(--space-3-5); }
+.status .nav-inline { margin-bottom: var(--space-1); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="4.2 Order status">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:49</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen status">
+    <nav class="nav-inline">
+      <a class="back" href="4.1-orders-tab.html" aria-label="Back to orders"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></a>
+      <div class="nav-titles"><h1>Order #2041</h1><span class="nav-sub">Saaripaahtimo</span></div>
+    </nav>
+
+    <article class="order-card live" aria-live="polite" aria-label="Order status">
+      <span class="t-sub muted">On the way to you</span>
+      <div class="eta-row"><span class="eta">~2 min</span><span class="eta-at">at 9:51</span><span class="t-cap muted eta-step">Step 3 of 4</span></div>
+      <div class="stack-2">
+        <div class="progress" aria-hidden="true"><span class="done"></span><span class="done"></span><span class="done now"></span><span></span></div>
+        <div class="progress-labels"><span>Received</span><span>Prepared</span><b aria-current="step">On the way</b><span>Delivered</span></div>
+      </div>
+    </article>
+
+    <div class="map live">
+      <svg viewBox="0 0 342 340" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Live map: Eetu is on the way from the café to your spot, about 2 minutes away">
+        <path class="park" d="M-10 150C40 132 92 156 120 210c22 44 8 96-30 140H-10Z"/>
+        <path class="park" d="M226 -10c6 40 52 66 126 58V-10Z"/>
+        <path class="park" d="M190 300c30-34 92-40 162-20v70H170Z"/>
+        <path class="road" stroke-width="12" d="M-10 96c90 10 230-20 362 0"/>
+        <path class="road" stroke-width="8" d="M98-10c-6 70 30 118 92 150s58 90 52 210"/>
+        <path class="road" stroke-width="6" d="M352 196c-60-6-100 20-118 60"/>
+        <path class="road" stroke-width="5" d="M-10 252c70-14 120-6 170 20"/>
+        <path class="route" d="M102 82c8 34 38 52 74 68s52 48 60 84c3 12 6 20 10 28"/>
+        <circle class="halo" cx="246" cy="262" r="24"/>
+        <circle class="pin" cx="246" cy="262" r="9"/>
+        <circle class="pulse" cx="102" cy="82" r="16"/>
+        <circle class="courier" cx="102" cy="82" r="15"/>
+        <text class="courier-initial" x="102" y="82" text-anchor="middle" dominant-baseline="central">E</text>
+      </svg>
+      <span class="map-tag top"><span class="live-dot" aria-hidden="true"></span>Location shared until delivery</span>
+      <span class="map-tag bottom"><span class="thumb"><img src="../assets/pictures/web/spot.jpg" alt="" loading="lazy"></span>Your spot ·<a class="btn-text sm" href="E10-update-my-spot.html">Update</a></span>
+    </div>
+
+    <section class="courier-card" aria-label="Courier">
+      <span class="avatar" aria-hidden="true">E</span>
+      <div class="courier-body">
+        <span class="courier-name">Eetu is bringing it</span>
+        <span class="cafe-meta"><span class="seg">Café staff ·</span> <span class="seg">has your photo</span></span>
+      </div>
+      <a class="btn btn-primary btn-small" href="4.3-message-courier.html">Message</a>
+    </section>
+  </div>
+
+  <nav class="tabbar" aria-label="Main">
+    <a class="tab" href="1.6-cafe-list-home.html"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span>Home</a>
+    <a class="tab" href="4.1-orders-tab.html" aria-selected="true"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></span>Orders</a>
+    <a class="tab" href="#profile"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg></span>Profile</a>
+  </nav>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · E9 Courier can’t find you</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* E9 Courier can't find you – layout only (4.2 structure). Values: tokens.css. Components: components.css. */
+.status { gap: var(--space-3-5); }
+.status .order-card { gap: var(--space-1-5); }
+.status .t-title { margin: 0; }
+.status .note { margin: 0; }
+.status .screen-footer { padding-top: 0; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="E9 Courier can't find you">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:52</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="screen status">
+    <nav class="nav-inline"><a class="back" href="4.1-orders-tab.html" aria-label="Back to orders"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></a><h1>Order #2041</h1></nav>
+
+    <article class="order-card live" aria-labelledby="wait-title">
+      <span class="t-group">Courier is at your last spot</span>
+      <h2 class="t-title num" id="wait-title">Waiting for you · <span id="timer" role="timer" aria-label="4 minutes 32 seconds left">4:32</span></h2>
+      <span class="t-sub muted">You left the delivery area. Eetu will wait where you placed the order.</span>
+    </article>
+
+    <div class="map live">
+      <svg viewBox="0 0 342 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map: Eetu waiting at your last spot, you now further away, and the walking route back">
+        <path class="park" d="M-10 170C40 150 86 176 104 220c14 34 0 66-20 90H-10Z"/>
+        <path class="park" d="M230 -10c8 40 50 62 122 54V-10Z"/>
+        <path class="road" stroke-width="12" d="M-10 52c90 14 230-14 362 2"/>
+        <path class="road" stroke-width="8" d="M114 -10c-6 40 4 84 36 128s48 70 50 192"/>
+        <path class="road" stroke-width="6" d="M352 196c-60-6-110 20-140 46"/>
+        <path class="road" stroke-width="5" d="M-10 262c70-14 120-6 196 10"/>
+        <path class="route" d="M244 236L198 180 150 126 125 104"/>
+        <path class="route-head" d="M122 108.4L121 101.2 128.2 101.4"/>
+        <circle class="pulse" cx="100" cy="80" r="16"/>
+        <rect class="spot-mark" x="86" y="66" width="28" height="28" rx="7"/>
+        <text class="courier-initial" x="100" y="80" text-anchor="middle" dominant-baseline="central">E</text>
+        <circle class="halo" cx="250" cy="242" r="22"/>
+        <circle class="pin" cx="250" cy="242" r="9"/>
+      </svg>
+    </div>
+
+    <p class="t-sub muted note">If the timer runs out, your order goes back to the counter as Ready for pickup. It’s already made, so it can’t be refunded.</p>
+
+    <footer class="screen-footer">
+      <a class="btn btn-primary" href="#walking-directions">Show me the way back</a>
+      <div class="btn-row">
+        <a class="btn btn-secondary" href="4.3-message-courier.html">Message courier</a>
+        <a class="btn btn-secondary" href="#pick-up-at-counter">Pick up at counter</a>
+      </div>
+    </footer>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+<script>
+/* Prototype only: the courier's waiting time counts down. */
+(function () {
+  var el = document.getElementById('timer');
+  var left = 4 * 60 + 32;
+  var id = setInterval(function () {
+    left = Math.max(0, left - 1);
+    var m = Math.floor(left / 60), s = left % 60;
+    el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    el.setAttribute('aria-label', m + ' minutes ' + s + ' seconds left');
+    if (!left) clearInterval(id);
+  }, 1000);
+})();
+</script>
+</body>
+</html>

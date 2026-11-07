@@ -37,7 +37,8 @@
 
     <div class="loc-picker">
       <small>Delivering to your location</small>
-      <button type="button">Current GPS position<svg class="i" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+      <!-- prototype: changing the location shows 3.1 (no café in range) -->
+      <button type="button" onclick="location.href='3.1-no-cafe-in-range.html'">Current GPS position<svg class="i" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
     </div>
 
     <label class="search"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input class="input" type="search" placeholder="Search cafés or products" aria-label="Search cafés or products"></label>
@@ -72,7 +73,7 @@
 
     <section class="group" aria-labelledby="out-range">
       <h2 class="t-group flush" id="out-range">Out of range · browse only</h2>
-      <a class="cafe out" href="#torikahvila-ruska">
+      <a class="cafe out" href="3.2-menu-browse-only.html">
         <span class="thumb"><img src="../assets/pictures/web/coffee-shop-2.jpg" alt="" loading="lazy"></span>
         <span class="cafe-body">
           <span class="cafe-name">Torikahvila Ruska</span>

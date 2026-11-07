@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 4.3 Message the courier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 4.3 Message the courier – layout only. Values: tokens.css. Components: components.css. */
+.thread .chat-note { margin-bottom: var(--space-1); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device chat" aria-label="4.3 Message the courier">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:49</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <header class="chat-head">
+    <a class="back" href="4.2-order-status.html" aria-label="Back to order status"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg></a>
+    <span class="avatar sm" aria-hidden="true">E</span>
+    <div class="who">
+      <h1 class="who-name">Eetu</h1>
+      <span class="who-status num">On the way · ~2 min</span>
+    </div>
+  </header>
+
+  <section class="thread" id="thread" aria-label="Messages with Eetu" aria-live="polite">
+    <span class="chat-note num">Eetu picked up your order · 9:47</span>
+    <p class="bubble in flush">Hi! Coming out of the café now, I have your photo.</p>
+    <p class="bubble out flush">I’m waving</p>
+    <span class="chat-seen" id="seen">Seen</span>
+  </section>
+
+  <div class="chat-dock">
+    <span class="quick-label" id="quick-label">Quick replies</span>
+    <div class="chips" role="group" aria-labelledby="quick-label">
+      <button class="chip" type="button" data-reply>I’m waving</button>
+      <button class="chip" type="button" data-reply>Coming to you</button>
+      <button class="chip" type="button" data-reply>I can’t see you</button>
+      <button class="chip" type="button" data-reply>I moved – see my new photo</button>
+    </div>
+    <form class="composer" id="composer">
+      <input class="input" id="message" type="text" placeholder="Write a message…" aria-label="Write a message" autocomplete="off" enterkeyhint="send">
+      <button class="send-btn" type="submit" aria-label="Send"><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </form>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+<script>
+/* Prototype only: a quick reply or a typed message is added to the thread as "Sent". */
+(function () {
+  var thread = document.getElementById('thread');
+  var form = document.getElementById('composer');
+  var field = document.getElementById('message');
+  function send(text) {
+    text = text.trim();
+    if (!text) return;
+    var seen = document.getElementById('seen');
+    if (seen) seen.remove();
+    var bubble = document.createElement('p');
+    bubble.className = 'bubble out flush';
+    bubble.textContent = text;
+    var state = document.createElement('span');
+    state.className = 'chat-seen';
+    state.id = 'seen';
+    state.textContent = 'Sent';
+    thread.append(bubble, state);
+    thread.scrollTop = thread.scrollHeight;
+  }
+  document.querySelectorAll('[data-reply]').forEach(function (chip) {
+    chip.addEventListener('click', function () { send(chip.textContent); });
+  });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    send(field.value);
+    field.value = '';
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 3.2 Menu – browse only</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 3.2 Menu – browse only. Same layout as 2.1; ordering disabled. Values: tokens.css. Components: components.css. */
+.menu { padding-top: var(--space-5); gap: var(--space-4); }
+.menu-head { display: grid; gap: var(--space-2); justify-items: start; }
+.menu-list { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; margin-top: calc(var(--space-2) * -1); }
+.menu-list::-webkit-scrollbar { display: none; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="3.2 Menu – browse only">
+  <div class="statusbar overlay" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+  <div class="cover">
+    <img src="../assets/pictures/web/coffee-shop-2-cover.jpg" alt="" loading="lazy">
+    <a class="icon-btn" href="3.1-no-cafe-in-range.html" aria-label="Back to cafés"><svg class="i"><use href="#i-back"/></svg></a>
+  </div>
+
+  <div class="screen menu">
+    <header class="menu-head">
+      <h1 class="t-title flush">Torikahvila Ruska</h1>
+      <p class="cafe-meta num flush"><span class="seg">350 m away</span> <span class="seg">· Delivers within 100 m</span> <span class="seg">· Open until 19:00</span></p>
+    </header>
+
+    <div class="banner warn" role="status">
+      <svg class="i" aria-hidden="true"><use href="#i-alert"/></svg>
+      <div class="banner-body"><span class="banner-title">You’re out of delivery range</span><span class="banner-text">You can look around. Get within 100 m of the café to start ordering.</span></div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Menu">
+      <button class="tab-link" role="tab" aria-selected="true">Coffee</button>
+      <button class="tab-link" role="tab" aria-selected="false">Tea</button>
+      <button class="tab-link" role="tab" aria-selected="false">Pastry</button>
+      <button class="tab-link" role="tab" aria-selected="false">Lunch</button>
+    </div>
+
+    <div class="menu-list" role="tabpanel" aria-label="Coffee">
+      <div class="menu-row">
+        <div class="menu-text"><span class="menu-name">Cappuccino</span><span class="menu-desc">Double shot, milk foam</span><span class="menu-price">€4.20</span></div>
+        <span class="thumb"><img src="../assets/pictures/web/cappuccino.jpg" alt="" loading="lazy"></span>
+        <button class="add" type="button" aria-label="Can’t add Cappuccino: you’re out of delivery range" disabled><svg class="i"><use href="#i-plus"/></svg></button>
+      </div>
+      <div class="menu-row">
+        <div class="menu-text"><span class="menu-name">Americano</span><span class="menu-desc">Espresso topped up with hot water</span><span class="menu-price">€3.60</span></div>
+        <span class="thumb"><img src="../assets/pictures/web/americano.jpg" alt="" loading="lazy"></span>
+        <button class="add" type="button" aria-label="Can’t add Americano: you’re out of delivery range" disabled><svg class="i"><use href="#i-plus"/></svg></button>
+      </div>
+      <div class="menu-row sold">
+        <div class="menu-text"><span class="menu-name">Espresso</span><span class="menu-desc">Sold out today</span><span class="menu-price">€3.00</span></div>
+        <span class="thumb"><img src="../assets/pictures/web/espresso.jpg" alt="" loading="lazy"></span>
+        <button class="add" type="button" aria-label="Espresso is sold out" disabled><svg class="i"><use href="#i-plus"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

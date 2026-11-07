@@ -237,7 +237,7 @@ a { color: var(--primary); text-underline-offset: var(--space-1); text-decoratio
 /* ============================================================
    8. BANNERS & SHEETS  (.sheet + .scrim sit inside a position:relative screen)
    ============================================================ */
-.banner { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3-5) var(--space-4); border-radius: var(--radius-input); background: var(--surface); }
+.banner { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3-5) var(--space-4); border-radius: var(--radius-input); background: var(--surface); color: var(--ink); }
 .banner .i { width: var(--icon-lg); height: var(--icon-lg); flex: none; }
 .banner-title { font-weight: var(--fw-semibold); font-size: var(--fs-body); line-height: var(--lh-control); }
 .banner-text { font-size: var(--fs-sub); color: var(--ink-2); line-height: var(--lh-sub); }
@@ -257,13 +257,13 @@ a { color: var(--primary); text-underline-offset: var(--space-1); text-decoratio
 .privacy .i { width: var(--icon); height: var(--icon); flex: none; color: var(--ink); }
 .privacy b { font-weight: var(--fw-semibold); }
 .scrim { position: absolute; inset: 0; background: var(--scrim); }
-.sheet { position: absolute; left: 0; right: 0; bottom: 0; background: var(--surface); border-radius: var(--radius-sheet) var(--radius-sheet) 0 0; padding: var(--space-2-5) var(--space-5) var(--space-7); display: grid; gap: var(--space-3-5); box-shadow: var(--shadow-sheet); }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; background: var(--surface); border-radius: var(--radius-sheet) var(--radius-sheet) 0 0; padding: var(--space-2-5) var(--space-5) var(--safe-bottom); display: grid; gap: var(--space-3-5); box-shadow: var(--shadow-sheet); }
 .grabber { width: var(--size-grabber-w); height: var(--size-grabber-h); border-radius: var(--radius-bar); background: var(--line-strong); justify-self: center; margin-bottom: var(--space-1-5); }
 .state-icon { width: var(--size-state-icon); height: var(--size-state-icon); border-radius: var(--radius-round); display: grid; place-items: center; border: var(--border-strong) solid var(--ink); color: var(--ink); }
 .state-icon .i { width: var(--icon-xl); height: var(--icon-xl); }
 .state-icon.error { border-color: var(--error); color: var(--error); }
 .state-icon.warn { border-color: var(--warning); color: var(--warning); }
-.sheet h3 { margin: 0; font-size: var(--fs-title-2); font-weight: var(--fw-bold); letter-spacing: var(--ls-title-2); line-height: var(--lh-snug); }
+.sheet :is(h2, h3) { margin: 0; text-wrap: balance; font-size: var(--fs-title-2); font-weight: var(--fw-bold); letter-spacing: var(--ls-title-2); line-height: var(--lh-snug); }
 .sheet p { margin: 0; color: var(--ink-2); font-size: var(--fs-body); }
 
 /* ============================================================
@@ -552,6 +552,133 @@ a { color: var(--primary); text-underline-offset: var(--space-1); text-decoratio
 .sheet.system { background: var(--surface-alert); padding: var(--space-2-5) var(--space-4) var(--safe-bottom); gap: var(--space-3); }
 .pay-row { display: flex; align-items: center; gap: var(--space-3); min-height: var(--size-control); padding: 0 var(--space-4); background: var(--surface); border-radius: var(--radius-input); color: var(--ink); text-decoration: none; }
 .pay-row .chev { margin-left: auto; color: var(--ink-2); width: var(--icon); height: var(--icon); }
+
+/* ============================================================
+   16. TRACKING & MESSAGING (UC-04)
+   nav with subtitle · live progress · live map + tags · avatar ·
+   courier card · chat (header, note, bubbles, seen) · quick replies ·
+   composer
+   ============================================================ */
+/* back + title with a second line (4.2) */
+.nav-inline .nav-titles { display: grid; gap: var(--space-0-5); min-width: 0; }
+.nav-inline .nav-sub { font-size: var(--fs-sub); color: var(--ink-2); line-height: var(--lh-caption); }
+
+/* current step breathes while the order is live */
+@keyframes live-breathe { 50% { opacity: var(--live-dim); } }
+.progress span.now { animation: live-breathe var(--dur-live) ease-in-out infinite; }
+.eta-row .eta-at { font-size: var(--fs-body); font-weight: var(--fw-semibold); font-variant-numeric: tabular-nums; }
+.eta-row .eta-step { margin-left: auto; }
+
+/* live map: big variant of .map with markers drawn in the SVG */
+.map.live { height: auto; flex: 1; min-height: 0; border-radius: var(--radius-card); }
+.map .route { fill: none; stroke: var(--map-route); stroke-width: var(--stroke-route); stroke-linecap: round; stroke-dasharray: var(--dash-route); }
+.map .halo { fill: var(--map-halo); }
+.map .courier { fill: var(--ink); stroke: var(--white); stroke-width: var(--border-focus); }
+.map .courier-initial { fill: var(--ink-inverse); font-family: var(--font-ui); font-weight: var(--fw-bold); font-size: var(--fs-caption); }
+@keyframes map-pulse { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(var(--pulse-scale)); } }
+.map .pulse { fill: var(--map-pulse); transform-box: fill-box; transform-origin: center; animation: map-pulse var(--dur-pulse) var(--ease-out) infinite; }
+.map-tag {
+  position: absolute; left: var(--space-3); z-index: 1; display: inline-flex; align-items: center; gap: var(--space-2);
+  min-height: var(--size-pill-h); max-width: calc(100% - var(--space-6)); padding: var(--space-1) var(--space-3-5) var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill); background: var(--surface); box-shadow: var(--shadow-card);
+  font-size: var(--fs-caption); font-weight: var(--fw-semibold); color: var(--ink); line-height: var(--lh-caption);
+}
+.map-tag.top { top: var(--space-3); }
+.map-tag.bottom { bottom: var(--space-3); padding-left: var(--space-1); font-size: var(--fs-sub); }
+.map-tag .thumb { width: var(--size-map-thumb); height: var(--size-map-thumb); border-radius: var(--radius-round); }
+.map-tag .btn-text { min-height: var(--size-tap); margin: calc(var(--space-2) * -1) 0; padding: 0; }
+.live-dot { position: relative; flex: none; width: var(--size-live-dot); height: var(--size-live-dot); border-radius: var(--radius-round); background: var(--success); }
+.live-dot::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--live-pulse); animation: map-pulse var(--dur-pulse) var(--ease-out) infinite; }
+
+/* courier avatar: initial on sand until the café adds a photo */
+.avatar { width: var(--size-avatar); height: var(--size-avatar); border-radius: var(--radius-round); flex: none; display: grid; place-items: center; background: var(--surface-2); color: var(--ink); font-weight: var(--fw-bold); font-size: var(--fs-body); line-height: var(--lh-none); }
+.avatar.sm { width: var(--size-avatar-sm); height: var(--size-avatar-sm); font-size: var(--fs-sub); }
+
+/* courier card: who is bringing it + message action (4.2) */
+.courier-card { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.courier-card .courier-body { flex: 1; min-width: 0; display: grid; gap: var(--space-0-5); }
+.courier-card .courier-name { font-weight: var(--fw-bold); line-height: var(--lh-snug); text-wrap: balance; }
+.courier-card .btn { flex: none; }
+
+/* chat screen (4.3): header · scrolling thread · docked composer
+   <main class="device chat"> keeps status bar, header and dock on one light surface */
+.device.chat { background: var(--surface-header); }
+.chat-head { flex: none; display: flex; align-items: center; gap: var(--space-3); min-height: var(--size-navbar); padding: var(--space-1) var(--screen-gutter) var(--space-3); background: var(--surface-header); border-bottom: var(--border-hair) solid var(--line); }
+.chat-head .back { appearance: none; background: none; border: 0; width: var(--size-tap); height: var(--size-tap); display: grid; place-items: center; color: var(--ink); border-radius: var(--radius-round); margin-left: calc(var(--space-2-5) * -1); }
+.chat-head .back .i { width: var(--icon-xl); height: var(--icon-xl); }
+.chat-head .who { display: grid; gap: var(--space-0-5); min-width: 0; }
+.chat-head .who-name { margin: 0; font-size: var(--fs-body); font-weight: var(--fw-bold); line-height: var(--lh-snug); }
+.chat-head .who-status { font-size: var(--fs-sub); color: var(--ink-2); line-height: var(--lh-caption); }
+.thread { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; background: var(--surface-chat); padding: var(--space-4) var(--space-4) var(--space-3); display: flex; flex-direction: column; gap: var(--space-2-5); }
+.thread::-webkit-scrollbar { display: none; }
+.chat-note { align-self: center; max-width: 100%; padding: var(--space-1-5) var(--space-3); border-radius: var(--radius-pill); background: var(--surface-2); color: var(--ink); font-size: var(--fs-caption); font-weight: var(--fw-medium); line-height: var(--lh-caption); text-align: center; }
+.bubble { max-width: var(--bubble-max); padding: var(--space-2-5) var(--space-4); border-radius: var(--radius-bubble); font-size: var(--fs-body); line-height: var(--lh-sub); overflow-wrap: anywhere; }
+.bubble.in { align-self: flex-start; background: var(--surface); color: var(--ink); border-bottom-left-radius: var(--radius-bubble-tail); box-shadow: var(--shadow-card); }
+.bubble.out { align-self: flex-end; background: var(--ink); color: var(--ink-inverse); border-bottom-right-radius: var(--radius-bubble-tail); }
+.chat-seen { align-self: flex-end; margin-top: calc(var(--space-1) * -1); font-size: var(--fs-caption); color: var(--ink-2); }
+.chat-dock { flex: none; display: grid; gap: var(--space-3); padding: var(--space-3) var(--space-4) var(--safe-bottom); background: var(--surface-header); border-top: var(--border-hair) solid var(--line); }
+.quick-label { font-size: var(--fs-caption); font-weight: var(--fw-semibold); color: var(--ink-2); }
+.composer { display: flex; align-items: center; gap: var(--space-2-5); }
+.composer .input { flex: 1; min-height: var(--size-send); border-radius: var(--radius-pill); padding: 0 var(--space-5); }
+.send-btn { appearance: none; border: 0; cursor: pointer; flex: none; width: var(--size-send); height: var(--size-send); border-radius: var(--radius-round); display: grid; place-items: center; background: var(--primary); color: var(--on-primary); box-shadow: var(--shadow-primary); transition: transform var(--dur) var(--ease-out); }
+.send-btn:active { transform: scale(var(--press-scale-btn)); background: var(--primary-pressed); }
+.send-btn .i { width: var(--icon); height: var(--icon); stroke-width: var(--stroke-icon-bold); }
+
+/* ============================================================
+   17. CAFÉ LIST EDGE CASES (UC-03)
+   empty-state card · small round illustration · smaller display line
+   ============================================================ */
+.empty-card { display: grid; justify-items: center; gap: var(--space-3); padding: var(--space-5); border: var(--border) var(--dash-border) var(--line-strong); border-radius: var(--radius-card); text-align: center; }
+.empty-card :is(h1, h2, h3) { margin: 0; text-wrap: balance; }
+.empty-card p { margin: 0; color: var(--ink-2); font-size: var(--fs-sub); line-height: var(--lh-sub); text-wrap: pretty; max-width: var(--measure); }
+.display.sm { font-size: var(--fs-display-sm); }
+.illo-sm { width: var(--illo-sm); height: var(--illo-sm); border-radius: var(--radius-round); }
+.illo-sm svg.art { width: 82%; }
+
+/* ============================================================
+   18. ORDERING EDGE CASES (E1–E10)
+   success badge on any banner · quiet text button · removed cart row ·
+   map markers for "last spot" and walking direction · blurry capture ·
+   unreadable QR frame · photo pair (E2) · sheet action stack
+   ============================================================ */
+.badge-ic.success { background: var(--success); color: var(--on-success); }
+.banner-text b { font-weight: var(--fw-semibold); color: var(--ink); }
+.btn-text.quiet { color: var(--ink-2); font-weight: var(--fw-medium); text-decoration-color: var(--line-strong); }
+
+/* cart row whose item sold out and was removed (E6) */
+.cart-row.removed .thumb { opacity: var(--opacity-muted); filter: var(--photo-sold-out); }
+.cart-row.removed .menu-name { color: var(--ink-2); text-decoration: var(--strike); text-decoration-thickness: var(--border); }
+.cart-row.removed .menu-desc { color: var(--ink); font-weight: var(--fw-semibold); }
+
+/* map markers: your last spot (rounded square) + arrow head on a route */
+.map .spot-mark { fill: var(--ink); stroke: var(--white); stroke-width: var(--border-focus); }
+.map .route-head { fill: none; stroke: var(--map-route); stroke-width: var(--stroke-route); stroke-linecap: round; stroke-linejoin: round; }
+
+/* blurry capture inside the viewfinder (E3) */
+.viewfinder > img.blurry { filter: var(--photo-blurry); transform: scale(var(--blur-bleed)); }
+
+/* QR frame when the code can't be read (E4): dashed, code out of focus */
+.qr-frame.fail { border-style: var(--dash-border); }
+.qr-frame.fail .qr-code { filter: var(--photo-blurry); }
+
+/* photo pair: back camera + "you" (E2) */
+.photo-pair { display: flex; align-items: flex-end; justify-content: center; gap: var(--space-2-5); }
+.photo-pair .frame { position: relative; width: var(--size-pair-w); aspect-ratio: var(--ratio-pip); border-radius: var(--radius-input); overflow: hidden; background: var(--surface-2); box-shadow: var(--shadow-card); }
+.photo-pair .frame.sm { width: var(--size-pair-sm-w); }
+.photo-pair .frame > :is(img, svg) { display: block; width: 100%; height: 100%; object-fit: cover; }
+.photo-pair .frame .photo-tag { left: 50%; translate: -50% 0; bottom: var(--space-2); font-size: var(--fs-micro); white-space: nowrap; }
+
+/* sheet with a map and stacked actions (E1, E5, E7, E8, E10) */
+.sheet .map { margin: var(--space-1) 0; }
+.sheet .btn-text { justify-self: center; }
+.sheet .actions { display: grid; gap: var(--space-2-5); margin-top: var(--space-1); }
+.device > [inert] { pointer-events: none; }
+/* a light sheet over a camera screen (E5) uses the normal light buttons */
+.cam .sheet { color: var(--ink); }
+.cam .sheet .btn-primary { background: var(--primary); color: var(--on-primary); box-shadow: var(--shadow-primary); }
+.cam .sheet .btn-primary:active { background: var(--primary-pressed); }
+.cam .sheet .btn-secondary { color: var(--ink); box-shadow: inset 0 0 0 var(--border-strong) var(--ink); }
+.cam .sheet ~ .home-indicator { background: var(--ink); }
 
 /* ============================================================
    11. MOTION

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · E8 Left the area while preparing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* E8 Left the area while preparing – sheet over 4.2 Order status (step 2). Layout only. */
+.status { padding-bottom: var(--space-4); gap: var(--space-3-5); }
+.status .nav-inline { margin-bottom: var(--space-1); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="E8 Left the area while preparing">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:45</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <!-- behind: 4.2 Order status while the order is being prepared -->
+  <div class="screen status" aria-hidden="true" inert>
+    <nav class="nav-inline"><span class="back"><svg class="i"><use href="#i-back"/></svg></span><div class="nav-titles"><h1>Order #2041</h1><span class="nav-sub">Saaripaahtimo</span></div></nav>
+    <article class="order-card live">
+      <span class="t-sub muted">Being prepared</span>
+      <div class="eta-row"><span class="eta">~6 min</span><span class="eta-at">at 9:51</span><span class="t-cap muted eta-step">Step 2 of 4</span></div>
+      <div class="stack-2">
+        <div class="progress"><span class="done"></span><span class="done now"></span><span></span><span></span></div>
+        <div class="progress-labels"><span>Received</span><b>Prepared</b><span>On the way</span><span>Delivered</span></div>
+      </div>
+    </article>
+    <div class="map live"></div>
+  </div>
+
+  <div class="scrim"></div>
+
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="e8-title" aria-describedby="e8-text">
+    <span class="grabber"></span>
+    <span class="state-icon warn"><svg class="i" aria-hidden="true"><use href="#i-pin-alert"/></svg></span>
+    <h2 id="e8-title">You’re outside the delivery area</h2>
+    <p id="e8-text" class="num">Saaripaahtimo delivers within 100 m. You’re now 160 m away and your order is still being prepared.</p>
+    <div class="map">
+      <svg viewBox="0 0 340 120" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map: the café's 100 m delivery radius, the spot where you ordered inside it, and you now outside it">
+        <path class="park" d="M-10 84c40-10 70 6 96 46H-10Z"/>
+        <path class="park" d="M250 -10c8 24 44 34 100 28V-10Z"/>
+        <path class="road" stroke-width="10" d="M-10 30c90 10 220-12 360 6"/>
+        <path class="road" stroke-width="6" d="M210-10c-6 50 10 90 2 140"/>
+        <path class="road" stroke-width="4" d="M-10 104c80-8 150 2 230-6"/>
+        <circle class="radius" cx="96" cy="58" r="46"/>
+        <circle class="cafe-dot" cx="80" cy="48" r="5"/>
+        <rect class="spot-mark" x="110" y="62" width="13" height="13" rx="3"/>
+        <path class="route" d="M180 84.5l-44-9"/>
+        <path class="route-head" d="M138.5 70.3l-5.6 5.1 6 4.8"/>
+        <circle class="halo" cx="190" cy="86.5" r="15"/>
+        <circle class="pin" cx="190" cy="86.5" r="7"/>
+      </svg>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="4.2-order-status.html">I’m going back to my spot</a>
+      <a class="btn btn-secondary" href="#pick-up-at-counter">Pick it up at the counter instead</a>
+    </div>
+    <a class="btn-text sm quiet" href="#cancel-order">Cancel order · refund [policy – TBD]</a>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

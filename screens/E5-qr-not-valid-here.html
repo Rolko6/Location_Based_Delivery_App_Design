@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · E5 QR not valid here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* E5 QR not valid here – sheet over 2.6 Scan spot QR. Layout only. */
+.device.cam > .screen-cam { flex: 1; min-height: 0; display: flex; flex-direction: column; padding-bottom: var(--safe-bottom); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device cam" aria-label="E5 QR not valid here">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <!-- behind: 2.6 Scan spot QR -->
+  <div class="screen-cam" aria-hidden="true" inert>
+    <header class="cam-top"><span class="close"><svg class="i"><use href="#i-x"/></svg></span><h1>Scan your spot</h1><span></span></header>
+    <div class="viewfinder"><img src="../assets/pictures/web/counter-tall.jpg" alt=""></div>
+  </div>
+
+  <div class="scrim"></div>
+
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="e5-title" aria-describedby="e5-text">
+    <span class="grabber"></span>
+    <span class="state-icon error"><svg class="i" aria-hidden="true"><use href="#i-qr-x"/></svg></span>
+    <h2 id="e5-title">This code doesn’t work here</h2>
+    <p id="e5-text">It isn’t a spot code for Saaripaahtimo. It may belong to another café, be out of the delivery range, or no longer be active.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="2.6-scan-spot-qr.html">Scan a different code</a>
+      <a class="btn btn-secondary" href="2.4-photo-front-back.html">Take a photo instead</a>
+    </div>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

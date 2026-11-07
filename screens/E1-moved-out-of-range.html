@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · E1 Moved out of range</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* E1 Moved out of range – sheet over 2.7 Checkout. Layout only. */
+.flow { padding-bottom: var(--space-4); gap: var(--space-4); }
+.flow .scroll { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: var(--space-3); }
+.flow .scroll > * { flex: none; margin: 0; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="E1 Moved out of range">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <!-- behind: 2.7 Checkout -->
+  <div class="screen flow" aria-hidden="true" inert>
+    <div class="scroll">
+      <nav class="nav-inline"><span class="back"><svg class="i"><use href="#i-back"/></svg></span><h1>Checkout</h1></nav>
+      <div class="steps"><div class="step done"><span class="n"><svg class="i"><use href="#i-check"/></svg></span>Cart</div><span class="bar done"></span><div class="step done"><span class="n"><svg class="i"><use href="#i-check"/></svg></span>Spot</div><span class="bar done"></span><div class="step current"><span class="n">3</span>Payment</div></div>
+      <div class="spot-card">
+        <span class="thumb"><img src="../assets/pictures/web/spot.jpg" alt=""></span>
+        <div class="spot-body"><span class="t-group muted">Deliver to</span><span class="spot-title">Saaripaahtimo · Your spot</span><span class="done-line">Photo added<svg class="i"><use href="#i-check"/></svg></span></div>
+        <span class="btn-text sm">Change</span>
+      </div>
+      <div class="option"><span class="pay-mark ink"><svg class="i"><use href="#i-wallet"/></svg></span><span class="label">Apple Pay</span></div>
+    </div>
+  </div>
+
+  <div class="scrim"></div>
+
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="e1-title" aria-describedby="e1-text">
+    <span class="grabber"></span>
+    <span class="state-icon warn"><svg class="i" aria-hidden="true"><use href="#i-pin-alert"/></svg></span>
+    <h2 id="e1-title">You’ve moved out of range</h2>
+    <p id="e1-text" class="num">Saaripaahtimo delivers within 100 m. You’re now 140 m away. Move closer to order — your cart is saved.</p>
+    <div class="map">
+      <svg viewBox="0 0 340 120" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map: the café's 100 m delivery radius, you just outside it, and the direction to walk back in">
+        <path class="park" d="M-10 84c40-10 70 6 96 46H-10Z"/>
+        <path class="park" d="M250 -10c8 24 44 34 100 28V-10Z"/>
+        <path class="road" stroke-width="10" d="M-10 30c90 10 220-12 360 6"/>
+        <path class="road" stroke-width="6" d="M210-10c-6 50 10 90 2 140"/>
+        <path class="road" stroke-width="4" d="M-10 104c80-8 150 2 230-6"/>
+        <circle class="radius" cx="110" cy="58" r="50"/>
+        <circle class="cafe-dot" cx="110" cy="58" r="5"/>
+        <path class="route" d="M188 72.6l-24-4.4"/>
+        <path class="route-head" d="M167 62.6l-6.5 5 5.5 5.6"/>
+        <circle class="halo" cx="198" cy="74.5" r="15"/>
+        <circle class="pin" cx="198" cy="74.5" r="7"/>
+      </svg>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="2.7-checkout-payment-method.html">I’ve moved closer – check again</a>
+      <a class="btn btn-secondary" href="1.6-cafe-list-home.html">Back to café list</a>
+    </div>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

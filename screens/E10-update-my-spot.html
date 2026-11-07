@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · E10 Update my spot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* E10 Update my spot – sheet over 4.2 Order status. Layout only. */
+.status { padding-bottom: var(--space-4); gap: var(--space-3-5); }
+.status .nav-inline { margin-bottom: var(--space-1); }
+.sheet :is(h2) { margin-top: var(--space-1); }
+.sheet .links { display: grid; justify-items: center; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="E10 Update my spot">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:49</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <!-- behind: 4.2 Order status -->
+  <div class="screen status" aria-hidden="true" inert>
+    <nav class="nav-inline"><span class="back"><svg class="i"><use href="#i-back"/></svg></span><div class="nav-titles"><h1>Order #2041</h1><span class="nav-sub">Saaripaahtimo</span></div></nav>
+    <article class="order-card live">
+      <span class="t-sub muted">On the way to you</span>
+      <div class="eta-row"><span class="eta">~2 min</span><span class="eta-at">at 9:51</span><span class="t-cap muted eta-step">Step 3 of 4</span></div>
+      <div class="stack-2">
+        <div class="progress"><span class="done"></span><span class="done"></span><span class="done now"></span><span></span></div>
+        <div class="progress-labels"><span>Received</span><span>Prepared</span><b>On the way</b><span>Delivered</span></div>
+      </div>
+    </article>
+    <div class="map live">
+      <svg viewBox="0 0 342 340" preserveAspectRatio="xMidYMid slice">
+        <path class="park" d="M-10 150C40 132 92 156 120 210c22 44 8 96-30 140H-10Z"/>
+        <path class="park" d="M226 -10c6 40 52 66 126 58V-10Z"/>
+        <path class="road" stroke-width="12" d="M-10 96c90 10 230-20 362 0"/>
+        <path class="road" stroke-width="8" d="M98-10c-6 70 30 118 92 150s58 90 52 210"/>
+        <path class="route" d="M102 82c8 34 38 52 74 68s52 48 60 84c3 12 6 20 10 28"/>
+        <circle class="courier" cx="102" cy="82" r="15"/>
+        <text class="courier-initial" x="102" y="82" text-anchor="middle" dominant-baseline="central">E</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="scrim"></div>
+
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="e10-title" aria-describedby="e10-text">
+    <span class="grabber"></span>
+    <h2 id="e10-title">Moved to a different seat?</h2>
+    <p id="e10-text">Take a new photo so Eetu can find you. Your location updates on their map automatically.</p>
+    <div class="banner success info" role="status">
+      <span class="badge-ic"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span>
+      <span class="banner-text num"><b>Still in range</b> · 35 m from Saaripaahtimo</span>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="2.4-photo-front-back.html"><svg class="i" aria-hidden="true"><use href="#i-camera"/></svg>Take a new photo</a>
+    </div>
+    <div class="links">
+      <a class="btn-text sm" href="2.6-scan-spot-qr.html">Or scan the QR code at your new spot</a>
+      <a class="btn-text sm quiet" href="4.2-order-status.html">Cancel</a>
+    </div>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

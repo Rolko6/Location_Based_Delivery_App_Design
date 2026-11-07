@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 3.1 No café in range</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 3.1 No café in range – layout only. Values: tokens.css. Components: components.css. */
+.home { padding-bottom: var(--space-4); overflow-y: auto; scrollbar-width: none; gap: var(--space-4); }
+.home::-webkit-scrollbar { display: none; }
+.home .loc-picker { padding-top: var(--space-3); }
+.home .group { display: grid; gap: var(--space-3); margin-top: var(--space-2); }
+.home .t-group { color: var(--ink-2); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="3.1 No café in range">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <div class="screen home">
+    <div class="loc-picker">
+      <small>Delivering to your location</small>
+      <!-- prototype: changing the location goes back to 1.6 (cafés in range) -->
+      <button type="button" onclick="location.href='1.6-cafe-list-home.html'">Current GPS position<svg class="i" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+    </div>
+
+    <section class="empty-card" aria-labelledby="empty-title">
+      <!-- placeholder: assets/illustrations/no-cafe-in-range.svg is not in the project yet.
+           Shows you (pin) just outside a café's delivery radius (dashed ring, cup inside). -->
+      <figure class="illo illo-sm" role="img" aria-label="You are outside the café's delivery radius">
+        <svg class="art" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="dashed drift" cx="48" cy="72" r="34"/>
+          <path class="fill-cream" d="M36 64h24l-3 19H39z"/>
+          <path class="fill-orange" d="M37.4 64h21.2v4.5H37.4z"/>
+          <path d="M36 64h24"/>
+          <path d="M60 68c6 0 6 9-1 9"/>
+          <path class="fill-cream" d="M94 66c-3-4-18-18-18-31a18 18 0 0 1 36 0c0 13-15 27-18 31z"/>
+          <circle cx="94" cy="35" r="6"/>
+        </svg>
+      </figure>
+      <h1 class="display sm" id="empty-title">No café can deliver here yet</h1>
+      <p>Cafés deliver only within a short walk. Move closer to one of the cafés below to start ordering.</p>
+    </section>
+
+    <section class="group" aria-labelledby="nearby">
+      <h2 class="t-group flush" id="nearby">Nearby · browse only</h2>
+      <a class="cafe out" href="3.2-menu-browse-only.html">
+        <span class="thumb"><img src="../assets/pictures/web/coffee-shop-2.jpg" alt="" loading="lazy"></span>
+        <span class="cafe-body">
+          <span class="cafe-name">Torikahvila Ruska</span>
+          <span class="cafe-meta num"><span class="seg">350 m away</span> <span class="seg">· 4 min walk</span></span>
+        </span>
+      </a>
+      <a class="cafe out" href="#saaripaahtimo">
+        <span class="thumb"><img src="../assets/pictures/web/coffee-shop-3.jpg" alt="" loading="lazy"></span>
+        <span class="cafe-body">
+          <span class="cafe-name">Saaripaahtimo</span>
+          <span class="cafe-meta num"><span class="seg">520 m away</span> <span class="seg">· 7 min walk</span></span>
+        </span>
+      </a>
+    </section>
+  </div>
+
+  <nav class="tabbar" aria-label="Main">
+    <a class="tab" href="1.6-cafe-list-home.html" aria-current="page" aria-selected="true"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span>Home</a>
+    <a class="tab" href="4.1-orders-tab.html"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></span>Orders</a>
+    <a class="tab" href="#profile"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg></span>Profile</a>
+  </nav>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

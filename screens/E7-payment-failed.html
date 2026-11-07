@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · E7 Payment failed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* E7 Payment failed – sheet over the Pay screen (2.8 without the system sheet). Layout only. */
+.flow { padding-bottom: var(--space-4); gap: var(--space-4); }
+.flow .scroll { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: var(--space-3); }
+.flow .scroll > * { flex: none; margin: 0; }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="E7 Payment failed">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <!-- behind: Pay (2.8) -->
+  <div class="screen flow" aria-hidden="true" inert>
+    <div class="scroll">
+      <nav class="nav-inline"><span class="back"><svg class="i"><use href="#i-back"/></svg></span><h1>Pay</h1></nav>
+      <p class="muted">Step 3 of 3 · Pay</p>
+      <div class="spot-card">
+        <span class="thumb"><img src="../assets/pictures/web/spot.jpg" alt=""></span>
+        <div class="spot-body"><span class="spot-title">Spot confirmed · photo added</span><span class="cafe-meta num">Saaripaahtimo · 3 items · 40 m</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scrim"></div>
+
+  <div class="sheet" role="alertdialog" aria-modal="true" aria-labelledby="e7-title" aria-describedby="e7-text">
+    <span class="grabber"></span>
+    <span class="state-icon error"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></span>
+    <h2 id="e7-title">Payment failed</h2>
+    <p id="e7-text">You haven’t been charged. Your cart and photo are saved — try again or choose another card in the payment sheet.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="2.8-apple-google-pay-sheet.html">Try again</a>
+      <a class="btn btn-secondary" href="2.2-cart.html">Back to cart</a>
+    </div>
+  </div>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>
