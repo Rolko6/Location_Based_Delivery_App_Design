@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shoot · 1.6 Café list (home) – bold</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="../design-system/components.css">
+<script src="../design-system/icons.js"></script>
+<style>
+/* 1.6 Café list (home) – bold v2. Layout only. Values: tokens.css. Components: components.css.
+   Two changes vs. the canonical screen: (1) a soft liquid-wave tint band
+   behind the top of the scrollable content — not solid shapes, so ink text
+   needs no colour override — and (2) subtle hover/active feedback on the
+   things that are actually clickable (café cards, "Order again", "Current
+   location"), left alone everywhere else (the Order-again card itself, the
+   out-of-range card, headings, search) so they don't start looking tappable. */
+.home { padding-bottom: var(--space-4); overflow-y: auto; scrollbar-width: none; gap: var(--space-4); }
+.home::-webkit-scrollbar { display: none; }
+.home .loc-picker { padding-top: var(--space-3); }
+.home .group { display: grid; gap: var(--space-3); }
+.home .group + .group { margin-top: var(--space-2); }
+.home .t-group { color: var(--ink-2); }
+
+/* wave band: first child, non-positioned, so it paints behind the later
+   flex siblings purely by DOM order (no z-index, nothing for a conversion
+   tool to mis-clip). The negative bottom margin removes its own height
+   from the flex flow — incl. the row gap — so the next item starts at the
+   same y it would without the band, and the band scrolls with everything
+   else instead of sitting fixed behind it. */
+.wave-band {
+  display: block; flex: none; pointer-events: none;
+  width: calc(100% + var(--screen-gutter) * 2); height: var(--wave-band-h);
+  margin: 0 calc(var(--screen-gutter) * -1) calc((var(--wave-band-h) + var(--space-4)) * -1);
+}
+.wave-band .wave-sand    { fill: var(--sand);  opacity: var(--opacity-wave-sand); }
+.wave-band .wave-orange  { fill: var(--orange); opacity: var(--opacity-wave-orange); }
+.wave-band .wave-brown-1 { fill: var(--brown); opacity: var(--opacity-wave-brown-1); }
+.wave-band .wave-brown-2 { fill: var(--brown); opacity: var(--opacity-wave-brown-2); }
+
+/* "Current location": transparent at rest (unchanged); hover/active show a
+   pill using the system's existing hover/press tints. Padding + matching
+   negative margin keep the text from shifting when the pill appears. */
+.home .loc-picker button {
+  padding: 0 var(--space-3); margin-left: calc(var(--space-3) * -1);
+  border-radius: var(--radius-pill); background: transparent;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.home .loc-picker button:hover { background: var(--tint-hover); }
+.home .loc-picker button:active { background: var(--tint-press); }
+
+/* café cards that actually open a menu: a touch deeper than a plain card at
+   rest, lift + deepen further on hover, settle on active. The out-of-range
+   card (.out) never matches — it already renders differently and stays
+   exactly as it was, not clickable-looking. */
+.home .cafe:not(.out) { box-shadow: var(--shadow-card-clickable); transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out); }
+.home .cafe:not(.out):hover { transform: translateY(calc(var(--press-translate) * -1)); box-shadow: var(--shadow-card-hover); }
+.home .cafe:not(.out):active { transform: scale(var(--press-scale-card)); }
+
+/* "Order again" button: same flat rust pill it already is — only the resting
+   shadow is a bolder two-layer version, and hover/active are brightness +
+   a 1px press instead of the system's default background colour swap. */
+.home .again .btn-primary { box-shadow: var(--shadow-primary-bold); transition: filter var(--dur) var(--ease-out), transform var(--dur) var(--ease-out); }
+.home .again .btn-primary:hover { background: var(--primary); filter: brightness(var(--brightness-hover)); }
+.home .again .btn-primary:active { background: var(--primary); filter: brightness(var(--brightness-active)); transform: translateY(var(--press-translate)); }
+</style>
+</head>
+<body class="screen-page">
+
+<main class="device" aria-label="1.6 Café list">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="sys">
+      <svg class="i"><use href="#i-signal"/></svg>
+      <svg class="i"><use href="#i-wifi"/></svg>
+      <svg class="i battery"><use href="#i-battery"/></svg>
+    </span>
+  </div>
+
+  <div class="screen home">
+    <svg class="wave-band" viewBox="0 0 390 250" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false">
+      <path class="wave-sand" d="M-10 -10 L400 -10 L400 205 C330 235 260 205 190 222 C120 238 60 215 -10 232Z"/>
+      <path class="wave-orange" d="M400 -10 L400 70 C350 62 330 20 280 28 C240 34 235 78 262 100 C290 124 240 148 195 138 C150 128 140 98 100 106 C60 114 40 150 -10 160 L-10 200 C40 192 70 160 115 164 C170 170 190 205 250 198 C320 190 345 140 305 112 C280 94 300 78 330 92 C360 105 385 120 400 116Z"/>
+      <path class="wave-brown-1" d="M-10 -10 L90 -10 C110 20 85 45 50 42 C25 40 10 60 -10 66Z"/>
+      <path class="wave-brown-2" d="M400 150 C355 160 340 195 350 225 C358 245 385 250 400 248Z"/>
+    </svg>
+
+    <h1 class="sr-only">Cafés near you</h1>
+
+    <div class="loc-picker">
+      <small>Delivering to your location</small>
+      <!-- prototype: changing the location shows 3.1 (no café in range) -->
+      <button type="button" onclick="location.href='3.1-no-cafe-in-range.html'">Current location<svg class="i" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+    </div>
+
+    <label class="search"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input class="input" type="search" placeholder="Search cafés or products" aria-label="Search cafés or products"></label>
+
+    <section class="group" aria-labelledby="again">
+      <h2 class="t-group flush" id="again">Order again</h2>
+      <div class="again">
+        <div class="again-body">
+          <span class="cafe-name">Saaripaahtimo</span>
+          <span class="cafe-meta">Cappuccino, 2 croissants</span>
+          <span class="menu-price num">€11.70</span>
+        </div>
+        <a class="btn btn-primary btn-small" href="2.2-cart.html"><svg class="i lead" aria-hidden="true"><use href="#i-again"/></svg>Order again</a>
+      </div>
+    </section>
+
+    <div class="chips scroll" role="group" aria-label="Filter">
+      <button class="chip" type="button" aria-pressed="true">All</button>
+      <button class="chip" type="button" aria-pressed="false">Coffee</button>
+      <button class="chip" type="button" aria-pressed="false">Pastry</button>
+      <button class="chip" type="button" aria-pressed="false">Lunch</button>
+      <button class="chip" type="button" aria-pressed="false">Open now</button>
+    </div>
+
+    <section class="group" aria-labelledby="in-range">
+      <h2 class="t-group flush" id="in-range">In range · can deliver to you</h2>
+      <a class="cafe" href="2.1-cafe-menu.html">
+        <span class="thumb"><img src="../assets/pictures/web/coffee-shop-3.jpg" alt="" loading="lazy"></span>
+        <span class="cafe-body">
+          <span class="cafe-name">Saaripaahtimo</span>
+          <span class="cafe-meta num meta"><b>45 m away</b><span>Open until 18:00</span></span>
+          <span class="cafe-meta num meta"><b>Ready in ~10 min</b><span>Delivery €0.50</span></span>
+        </span>
+      </a>
+      <a class="cafe" href="#kampuskuppi">
+        <span class="thumb"><img src="../assets/pictures/web/coffee-shop-1.jpg" alt="" loading="lazy"></span>
+        <span class="cafe-body">
+          <span class="cafe-name">Kampuskuppi</span>
+          <span class="cafe-meta num meta"><b>80 m away</b><span>Open until 20:00</span></span>
+          <span class="cafe-meta num meta"><b>Ready in ~15 min</b><span>Delivery €0.50</span></span>
+        </span>
+      </a>
+    </section>
+
+    <section class="group" aria-labelledby="out-range">
+      <h2 class="t-group flush" id="out-range">Out of range · browse only</h2>
+      <a class="cafe out" href="3.2-menu-browse-only.html">
+        <span class="thumb"><img src="../assets/pictures/web/coffee-shop-2.jpg" alt="" loading="lazy"></span>
+        <span class="cafe-body">
+          <span class="cafe-name">Torikahvila Ruska</span>
+          <span class="cafe-meta num meta"><b>350 m away</b></span>
+          <span class="range"><svg class="ring out" viewBox="0 0 22 22" aria-hidden="true"><circle class="r" cx="11" cy="11" r="9"/><circle class="c" cx="11" cy="11" r="3.5"/></svg>Move closer to order</span>
+        </span>
+      </a>
+    </section>
+  </div>
+
+  <nav class="tabbar" aria-label="Main">
+    <a class="tab" href="1.6-cafe-list-home.html" aria-current="page" aria-selected="true"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span>Home</a>
+    <a class="tab" href="4.1-orders-tab.html"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></span>Orders</a>
+    <a class="tab" href="#profile"><span class="pill"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg></span>Profile</a>
+  </nav>
+
+  <span class="home-indicator" aria-hidden="true"></span>
+</main>
+
+</body>
+</html>

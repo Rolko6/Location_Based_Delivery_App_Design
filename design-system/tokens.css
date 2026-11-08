@@ -435,3 +435,41 @@
   --fs-code:         48px;    /* order number shown at the counter */
   --size-invite-qr:  168px;   /* group invite code */
 }
+
+/* --------------------------------------------------------------------------
+   20. BOLD VARIANT (screens_bold/, 2026-11-07)
+   Deep olive from palette 3 as a large surface colour on onboarding.
+   Cream on it is 3.72:1 (large / display text only), white is 4.72:1 (all
+   text). Rust and orange on it are 1.23:1, so buttons never sit on the block.
+   -------------------------------------------------------------------------- */
+:root {
+  --deep-olive:      #6B7A2E;            /* palette 3 · olive */
+  --block:           var(--deep-olive);  /* green top block, green splash */
+  --on-block:        var(--cream);       /* display headlines (≥ 24 px) only */
+  --on-block-text:   var(--white);       /* everything smaller on the block */
+  --fs-display-xl:   44px;               /* hero Shrikhand (1.1) */
+  --block-overlap:   -56px;              /* illustration hanging over the block edge (1.1) */
+
+  /* liquid-wave header band (1.6 bold v2, 2026-11-08): low-opacity tints
+     layered over cream, not solid shapes, so ink text stays readable without
+     any colour override. Scrolls with the content — see screens_bold/1.6. */
+  --wave-band-h:          250px;
+  --wave-band-h-tall:     420px;  /* 2.9 order-sent: taller band behind a centred success moment, not a top list header */
+  --opacity-wave-sand:    .5;
+  --opacity-wave-orange:  .3;
+  --opacity-wave-brown-1: .10;
+  --opacity-wave-brown-2: .14;
+
+  /* interactive states for the same screen's clickable cards/buttons: a
+     deeper rest shadow than a plain card, a further step for hover, and the
+     brightness/translate micro-feedback on the primary button (rust's own
+     rgb already used by --shadow-primary, just a stronger, two-layer version
+     for this screen's slightly bolder button). */
+  --shadow-card-clickable: 0 1px 2px rgba(74, 44, 30, .08), 0 8px 18px -6px rgba(74, 44, 30, .16);
+  --shadow-card-hover:     0 1px 1px rgba(74, 44, 30, .08), 0 10px 16px rgba(74, 44, 30, .2);
+  --shadow-primary-bold:   0 1px 2px rgba(174, 67, 30, .5), 0 5px 9px -2px rgba(174, 67, 30, .45);
+  --brightness-hover:      1.1;
+  --brightness-active:     .95;
+  --press-translate:       1px;
+}
+
